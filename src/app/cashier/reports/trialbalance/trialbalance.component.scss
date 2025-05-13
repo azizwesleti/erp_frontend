@@ -1,0 +1,92 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include cashierSidebarMuneStyle;
+
+//cashier header searchbar
+@include cashierHeaderSearch;
+
+//cashier header searchbar action
+@include cashierHeaderSearchAction;
+@include commonActionMenuStyle;
+
+// Select field style
+@include cashierSelectFieldStyle;
+@include cashierHeaderStyle;
+@include cashierCalenderFieldStyle;
+@include commonPrimaryBtn;
+
+
+.cashier-salereturns-table-referenceQ,
+.cashier-salereturns-table-customerQ,
+.cashier-salereturns-table-companyQ {
+	@apply flex;
+	@apply flex-col;
+	@apply justify-center;
+	& h5 {
+		@apply text-[15px] font-semibold text-heading;
+	}
+	& span {
+		@apply text-[14px] font-normal text-bodyText;
+	}
+}
+.cashier-salereturns-table-referenceQ {
+	min-width: 290px;
+	width: 74%;
+	@apply pl-5;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 65%;
+		min-width: 220px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 60%;
+		min-width: 200px;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+		width: 64%;
+		min-width: 200px;
+	}
+	@media (min-width: 992px) and (max-width: 1200px) {
+		width: 56%;
+		min-width: 200px;
+	}
+    @media (max-width: 991px) {
+		width: 45%;
+		min-width: 200px;
+	}
+}
+.cashier-salereturns-table-customerQ {
+	min-width: 250px;
+	width: 17%;
+    @media (max-width: 991px) {
+		width: 35%;
+		min-width: 150px;
+	}
+}
+
+@include commonActionMenuStyle;
+
+.cashier-salereturns-table-checkbox {
+	.mat-checkbox-layout {
+		@apply ml-4;
+	}
+	.mat-checkbox-frame {
+		border-color: #CBCED4 !important;
+	}
+	.mat-checkbox {
+		@apply flex;
+	}
+}
+
+.cashier-salereturns-table-inner {
+	@media (max-width: 991px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.cashier-salereturns-table-inner-wrapper {
+	@media (max-width: 991px) {
+		width: 650px;
+		scrollbar-height: thin;
+	}
+}

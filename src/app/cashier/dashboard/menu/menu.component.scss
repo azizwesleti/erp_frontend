@@ -1,0 +1,120 @@
+@import '../../../../custom-palettes.scss';
+
+.cashier-menu-wrapper {
+    @apply top-0 w-[315px] min-w-[315px] overflow-y-auto h-screen left-0 maxXl:-left-full fixed z-[91] maxLg:w-[300px] maxLg:min-w-[300px];
+    transition: ease-in-out 0.4s;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    @media (min-width: 320px) and (max-width: 1900px) {
+        @apply -left-[320px] box-border;
+    }
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.sidenav-nav {
+    @apply list-none m-0 flex flex-col items-center cursor-pointer;
+
+    .sidenav-nav-item {
+       @apply w-full;
+        .sidenav-nav-link {
+            transition: all linear 0.3s;
+            @apply flex items-center text-[15px] font-semibold text-heading w-full px-5 py-3 rounded;
+
+            .sidenav-link-icon {
+                @apply text-[18px] w-8 min-w-[32px] m-0 text-left text-themeBlue;
+            }
+
+            .sidenav-link-text {
+                @apply ml-2;
+            }
+            &.active {
+                @apply bg-grayBorder;
+                .menu-collapse-icon,
+                .sidenav-link-icon,
+                .sidenav-link-text {
+                    @apply text-themeBlue;
+                }
+            }
+        }
+        .sidenav-nav-link:hover {
+            @apply bg-grayBorder text-themeBlue;
+
+            .menu-collapse-icon {
+                @apply text-themeBlue;
+            }
+        }
+    }
+}
+
+.menu-collapse-icon {
+    @apply text-heading text-right m-auto mr-0 min-w-[16px] text-[18px] w-4;
+}
+
+.sublevel-nav {
+    @apply list-none ml-0 pl-10;
+
+    .sublevel-nav-item {
+        .sublevel-nav-link {
+            transition: all linear 0.3s;
+            width: calc(100% - 20px);
+            @apply text-bodyText no-underline rounded flex items-center h-10;
+
+            .sublevel-link-icon {
+                @apply text-[4px] w-4 min-w-[16px] m-0 text-left;
+            }
+
+            .sublevel-link-text {
+                @apply ml-1 whitespace-nowrap;
+            }
+            &.active-sublevel {
+                @apply text-themeBlue;
+            }
+        }
+        .sublevel-nav-link:hover {
+            @apply text-themeBlue;
+        }
+    }
+    ul {
+        @apply pl-5;
+    }
+}
+
+//scrollbar and visibility on hover and focus
+
+.sidenav-nav,
+.scrollwrap:hover,
+.scrollwrap:focus {
+    visibility: visible;
+}
+
+.scrollwrap_delayed {
+    transition: visibility 0.5s 0.2s;
+}
+
+.scrollwrap_delayed:hover {
+    transition: visibility 0.2s 0.2s;
+}
+
+// works on chrome, edge and safari
+.scrollwrap::-webkit-scrollbar {
+    width: 10px;
+    @apply hidden
+}
+
+.scrollwrap::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollwrap::-webkit-scrollbar-thumb {
+    background-color: #556268;
+    border-radius: 20px;
+}
+
+// works on firefox
+.scrollwrap {
+    scrollbar-width: thin;
+    scrollbar-color: #556268 transparent;
+}

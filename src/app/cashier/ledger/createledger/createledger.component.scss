@@ -1,0 +1,17 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include cashierSidebarMuneStyle;
+
+// // Input field style
+@include cashierInputFieldStyle;
+@include cashierRadioBtnStyle;
+@include cashierCalenderFieldStyle;
+@include cashierSelectFieldStyle;
+@include cashierHeaderStyle;
+@include commonPrimaryBtn;
+
+
+.custom-height-70 {
+	@apply h-[70px] min-h-[70px];
+}

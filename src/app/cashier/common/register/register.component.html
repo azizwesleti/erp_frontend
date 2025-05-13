@@ -1,0 +1,61 @@
+<div class="cashier-login-area flex justify-center items-center w-full h-full">
+    <div class="cashier-login-wrapper">
+        <div class="cashier-login-logo text-center mb-12">
+            <img src="../../../../assets/img/logo/logo.png" alt="logo not found">
+        </div>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  
+        <div class="cashier-select-field mb-5">
+            <div class="cashier-input-field-style">
+              <mat-form-field class="w-full" [floatLabel]="'always'">
+                <input matInput formControlName="email" type="email" [placeholder]="'Email'">
+                <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+              Please enter a valid email
+            </mat-error>
+              </mat-form-field>
+              <caption><mat-icon>mail_outline</mat-icon></caption>
+            </div>
+        </div>
+    
+     
+        <div class="cashier-select-field mb-5">
+            <div class="cashier-input-field-style cashier-input-field-style-eye">
+              <mat-form-field appearance="fill">
+                  <mat-label class="hidden">Enter your password</mat-label>
+                  <input
+              matInput
+              formControlName="password"
+              [type]="hide ? 'password' : 'text'"
+              placeholder="Password"
+            />
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+              Password is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
+              Password must be at least 6 characters
+            </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="cashier-login-btn mb-7">
+            <div class="cashier-login-btn-full cashier-managesale-top-btn">
+                <button type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid">Register</button>
+            </div>
+        </div>
+        </form>
+        <div *ngIf="errorMessage" class="text-red-500 text-center mb-5">
+  {{ errorMessage }}
+</div>
+        <div class="cashier-login-footer">
+            <div class="cashier-login-footer-account text-center">
+                <span class="text-[16px] inline-block text-bodyText">Already have an account? <a [routerLink]="['']" class="text-[16px] text-themeBlue">Login</a></span>
+            </div>
+        </div>
+    </div>
+</div>

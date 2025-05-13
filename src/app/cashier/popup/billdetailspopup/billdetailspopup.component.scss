@@ -1,0 +1,138 @@
+@import '../../../../custom-palettes.scss';
+
+.cashier-managesale-top-btnC {
+	.mat-raised-button {
+		font-size: 15px !important;
+		font-weight: 600 !important;
+		color: #fff !important;
+		border-radius: 5px !important;
+		height: 48px !important;
+		line-height: 48px !important;
+		padding: 0px 28px !important;
+		margin-right: 16px !important;
+        margin-bottom: 6px !important;
+		&:last-child {
+			margin-right: 0px !important;
+		}
+	}
+	.mat-button-wrapper {
+		display: flex !important;
+		align-items: center !important;
+	}
+	.mat-icon {
+		width: 20px !important;
+		transform: translateX(-3px) !important;
+		@apply mr-2.5;
+	}
+	.mat-raised-button.mat-primary {
+		@apply bg-themeBlue;
+	}
+	.mat-raised-button.mat-accent {
+		@apply bg-[#3ABC8C];
+    color: #fff !important;
+	}
+  .mat-raised-button.mat-warn {
+		@apply bg-[#DF7B7B];
+	}
+}
+
+.cashier-popup-inners {
+    width: 850px !important;
+    @apply p-7;
+	  @media (min-width: 768px) and (max-width: 991px) {
+        width: 600px !important;
+    }
+    @media (min-width: 576px) and (max-width: 767px) {
+      width: 440px !important;
+    }
+    @media (min-width: 450px) and (max-width: 575px) {
+      width: 350px !important;
+    }
+    @media (max-width: 449px) {
+      width: 100% !important;
+    }
+}
+.cashier-bill-address,
+.cashier-bill-view-details {
+  @media (max-width: 991px) {
+    min-width: 850px;
+  }
+}
+//popup close btn
+@include cashierPopupClose;
+@include materialPopupBtn;
+
+//popup common style
+@include popupCommonStyle;
+
+.cashier-bill-address {
+  @apply border border-solid border-grayBorder;
+}
+.cashier-bill-address-info {
+  @apply px-[25px] py-[25px] border-r border-solid border-grayBorder;
+  h5 {
+    @apply text-[12px] font-bold text-heading;
+  }
+  ul {
+    li {
+      @apply text-[12px] font-normal text-heading pb-0.5 last:pb-0;
+    }
+  }
+  span {
+    @apply text-[12px] font-normal text-bodyText;
+  }
+  &.last-info {
+    @apply border-r-0;
+  }
+}
+
+.cashier-bill-view-list-sl,
+.cashier-bill-view-list-product,
+.cashier-bill-view-list-products,
+.cashier-bill-view-list-batch,
+.cashier-bill-view-list-unit,
+.cashier-bill-view-list-price,
+.cashier-bill-view-list-qty,
+.cashier-bill-view-list-tax,
+.cashier-bill-view-list-discount,
+.cashier-bill-view-list-total {
+  @apply flex flex-col justify-center pl-2.5 border-solid border-grayBorder;
+	& h5 {
+		@apply text-[15px] font-semibold text-heading;
+	}
+	& span {
+		@apply text-[14px] font-normal text-bodyText;
+	}
+}
+
+.cashier-bill-view-list-sl {
+  min-width: 40px;
+}
+.cashier-bill-view-list-product {
+  min-width: 185px;
+}
+.cashier-bill-view-list-products {
+  min-width: 225px;
+}
+.cashier-bill-view-list-batch {
+  min-width: 90px;
+}
+.cashier-bill-view-list-unit {
+  min-width: 55px;
+}
+.cashier-bill-view-list-price {
+  min-width: 90px;
+}
+.cashier-bill-view-list-qty {
+  min-width: 55px;
+}
+.cashier-bill-view-list-tax {
+  min-width: 95px;
+}
+.cashier-bill-view-list-discount {
+  min-width: 90px;
+}
+.cashier-bill-view-list-total {
+  min-width: 80px;
+  @apply border-r-0;
+}

@@ -1,0 +1,98 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include cashierSidebarMuneStyle;
+@include cashierInputFieldStyle;
+@include cashierHeaderStyle;
+@include commonPrimaryBtn;
+@include cashierCheckboxStyle;
+
+.cashier-managesale-table-checkbox,
+.cashier-managesale-table-name,
+.cashier-managesale-table-code,
+.cashier-managesale-table-action {
+	@apply flex flex-col justify-center;
+	& h5 {
+		@apply text-[15px] font-semibold text-heading;
+	}
+	& span {
+		@apply text-[14px] font-normal text-bodyText;
+	}
+}
+
+.cashier-managesale-table-checkbox {
+	min-width: 100px;
+	width: 14%;
+    @media (max-width: 1900px) {
+		min-width: 70px;
+		width: 12%;
+	}
+    @media (max-width: 1600px) {
+		min-width: 50px;
+		width: 12%;
+	}
+    @media (min-width: 768px) and (max-width: 991px) {
+        min-width: 50px;
+		width: 10%;
+    }
+}
+.cashier-managesale-table-name {
+	min-width: 520px;
+	width: 72%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+        min-width: 405px;
+		width: 70%;
+		@apply pr-2.5;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+        min-width: 315px;
+		width: 67%;
+		@apply pr-2.5;
+	}
+    @media (min-width: 1201px) and (max-width: 1400px) {
+        min-width: 325px;
+		width: 68%;
+		@apply pr-2.5;
+	}
+    @media (min-width: 992px) and (max-width: 1200px) {
+        min-width: 265px;
+		width: 66%;
+		@apply pr-2.5;
+	}
+    @media (max-width: 991px) {
+        min-width: 485px;
+		width: 74%;
+	}
+    @media (max-width: 767px) {
+		min-width: 485px;
+		width: 74%;
+	}
+}
+
+@include commonActionMenuStyle;
+
+.cashier-managesale-table-checkbox {
+	.mat-checkbox-layout {
+		@apply ml-4;
+	}
+	.mat-checkbox-frame {
+		border-color: #CBCED4 !important;
+	}
+	.mat-checkbox {
+		@apply flex;
+	}
+}
+
+.cashier-managesale-table-inner {
+	@media (max-width: 767px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.cashier-managesale-table-inner-wrapper {
+	@media (max-width: 767px) {
+		min-width: 100%;
+        width: 655px;
+		scrollbar-height: thin;
+	}
+}

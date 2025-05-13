@@ -1,0 +1,208 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include cashierSidebarMuneStyle;
+.cashier-managesale-top-btn {
+	.mat-raised-button {
+		font-size: 15px !important;
+		font-weight: 600 !important;
+		color: #fff !important;
+		border-radius: 5px !important;
+		height: 48px !important;
+		line-height: 48px !important;
+		padding: 0px 28px !important;
+		margin-right: 16px !important;
+        margin-bottom: 6px !important;
+		&:last-child {
+			margin-right: 0px !important;
+		}
+	}
+	.mat-button-wrapper {
+		display: flex !important;
+		align-items: center !important;
+	}
+	.mat-icon {
+		width: 20px !important;
+		transform: translateX(-3px) !important;
+		@apply mr-2.5;
+	}
+	.mat-raised-button.mat-primary {
+		@apply bg-themeBlue;
+	}
+	.mat-raised-button.mat-accent {
+		@apply bg-[#FFC403];
+		color: #0D0F19 !important;
+	}
+}
+
+//cashier header searchbar
+@include cashierHeaderSearch;
+
+//cashier header searchbar action
+@include cashierHeaderSearchAction;
+@include commonActionMenuStyle;
+
+// Select field style
+@include cashierSelectFieldStyle;
+@include cashierHeaderStyle;
+
+
+.cashier-salereturns-table-checkbox,
+.cashier-salereturns-table-dateP,
+.cashier-salereturns-table-referenceP,
+.cashier-salereturns-table-customerP,
+.cashier-salereturns-table-companyP,
+.cashier-salereturns-table-warehouseP,
+.cashier-salereturns-table-actionP {
+	@apply flex;
+	@apply flex-col;
+	@apply justify-center;
+	& h5 {
+		@apply text-[15px] font-semibold text-heading;
+	}
+	& span {
+		@apply text-[14px];
+		@apply font-normal;
+		@apply text-bodyText;
+	}
+}
+.cashier-salereturns-table-checkbox {
+	min-width: 70px;
+	width: 4.5%;
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 50px;
+		width: 4.5%;
+	}
+}
+.cashier-salereturns-table-dateP {
+	min-width: 220px;
+	width: 15%;
+	@apply pl-5;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 15%;
+		min-width: 175px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 18%;
+		min-width: 180px;
+	}
+    @media (max-width: 1400px) {
+		width: 18%;
+		min-width: 180px;
+	}
+}
+.cashier-salereturns-table-referenceP {
+	min-width: 315px;
+	width: 21%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 24%;
+		min-width: 260px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 22%;
+		min-width: 215px;
+	}
+    @media (max-width: 1400px) {
+		width: 22%;
+		min-width: 215px;
+	}
+}
+.cashier-salereturns-table-customerP {
+	min-width: 280px;
+	width: 19%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 18%;
+		min-width: 200px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 16%;
+		min-width: 150px;
+	}
+    @media (max-width: 1400px) {
+		width: 16%;
+		min-width: 150px;
+	}
+}
+.cashier-salereturns-table-companyP {
+	min-width: 230px;
+	width: 16%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 17%;
+		min-width: 185px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 15%;
+		min-width: 120px;
+	}
+    @media (max-width: 1400px) {
+		width: 15%;
+		min-width: 120px;
+	}
+}
+.cashier-salereturns-table-warehouseP {
+	min-width: 345px;
+	width: 23%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 20%;
+		min-width: 160px;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		width: 21%;
+		min-width: 205px;
+	}
+    @media (max-width: 1400px) {
+		width: 21%;
+		min-width: 205px;
+	}
+}
+@include commonActionMenuStyle;
+
+.cashier-salereturns-table-checkbox {
+	.mat-checkbox-layout {
+		@apply ml-4;
+	}
+	.mat-checkbox-frame {
+		border-color: #CBCED4 !important;
+	}
+	.mat-checkbox {
+		@apply flex;
+	}
+}
+
+.cashier-salereturns-table-inner {
+	@media (max-width: 1200px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.cashier-salereturns-table-inner-wrapper {
+	@media (max-width: 1200px) {
+		width: 1090px;
+		scrollbar-height: thin;
+	}
+}
+
+
+.cashier-transection-info {
+	@apply flex items-center justify-between py-[30px] px-[30px] rounded-lg minMaxDesktop:px-4 minMaxDesktop:py-6 minMaxLaptop:px-4 minMaxLaptop:py-6;
+	&-text {
+		h5 {
+			@apply text-[15px] font-semibold text-bodyText minMaxLaptop:text-[12px];
+		}
+		h4 {
+			@apply text-[22px] font-bold text-heading minMaxLaptop:text-[18px];
+		}
+	}
+	&-percent {
+		span {
+			@apply text-[14px] font-semibold text-white h-[30px] leading-[31px] rounded-2xl px-3 minMaxLaptop:px-2 minMaxLaptop:text-[12px];
+		}
+	}
+}
+.cashier-transection-selector {
+	&-single {
+		.mat-form-field-flex {
+			@apply h-10 leading-[38px] px-5; 
+		}
+	}
+}

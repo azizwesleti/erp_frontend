@@ -1,0 +1,169 @@
+<div class="cashier-dashboard-area">
+  <div class="cashier-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+    <div
+      class="cashier-menu-wrapper bg-white border-r border-b border-solid border-grayBorder py-10 px-7 maxLg:px-5 maxLg:py-8">
+      <app-menu></app-menu>
+    </div>
+    <div class="cashier-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+  </div>
+  <div class="cashier-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+    <div class="cashier-header-area">
+      <div class="cashier-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-grayBorder">
+        <div class="grid grid-cols-12 items-center h-full">
+          <div class="col-span-12">
+            <!-- header area start here -->
+              <div class="cashier-header-content flex items-center justify-between custom-height-70">
+                <div class="cashier-header-breadcrumb">
+                <h5 class="text-[20px] text-heading font-bold mb-1 leading-none">Create Ledger</h5>
+                <ul>
+                    <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Ledger</li>
+                    <li class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></li>
+                    <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Create Ledger</li>
+                </ul>
+                </div>
+                <div class="flex items-center maxXs:w-full">
+                <div class="cashier-header-shortmenu pr-5 maxSm:pr-4 items-center flex flex-col justify-center custom-height-70">
+                    <a href="javascript:void(0)" (click)="shortmenu()" class="h-10 w-10 leading-[38px] border border-grayBorder border-solid text-center inline-block rounded-[3px] text-bodyText short">
+                    <i class="fal fa-plus"></i>
+                    </a>
+                    <div class="cashier-quick-dropdown" [class.shortmenu-enable]="menuShortcutActive">
+                    <app-quickdropdown></app-quickdropdown>
+                    </div>
+                </div>
+                <div class="cashier-header-bar-responsive cursor-pointer mr-5" (click)="myfunction()">
+                    <app-baricon></app-baricon>
+                </div>
+                <div
+                    class="cashier-header-notify-wrapper px-5 flex items-center border-l border-solid border-grayBorder custom-height-70 pr-0">
+                    <div class="cashier-header-notification pr-5 relative">
+                    <a href="javascript:void(0)" class="noti" (click)="notifydropdown()"><app-notifyicon></app-notifyicon></a>
+                    <div class="cashier-notify-dropdown" [class.notifydropdown-enable]="notifyShortcutActive">
+                        <app-notifydropdown></app-notifydropdown>
+                    </div>
+                    </div>
+                    <div class="cashier-header-email pr-5 relative">
+                    <a href="javascript:void(0)" class="emai" (click)="emaildropdown()"><app-emailicon></app-emailicon></a>
+                    <div class="cashier-notify-dropdown cashier-email-dropdown" [class.emaildropdown-enable]="emailShortcutActive">
+                        <app-emaildropdown></app-emaildropdown>
+                    </div>
+                    </div>
+                    <div class="cashier-header-language flex items-center relative" (click)="langdropdown()">
+                    <div class="cashier-header-language-content">
+                        <ul>
+                        <li class="flex "><a href="javascript:void(0)" class="text-[14px] text-bodyText translate-y-[2px] font-bold"><app-settingicon></app-settingicon></a></li>
+                        </ul>
+                    </div>
+                    <div class="cashier-quick-dropdown cashier-quick-lang-dropdown" [class.langmenu-enable]="langShortcutActive">
+                        <app-languagedropdown></app-languagedropdown>
+                    </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+              <div class="cashier-header-overlay" (click)="shortmenu()" [class.shortmenu-enable]="menuShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="notifydropdown()" [class.notifydropdown-enable]="notifyShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="emaildropdown()" [class.emaildropdown-enable]="emailShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="langdropdown()" [class.langmenu-enable]="langShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="prodropdown()" [class.promenu-enable]="proShortcutActive"></div>
+            <!-- header area end here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cashier-breadcrumb-area px-7 py-9 bg-white mb-5">
+      <div class="cashier-breadcrumb-area-inner px-0.5">
+        <h5 class="text-[20px] text-heading font-bold mb-3">Create Ledger</h5>
+        <div class="cashier-breadcrumb-area-inner-wrap">
+          <span class="text-[14px] text-bodyText font-normal inline-block mr-2">Ledger</span>
+          <span class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i
+              class="far fa-chevron-right"></i></span>
+          <span class="text-[14px] text-bodyText font-normal inline-block mr-2">Create Ledger</span>
+        </div>
+      </div>
+    </div>
+    <div class="cashier-content-area px-7 pb-11">
+      <div class="cashier-addsupplier-area bg-white p-7 custom-shadow rounded-lg pt-5 mb-5">
+        <h4 class="text-[20px] font-bold text-heading mb-9">Create Ledger</h4>
+        <div class="grid grid-cols-12 gap-x-5">
+          <div class="lg:col-span-4 md:col-span-6 col-span-12">
+            <div class="cashier-calender-field mb-5">
+                <h5 class="text-[15px] text-black font-semibold mb-3">Date</h5>
+                  <div class="cashier-calender-field-style">
+                      <mat-form-field appearance="fill" floatLabel="always">
+                          <mat-label class="hidden">Choose a date</mat-label>
+                          <input matInput [matDatepicker]="picker" [placeholder]="'DD-MD-YYYY'">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>                                  
+                  </div>
+              </div>
+          </div>
+          <div class="lg:col-span-4 md:col-span-6 col-span-12">
+            <div class="cashier-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Name</h5>
+              <div class="cashier-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input matInput [placeholder]="'Jonathan Deo'">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 md:col-span-6 col-span-12">
+            <div class="cashier-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Ledger Type</h5>
+              <div class="cashier-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input matInput [placeholder]="'Account Payble'">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 md:col-span-6 col-span-12">
+              <div class="cashier-select-field mb-5">
+                  <h5 class="text-[15px] text-heading font-semibold mb-3">Ledger Group</h5>
+                  <div class="cashier-select-field-style">
+                      <mat-form-field>
+                          <mat-label class="hidden">Select an option</mat-label>
+                          <mat-select disableRipple class="block" [placeholder]="'Accessories'">
+                              <mat-option value="language-1">Accessories</mat-option>
+                              <mat-option value="language-2">Accessories</mat-option>
+                              <mat-option value="language-3">Accessories</mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                  </div>
+              </div>
+          </div>
+          <div class="lg:col-span-4 md:col-span-6 col-span-12">
+            <div class="cashier-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Reference</h5>
+              <div class="cashier-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input matInput [placeholder]="'ty-52865'">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 md:col-span-6 col-span-12">
+            <div class="cashier-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Mode</h5>
+              <div class="cashier-radio-field-style">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1">Debit</mat-radio-button>
+                  <mat-radio-button value="2">Credit</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12">
+            <div class="cashier-managesale-top-btn default-light-theme pt-2.5">
+              <button mat-raised-button color="primary">Create Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+@import '../../../../custom-palettes.scss';
+
+.cashier-profile-info-btn {
+    button {
+        @apply h-12;
+        @apply inline-block;
+        @apply text-[16px];
+        @apply font-bold;
+        @apply px-6;
+        @apply border;
+        @apply border-solid;
+        @apply border-grayBorder;
+        @apply rounded-[5px];
+        @include transition;
+        &:hover {
+            @apply bg-themeBlue;
+            @apply border-themeBlue;
+            @apply text-white;
+        }
+    }
+}
+
+//sidebar menu style
+@include cashierSidebarMuneStyle;
+// Select field style
+@include cashierSelectFieldStyle;
+// Input field style
+@include cashierInputFieldStyle;
+@include cashierHeaderStyle;
+@include commonPrimaryBtn;
+
+.custom-height-70 {
+    height: 70px;
+    min-height: 70px;
+}
+
+.cashier-input-field-style-eye {
+	.mat-mdc-form-field {
+		@apply w-full;
+	}
+    .mat-mdc-form-field-flex {
+        @apply p-0 rounded-[3px] bg-transparent w-full;
+    }
+    .mat-mdc-form-field-wrapper {
+        @apply w-full p-0;
+    }
+    .mat-mdc-form-field-underline {
+        @apply hidden;
+    }
+    .mat-mdc-form-field-infix {
+        @apply p-0;
+    }
+    .mat-mdc-form-field-suffix {
+        @apply absolute top-1.5 right-2;
+    }
+    .mat-mdc-icon {
+        @apply text-bodyText;
+    }
+	.mat-mdc-form-field-icon-suffix, [dir="rtl"] .mat-mdc-form-field-icon-prefix {
+		@apply bg-grayBorder;
+	}
+}
+.cashier-input-field-file label {
+	@apply h-12 leading-[46px] border border-solid border-grayBorder px-5 rounded-[3px] outline-none block text-[14px] text-bodyText font-primary w-full font-normal bg-grayBg cursor-pointer;
+	@include transition;
+	&:focus {
+		@apply bg-white;
+	}
+}
+.cashier-input-field-styles input,
+.cashier-input-field-style input {
+	&::-moz-placeholder,
+	&::placeholder {
+		@apply text-bodyText opacity-100 font-primary font-normal;
+	}
+}
+.cashier-input-field-file label {
+	line-height: 46px !important;
+}
+.cashier-input-field-file input {
+	@apply hidden;
+}

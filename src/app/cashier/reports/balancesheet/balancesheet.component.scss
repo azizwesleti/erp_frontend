@@ -1,0 +1,96 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include cashierSidebarMuneStyle;
+
+//cashier header searchbar
+@include cashierHeaderSearch;
+
+//cashier header searchbar action
+@include cashierHeaderSearchAction;
+@include commonActionMenuStyle;
+
+// Select field style
+@include cashierSelectFieldStyle;
+@include cashierHeaderStyle;
+
+
+.cashier-netincome-box,
+.cashier-salereturns-table-income-a,
+.cashier-salereturns-table-january-a,
+.cashier-salereturns-table-february,
+.cashier-salereturns-table-march,
+.cashier-salereturns-table-april,
+.cashier-salereturns-table-may {
+	@apply flex;
+	@apply flex-col;
+	@apply justify-center;
+	& h5 {
+		@apply text-[15px] font-semibold text-heading;
+		&.font-regular {
+			@apply font-normal;
+		}
+	}
+	& span {
+		@apply text-[14px];
+		@apply font-normal;
+		@apply text-bodyText;
+	}
+}
+.cashier-netincome-box {
+	@apply flex flex-col justify-center min-w-[280px] border-r border-solid border-grayBorder pl-5;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 150px;
+		width: 28%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 160px;
+		width: 40%;
+	}
+	@media (max-width: 1400px) {
+		min-width: 160px;
+		width: 40%;
+	}
+}
+.cashier-salereturns-table-list {
+	@apply px-5;
+}
+
+@include commonActionMenuStyle;
+
+.cashier-salereturns-table-inner {
+	@media (max-width: 575px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.cashier-salereturns-table-inner-wrapper {
+	@media (max-width: 575px) {
+		width: 465px;
+		scrollbar-height: thin;
+	}
+}
+
+.cashier-transection-info {
+	@apply flex items-center justify-between py-[30px] px-[30px] rounded-lg minMaxDesktop:px-4 minMaxDesktop:py-6 minMaxLaptop:px-4 minMaxLaptop:py-6;
+	&-text {
+		h5 {
+			@apply text-[15px] font-semibold text-bodyText minMaxLaptop:text-[12px];
+		}
+		h4 {
+			@apply text-[22px] font-bold text-heading minMaxLaptop:text-[18px];
+		}
+	}
+	&-percent {
+		span {
+			@apply text-[14px] font-semibold text-white h-[30px] leading-[31px] rounded-2xl px-3 minMaxLaptop:px-2 minMaxLaptop:text-[12px];
+		}
+	}
+}
+.cashier-transection-selector {
+	&-single {
+		.mat-form-field-flex {
+			@apply h-10 leading-[38px] px-5; 
+		}
+	}
+}

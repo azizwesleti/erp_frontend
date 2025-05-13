@@ -1,0 +1,84 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="cashier-popup-inner">
+            <div class="cashier-popup-header relative mb-11">
+                <div class="cashier-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Add Payment</h4>
+                </div>
+                <div class="cashier-popup-header-close absolute -top-4 right-0">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close>
+                                <mat-icon>clear</mat-icon>
+                            </a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="grid grid-cols-12 gap-x-7 maxSm:gap-x-0">
+                <div class="md:col-span-6 col-span-12">
+                    <div class="cashier-calender-field mb-5">
+                        <h5 class="text-[15px] text-black font-semibold mb-3">Date</h5>
+                        <div class="cashier-calender-field-style">
+                            <mat-form-field appearance="fill" floatLabel="always">
+                                <mat-label class="hidden">Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker" [placeholder]="'DD-MD-YYYY'">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>                                  
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-6 col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Amount</h5>
+                        <div class="cashier-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input matInput [placeholder]="'+02 587 698 771'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-6 col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Payment Type</h5>
+                        <div class="cashier-select-field-style">
+                            <mat-form-field>
+                                <mat-label class="hidden">Select an option</mat-label>
+                                <mat-select disableRipple class="block" [placeholder]="'Cash'">
+                                    <mat-option value="language-1">Cash</mat-option>
+                                    <mat-option value="language-2">Cheque</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-6 col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Reference</h5>
+                        <div class="cashier-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input type="text" matInput [placeholder]="'uy-26531285'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Note</h5>
+                        <div class="cashier-input-field-style relative">
+                            <textarea placeholder="Type note"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="cashier-popup-btn default-light-theme pt-1.5">
+                        <button type="submit" mat-raised-button color="primary">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

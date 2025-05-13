@@ -1,0 +1,161 @@
+@import '../../../../custom-palettes.scss';
+
+.cashier-popup-inner {
+    width: 830px;
+    @apply p-7;
+    @media (min-width: 992px) and (max-width: 1200px) {
+        width: 805px;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+        width: 615px;
+    }
+    @media (max-width: 767px) {
+        width: 100%;
+    }
+}
+//popup close btn
+@include cashierPopupClose;
+
+//popup common style
+@include popupCommonStyle;
+
+.cashier-invoice-popup-address {
+    h5 {
+        @apply text-[16px];
+        @apply font-bold;
+        @apply text-heading;
+        @apply mb-4;
+    }
+    ul {
+        li {
+            @apply text-[14px];
+            @apply font-bold;
+            @apply text-heading;
+            @apply mb-2;
+            &:last-child {
+                @apply mb-0;
+            }
+            span {
+                @apply text-[14px];
+                @apply font-normal;
+                @apply text-bodyText;
+            }
+        }
+    }
+}
+
+.cashier-invoice-table-list {
+    @apply flex;
+    @apply items-center;
+    @apply border-b;
+    @apply border-solid;
+    @apply border-grayBorder;
+}
+.cashier-invoice-table-sl,
+.cashier-invoice-table-sll,
+.cashier-invoice-table-product,
+.cashier-invoice-table-batch,
+.cashier-invoice-table-unit,
+.cashier-invoice-table-price,
+.cashier-invoice-table-qty,
+.cashier-invoice-table-tax,
+.cashier-invoice-table-discount,
+.cashier-invoice-table-total {
+    @apply flex;
+    @apply justify-center;
+    @apply flex-col;
+    @apply h-full;
+    @apply px-2.5;
+    h5 {
+        @apply text-[15px];
+        @apply font-semibold;
+        @apply text-heading;
+    }
+    span {
+        @apply text-[14px];
+        @apply font-normal;
+        @apply text-bodyText;
+    }
+}
+.cashier-invoice-table-sl {
+    min-width: 40px;
+    width: 40px;
+}
+.cashier-invoice-table-product {
+    min-width: 170px;
+    width: 170px;
+}
+.cashier-invoice-table-sll {
+    min-width: 209px;
+    width: 209px;
+}
+.cashier-invoice-table-batch {
+    min-width: 95px;
+    width: 95px;
+}
+.cashier-invoice-table-unit {
+    min-width: 50px;
+    width: 50px;
+}
+.cashier-invoice-table-price {
+    min-width: 90px;
+    width: 90px;
+}
+.cashier-invoice-table-qty {
+    min-width: 50px;
+    width: 50px;
+}
+.cashier-invoice-table-tax {
+    min-width: 90px;
+    width: 90px;
+}
+.cashier-invoice-table-discount {
+    min-width: 90px;
+    width: 90px;
+}
+.cashier-invoice-table-total {
+    @apply border-r-0;
+}
+.custom-height-70 {
+    height: 70px;
+}
+
+//cashier header searchbar action
+@include cashierHeaderSearchAction;
+
+.cashier-invoice-popup-btn.cashier-table-header-search-action-btn button {
+    @include widthInherit;
+    @apply px-4;
+    @apply inline-flex;
+    @apply items-center;
+    @apply m-0;
+    @apply mr-4;
+    @apply text-[14px];
+    @apply font-semibold;
+    @apply leading-[38px];
+    & svg {
+        @apply mr-2.5;
+      }
+    &.printer {
+        @apply text-themeBlue;
+        @apply maxSm:mb-2.5;
+    }
+    &.pdf {
+        @apply text-themeOrange;
+        @apply maxSm:mb-2.5;;
+    }
+}
+
+.cashier-invoice-table-inner {
+	@media (max-width: 991px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.cashier-invoice-table-inner-wrapper {
+	@media (max-width: 991px) {
+		min-width: 100%;
+        width: 740px;
+		scrollbar-height: thin;
+	}
+}

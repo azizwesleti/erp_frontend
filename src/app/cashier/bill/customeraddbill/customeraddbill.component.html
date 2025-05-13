@@ -1,0 +1,403 @@
+<div class="cashier-dashboard-area">
+    <div class="cashier-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div
+            class="cashier-menu-wrapper bg-white border-r border-b border-solid border-grayBorder py-10 px-7 maxLg:px-5 maxLg:py-8">
+            <app-menu></app-menu>
+        </div>
+        <div class="cashier-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="cashier-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="cashier-header-area">
+            <div
+                class="cashier-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-grayBorder">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <!-- header area start here -->
+                        <div class="cashier-header-content flex items-center justify-between custom-height-70">
+                            <div class="cashier-header-breadcrumb">
+                                <h5 class="text-[20px] text-heading font-bold mb-1 leading-none">Customer Bill</h5>
+                                <ul>
+                                    <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Bill</li>
+                                    <li class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i
+                                            class="far fa-chevron-right"></i></li>
+                                    <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Customer Bill
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex items-center maxXs:w-full">
+                                <div
+                                    class="cashier-header-shortmenu pr-5 maxSm:pr-4 items-center flex flex-col justify-center custom-height-70">
+                                    <a href="javascript:void(0)" (click)="shortmenu()"
+                                        class="h-10 w-10 leading-[38px] border border-grayBorder border-solid text-center inline-block rounded-[3px] text-bodyText short">
+                                        <i class="fal fa-plus"></i>
+                                    </a>
+                                    <div class="cashier-quick-dropdown" [class.shortmenu-enable]="menuShortcutActive">
+                                        <app-quickdropdown></app-quickdropdown>
+                                    </div>
+                                </div>
+                                <div class="cashier-header-bar-responsive cursor-pointer mr-5" (click)="myfunction()">
+                                    <app-baricon></app-baricon>
+                                </div>
+                                <div
+                                    class="cashier-header-notify-wrapper px-5 flex items-center border-l border-solid border-grayBorder custom-height-70 pr-0">
+                                    <div class="cashier-header-notification pr-5 relative">
+                                        <a href="javascript:void(0)" class="noti" (click)="notifydropdown()">
+                                            <app-notifyicon></app-notifyicon>
+                                        </a>
+                                        <div class="cashier-notify-dropdown"
+                                            [class.notifydropdown-enable]="notifyShortcutActive">
+                                            <app-notifydropdown></app-notifydropdown>
+                                        </div>
+                                    </div>
+                                    <div class="cashier-header-email pr-5 relative">
+                                        <a href="javascript:void(0)" class="emai" (click)="emaildropdown()">
+                                            <app-emailicon></app-emailicon>
+                                        </a>
+                                        <div class="cashier-notify-dropdown cashier-email-dropdown"
+                                            [class.emaildropdown-enable]="emailShortcutActive">
+                                            <app-emaildropdown></app-emaildropdown>
+                                        </div>
+                                    </div>
+                                    <div class="cashier-header-language flex items-center relative"
+                                        (click)="langdropdown()">
+                                        <div class="cashier-header-language-content">
+                                            <ul>
+                                                <li class="flex "><a href="javascript:void(0)"
+                                                        class="text-[14px] text-bodyText translate-y-[2px] font-bold">
+                                                        <app-settingicon></app-settingicon>
+                                                    </a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="cashier-quick-dropdown cashier-quick-lang-dropdown"
+                                            [class.langmenu-enable]="langShortcutActive">
+                                            <app-languagedropdown></app-languagedropdown>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cashier-header-overlay" (click)="shortmenu()"
+                            [class.shortmenu-enable]="menuShortcutActive"></div>
+                        <div class="cashier-header-overlay" (click)="notifydropdown()"
+                            [class.notifydropdown-enable]="notifyShortcutActive"></div>
+                        <div class="cashier-header-overlay" (click)="emaildropdown()"
+                            [class.emaildropdown-enable]="emailShortcutActive"></div>
+                        <div class="cashier-header-overlay" (click)="langdropdown()"
+                            [class.langmenu-enable]="langShortcutActive"></div>
+                        <div class="cashier-header-overlay" (click)="prodropdown()"
+                            [class.promenu-enable]="proShortcutActive"></div>
+                        <!-- header area end here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cashier-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="cashier-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Customer Bill</h5>
+                <div class="cashier-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Bill</span>
+                    <span class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i
+                            class="far fa-chevron-right"></i></span>
+                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Customer Bill</span>
+                </div>
+            </div>
+        </div>
+        <div class="cashier-content-area px-7">
+            <div class="cashier-addsale-area bg-white p-7 custom-shadow rounded-lg mb-5">
+                <h4 class="text-[20px] font-bold text-heading mb-11">Customer Bill</h4>
+                <div class="grid grid-cols-12 gap-x-7 maxSm:gap-x-0">
+                    <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Select Vendor</h5>
+                            <div class="cashier-select-field-style">
+                                <mat-form-field>
+                                    <mat-label class="hidden">Select an option</mat-label>
+                                    <mat-select disableRipple class="block" [placeholder]="'Select Vendor'">
+                                        <mat-option value="language-1">Jonathan Deo</mat-option>
+                                        <mat-option value="language-2">Andrew Tye</mat-option>
+                                        <mat-option value="language-3">Peter Parkar</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-calender-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Bill Date</h5>
+                            <div class="cashier-calender-field-style">
+                                <mat-form-field appearance="fill" floatLabel="always">
+                                    <mat-label class="hidden">Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker" [placeholder]="'DD-MD-YYYY'">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>                                  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-calender-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Due Date</h5>
+                            <div class="cashier-calender-field-style">
+                                <mat-form-field appearance="fill" floatLabel="always">
+                                    <mat-label class="hidden">Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="pickerA" [placeholder]="'DD-MD-YYYY'">
+                                    <mat-datepicker-toggle matSuffix [for]="pickerA"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerA></mat-datepicker>
+                                </mat-form-field>                                  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Order Number</h5>
+                            <div class="cashier-select-field-style">
+                                <mat-form-field>
+                                    <mat-label class="hidden">Select an option</mat-label>
+                                    <mat-select disableRipple class="block" [placeholder]="'Select Number'">
+                                        <mat-option value="language-1">6952</mat-option>
+                                        <mat-option value="language-2">7496</mat-option>
+                                        <mat-option value="language-3">2456</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Select Product</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Scan / search products by code / name</mat-label>
+                                    <input matInput [placeholder]="'Scan / search products by code / name'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cashier-addsale-product-area pt-7">
+                    <div class="cashier-addsale-product-wrapper border border-b-0 border-solid border-grayBorder">
+                        <div class="cashier-addsale-product-wrapper-inner">
+                            <div class="cashier-addsale-product-wrapper-inner-wrap">
+                                <div class="cashier-addsale-product-list bg-gray-borderThree h-10">
+                                    <div class="cashier-addsale-product-date">
+                                        <h5 class="text-[15px] font-semibold text-heading">Date</h5>
+                                    </div>
+                                    <div class="cashier-addsale-product-Products">
+                                        <h5 class="text-[15px] font-semibold text-heading">Products</h5>
+                                    </div>
+                                    <div class="cashier-addsale-product-batch">
+                                        <h5 class="text-[15px] font-semibold text-heading">Batch No</h5>
+                                    </div>
+                                    <div class="cashier-addsale-product-unit">
+                                        <h5 class="text-[15px] font-semibold text-heading">Unit</h5>
+                                    </div>
+                                    <div class="cashier-addsale-product-price">
+                                        <h5 class="text-[15px] font-semibold text-heading">Price</h5>
+                                    </div>
+                                    <div class="cashier-addsale-product-qty">
+                                        <h5 class="text-[15px] font-semibold text-heading">Quantity</h5>
+                                    </div>
+                                    <div class="cashier-addsale-product-discount">
+                                        <h5 class="text-[15px] font-semibold text-heading">Discount</h5>
+                                    </div>
+                                    <div class="cashier-addsale-product-tax">
+                                        <h5 class="text-[15px] font-semibold text-heading">Tax</h5>
+                                    </div>
+                                    <div class="cashier-addsale-product-total">
+                                        <h5 class="text-[15px] font-semibold text-heading">Sub Total</h5>
+                                    </div>
+                                    <div class="cashier-addsale-product-action">
+                                        <h5 class="text-[15px] font-semibold text-heading">Action</h5>
+                                    </div>
+                                </div>
+                                <div
+                                    class="cashier-addsale-product-list h-10 border-b border-solid border-grayBorder custom-height-70">
+                                    <div class="cashier-addsale-product-date">
+                                        <span class="text-[14px] font-normal text-bodyText">12/12/2021</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-Products">
+                                        <span class="text-[14px] font-normal text-bodyText">Dell Inspiration 3rd gen
+                                            laptop (q)</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-batch">
+                                        <span class="text-[14px] font-normal text-bodyText">30566205</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-unit">
+                                        <span class="text-[14px] font-normal text-bodyText">Quantity (q)</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-price">
+                                        <span class="text-[14px] font-normal text-bodyText">$4,587</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-qty">
+                                        <span class="text-bodyText flex items-center">
+                                            <button type="button" (click)="counter1('minus')">
+                                                <mat-icon>remove</mat-icon>
+                                            </button>
+                                            <p>{{count1}}</p>
+                                            <button type="button" class="active" (click)="counter1('add')">
+                                                <mat-icon>add</mat-icon>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <div class="cashier-addsale-product-discount">
+                                        <span class="text-[14px] font-normal text-bodyText">0</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-tax">
+                                        <span class="text-[14px] font-normal text-bodyText">0</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-total">
+                                        <span class="text-[14px] font-normal text-bodyText">$4,587</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-action">
+                                        <a href="javascript:void(0)" class="product-delete-btn">
+                                            <mat-icon>clear</mat-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div
+                                    class="cashier-addsale-product-list h-10 border-b border-solid border-grayBorder custom-height-70">
+                                    <div class="cashier-addsale-product-date">
+                                        <span class="text-[14px] font-normal text-bodyText">12/12/2021</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-Products">
+                                        <span class="text-[14px] font-normal text-bodyText">Dell Inspiration 3rd gen
+                                            laptop (q)</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-batch">
+                                        <span class="text-[14px] font-normal text-bodyText">30566205</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-unit">
+                                        <span class="text-[14px] font-normal text-bodyText">Quantity (q)</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-price">
+                                        <span class="text-[14px] font-normal text-bodyText">$4,587</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-qty">
+                                        <span class="text-bodyText flex items-center">
+                                            <button type="button" (click)="counter('minus')">
+                                                <mat-icon>remove</mat-icon>
+                                            </button>
+                                            <p>{{count}}</p>
+                                            <button type="button" class="active" (click)="counter('add')">
+                                                <mat-icon>add</mat-icon>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <div class="cashier-addsale-product-discount">
+                                        <span class="text-[14px] font-normal text-bodyText">0</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-tax">
+                                        <span class="text-[14px] font-normal text-bodyText">0</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-total">
+                                        <span class="text-[14px] font-normal text-bodyText">$4,587</span>
+                                    </div>
+                                    <div class="cashier-addsale-product-action">
+                                        <a href="javascript:void(0)" class="product-delete-btn">
+                                            <mat-icon>clear</mat-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="cashier-addsale-product-cost text-right pt-9 pb-9 border-b border-solid border-grayBorder mb-7">
+                            <ul>
+                                <li class="px-4 py-2.5 border-b border-solid border-grayBorder">
+                                    <span class="text-[15px] font-normal text-heading w-40 inline-block">Total Amount
+                                        <span class="float-right">:</span></span>
+                                    <span class="text-[15px] font-normal text-heading inline-block">$4612.00</span>
+                                </li>
+                                <li class="px-4 py-2.5 border-b border-solid border-grayBorder bg-grayBorder">
+                                    <span class="text-[15px] font-normal text-heading w-40 inline-block">Order Tax <span
+                                            class="float-right">:</span></span>
+                                    <span class="text-[15px] font-normal text-heading inline-block">+$8.00 (4%)</span>
+                                </li>
+                                <li class="px-4 py-2.5 border-b border-solid border-grayBorder">
+                                    <span class="text-[15px] font-normal text-heading w-40 inline-block">Discount <span
+                                            class="float-right">:</span></span>
+                                    <span class="text-[15px] font-normal text-heading inline-block">-$25.00 (5%)</span>
+                                </li>
+                                <li class="px-4 py-2.5 border-b border-solid border-grayBorder bg-grayBorder">
+                                    <span class="text-[15px] font-normal text-heading w-40 inline-block">Shipping <span
+                                            class="float-right">:</span></span>
+                                    <span class="text-[15px] font-normal text-heading inline-block">$0.00</span>
+                                </li>
+                                <li class="px-4 py-2.5">
+                                    <span class="text-[15px] font-bold text-heading w-40 inline-block">Grand Total <span
+                                            class="float-right font-normal">:</span></span>
+                                    <span class="text-[15px] font-bold text-heading inline-block">$4,595.00</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-12 gap-x-7 maxSm:gap-x-0">
+                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">OrderTax</h5>
+                            <div class="cashier-select-field-style">
+                                <mat-form-field>
+                                    <mat-label class="hidden">Select an option</mat-label>
+                                    <mat-select disableRipple class="block" [placeholder]="'0'">
+                                        <mat-option value="language-1">Vat (10%)= $8.00</mat-option>
+                                        <mat-option value="language-2">Vat (10%)= $9.00</mat-option>
+                                        <mat-option value="language-3">Vat (10%)= $10.00</mat-option>
+                                        <mat-option value="language-4">Vat (10%)= $11.00</mat-option>
+                                        <mat-option value="language-5">Vat (10%)= $12.00</mat-option>
+                                        <mat-option value="language-6">Vat (10%)= $13.00</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Order Discount</h5>
+                            <div class="cashier-input-field-style relative">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden"></mat-label>
+                                    <input matInput [placeholder]="'0'">
+                                </mat-form-field>
+                                <figure
+                                    class="h-12 w-12 text-[15px] text-bodyText bg-grayBorder text-center leading-[46px] border border-solid border-grayBorder absolute top-0 right-0 inline-block">
+                                    %</figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Shipping</h5>
+                            <div class="cashier-input-field-style relative">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden"></mat-label>
+                                    <input matInput [placeholder]="'0'">
+                                </mat-form-field>
+                                <figure
+                                    class="h-12 w-12 text-[15px] text-bodyText bg-grayBorder text-center leading-[46px] border border-solid border-grayBorder absolute top-0 right-0 inline-block">
+                                    $</figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Purchase Note:</h5>
+                            <div class="cashier-input-field-style relative">
+                                <textarea placeholder="Type text...."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cashier-addsale-product-btn cashier-managesale-top-btn pt-2">
+                    <button mat-raised-button color="primary">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cashier-copyright-area">
+            <app-copyright></app-copyright>
+        </div>
+    </div>
+</div>

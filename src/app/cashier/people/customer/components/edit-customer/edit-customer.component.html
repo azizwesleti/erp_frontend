@@ -1,0 +1,143 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="cashier-popup-inner">
+            <div class="cashier-popup-header relative mb-11">
+                <div class="cashier-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Edit Customer</h4>
+                </div>
+                <div class="cashier-popup-header-close absolute -top-4 right-0">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close>
+                                <mat-icon>clear</mat-icon>
+                            </a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <form [formGroup]="editCustomerForm" (ngSubmit)="onSubmit()">
+                <div class="grid grid-cols-12 gap-x-7 maxSm:gap-x-0">
+                    <!-- Client Type -->
+                    <div class="md:col-span-6 sm:col-span-12">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Client Type</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Select Type</mat-label>
+                                    <mat-select formControlName="clientType">
+                                        <mat-option value="physique">Individual</mat-option>
+                                        <mat-option value="moral">Company</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Conditional Fields -->
+                    <ng-container *ngIf="editCustomerForm.get('clientType')?.value === 'physique'">
+                        <!-- First Name -->
+                        <div class="md:col-span-6 sm:col-span-12">
+                            <div class="cashier-select-field mb-6">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">First Name</h5>
+                                <div class="cashier-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label>First Name</mat-label>
+                                        <input required formControlName="firstName" matInput>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Last Name -->
+                        <div class="md:col-span-6 sm:col-span-12">
+                            <div class="cashier-select-field mb-6">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Last Name</h5>
+                                <div class="cashier-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label>Last Name</mat-label>
+                                        <input required formControlName="lastName" matInput>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="editCustomerForm.get('clientType')?.value === 'moral'">
+                        <!-- Company Name -->
+                        <div class="md:col-span-6 sm:col-span-12">
+                            <div class="cashier-select-field mb-6">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Company Name</h5>
+                                <div class="cashier-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label>Company Name</mat-label>
+                                        <input required formControlName="companyName" matInput>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Industry -->
+                        <div class="md:col-span-6 sm:col-span-12">
+                            <div class="cashier-select-field mb-6">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Industry</h5>
+                                <div class="cashier-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label>Industry</mat-label>
+                                        <input required formControlName="industry" matInput>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <!-- Email -->
+                    <div class="md:col-span-6 sm:col-span-12">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Email</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Email</mat-label>
+                                    <input formControlName="emailAddress" type="email" matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Phone -->
+                    <div class="md:col-span-6 sm:col-span-12">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Phone</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Phone</mat-label>
+                                    <input required formControlName="phoneNumber" matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Address -->
+                    <div class="md:col-span-12 sm:col-span-12">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Address</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Address</mat-label>
+                                    <input required formControlName="postalAddress" matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-span-12">
+                        <div class="cashier-popup-btn default-light-theme pt-1.5">
+                            <button type="submit" mat-raised-button color="primary" [disabled]="!editCustomerForm.valid">
+                                Update Customer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</mat-dialog-content>

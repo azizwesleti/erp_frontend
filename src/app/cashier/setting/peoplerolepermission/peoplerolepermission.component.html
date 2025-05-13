@@ -1,0 +1,151 @@
+<div class="cashier-role-list border-b border-solid border-grayBorder flex items-center">
+    <div class="cashier-role-left">
+        <div class="cashier-role-topic">
+            <h5 class="text-[18px] font-semibold text-heading mb-3">People</h5>
+            <div class="cashier-role-checkbox default-light-theme">
+                <mat-checkbox class="example-margin" [checked]="allComplete"
+                  [color]="task.color" [indeterminate]="someComplete()"
+                  (change)="setAllE($event.checked)">
+                  {{task.name}}
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="cashier-role-right w-full border-l border-solid border-grayBorder">
+        <div class="cashier-role-category-list custom-height-70 flex items-center border-b border-solid border-grayBorder">
+            <div class="cashier-role-category">
+                <h5>Vendor</h5>
+            </div>
+            <div class="cashier-role-checkbox-wrapper">
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck43($event.checked)">
+                        <label for="mat-checkbox-47-input">Add</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck44($event.checked)">
+                        <label for="mat-checkbox-48-input">View</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck45($event.checked)">
+                        <label for="mat-checkbox-49-input">Edit</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck46($event.checked)">
+                        <label for="mat-checkbox-50-input">Delete</label>
+                    </mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="cashier-role-category-list custom-height-70 flex items-center border-b border-solid border-grayBorder">
+            <div class="cashier-role-category">
+                <h5>Customer</h5>
+            </div>
+            <div class="cashier-role-checkbox-wrapper">
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck47($event.checked)">
+                        <label for="mat-checkbox-51-input">Add</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck48($event.checked)">
+                        <label for="mat-checkbox-52-input">View</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck49($event.checked)">
+                        <label for="mat-checkbox-53-input">Edit</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck50($event.checked)">
+                        <label for="mat-checkbox-54-input">Delete</label>
+                    </mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="cashier-role-category-list custom-height-70 flex items-center border-b border-solid border-grayBorder">
+            <div class="cashier-role-category">
+                <h5>Supplier</h5>
+            </div>
+            <div class="cashier-role-checkbox-wrapper">
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck51($event.checked)">
+                        <label for="mat-checkbox-55-input">Add</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck52($event.checked)">
+                        <label for="mat-checkbox-56-input">View</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck53($event.checked)">
+                        <label for="mat-checkbox-57-input">Edit</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck54($event.checked)">
+                        <label for="mat-checkbox-58-input">Delete</label>
+                    </mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="cashier-role-category-list custom-height-70 flex items-center border-b border-solid border-grayBorder">
+            <div class="cashier-role-category">
+                <h5>Biller</h5>
+            </div>
+            <div class="cashier-role-checkbox-wrapper">
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck55($event.checked)">
+                        <label for="mat-checkbox-59-input">Add</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck56($event.checked)">
+                        <label for="mat-checkbox-60-input">View</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck57($event.checked)">
+                        <label for="mat-checkbox-61-input">Edit</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck58($event.checked)">
+                        <label for="mat-checkbox-62-input">Delete</label>
+                    </mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="cashier-role-category-list custom-height-70 flex items-center">
+            <div class="cashier-role-category">
+                <h5>User</h5>
+            </div>
+            <div class="cashier-role-checkbox-wrapper">
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck59($event.checked)">
+                        <label for="mat-checkbox-63-input">Add</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck60($event.checked)">
+                        <label for="mat-checkbox-64-input">View</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck61($event.checked)">
+                        <label for="mat-checkbox-65-input">Edit</label>
+                    </mat-checkbox>
+                </div>
+                <div class="cashier-role-checkbox default-light-theme">
+                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem" (change)="setSingleCheck62($event.checked)">
+                        <label for="mat-checkbox-66-input">Delete</label>
+                    </mat-checkbox>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

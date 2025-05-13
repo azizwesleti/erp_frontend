@@ -1,0 +1,125 @@
+@import '../../../../custom-palettes.scss';
+
+@include cashierSidebarMuneStyle;
+@include cashierInputFieldStyle;
+@include commonPrimaryBtn;
+
+.cashier-notification-text {
+    width: calc(100% - 90px);
+}
+.cashier-notification {
+    @include transition;
+    &:hover {
+        @apply bg-white;
+    }
+}
+.cashier-notification-wrapper {
+    @apply p-0;
+    .mat-mdc-tab-header {
+        @apply mr-[50px] border-0 maxMd:mr-[25px] maxSm:mr-0 maxSm:mb-8;
+    }
+    .mat-mdc-tab-group {
+        @apply font-primary flex-row maxSm:flex-col;
+    }
+    .mat-mdc-tab-labels {
+        @apply flex flex-col min-w-[340px] h-[670px] bg-[#F5F7FB] p-[15px] rounded-[5px] text-left maxSm:h-[300px] overflow-y-scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    .mat-mdc-tab {
+        white-space: inherit;
+        @apply overflow-hidden min-h-[100px] p-0 opacity-100 text-left justify-start min-w-full;
+        &.mdc-tab--active {
+            .cashier-notification {
+                @apply bg-white;
+            }
+        }
+    }
+    .mdc-tab__content {
+        @apply h-auto;
+    }
+    .mdc-tab-indicator,
+    .mdc-tab__ripple,
+	.mat-mdc-tab-ripple {
+        @apply hidden;
+    }
+    .mat-mdc-tab-label-container {
+        @apply w-[400px] minMaxTab:w-[440px] minMaxTabSmall:w-[640px];
+    }
+    .cashier-notification {
+        width: 100%;
+    }
+    @media (max-width: 500px) {
+        .mat-mdc-tab  {
+            @apply min-h-[180px];
+        }
+        .mat-mdc-tab-labels {
+            @apply min-w-[100%];
+        }
+        .cashier-notification {
+            @apply block;
+        }
+        .cashier-notification-text {
+            width: calc(100% - 15px);
+            figure {
+                transform: translateY(-45px);
+            }
+        }
+        .cashier-notification-img {
+            @apply mb-[15px] mr-0;
+        }
+    }
+    .cashier-input-field-style input.mat-mdc-input-element {
+        @apply pl-8;
+    }
+    .cashier-notification-search .mat-icon {
+        @apply pl-0 left-2;
+    }
+}
+.cashier-notification-body {
+    @apply overflow-hidden;
+}
+.cashier-notification-action {
+    button {
+        @apply inline-block text-[16px] mr-3 text-bodyText last:mr-0;
+    }
+}
+.cashier-notification-search {
+    .mat-icon {
+        @apply absolute top-[13px] pl-2.5 text-[#B8BBBF] left-0;
+    }
+    input.mat-input-element {
+        @apply pl-10;
+    }
+}
+.cashier-notification-wrapper {
+    @apply maxLg:overflow-x-auto;
+}
+.cashier-notification-wrapper-inner {
+    @apply maxLg:min-w-full maxLg:w-[830px] maxSm:w-full;
+}
+button.mat-raised-button.mat-primary {
+    @apply bg-themeBlue;
+}
+
+.cashier-notification-feedback {
+    .mdc-button {
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        color: #616161 !important;
+        border-radius: 5px !important;
+        height: 40px !important;
+        line-height: 38px !important;
+        padding: 0 20px !important;
+        margin-right: 10px !important;
+        border: 1px solid #EFF0F2;
+        background: none !important;
+        --tw-shadow: 0 0 #0000;
+        --tw-shadow-colored: 0 0 #0000;
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow);
+        transition: all linear 0.3s;
+    }
+}

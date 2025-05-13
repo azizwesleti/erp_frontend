@@ -1,0 +1,46 @@
+@import '../../../../custom-palettes.scss';
+
+.cashier-popup-inner {
+    width: 800px;
+    @apply p-7;
+	@media (min-width: 768px) and (max-width: 991px) {
+        width: 600px;
+    }
+    @media (min-width: 576px) and (max-width: 767px) {
+		width: 440px;
+	}
+    @media (min-width: 450px) and (max-width: 575px) {
+		width: 350px;
+	}
+    @media (max-width: 449px) {
+		width: 100%;
+	}
+}
+
+//popup close btn
+@include cashierPopupClose;
+@include materialPopupBtn;
+
+//popup common style
+@include popupCommonStyle;
+@include cashierInputFieldStyle;
+@include cashierInputFileFieldStyle;
+
+.cashier-input-field-file-label label {
+	@apply hidden;
+}
+.cashier-invoice-popup-btn.cashier-table-header-search-action-btn button {
+    @include widthInherit;
+    @apply px-4 inline-flex items-center m-0 mr-4 text-[14px] font-semibold leading-[38px];
+    & svg {
+        @apply mr-2.5;
+      }
+    &.printer {
+        @apply text-themeBlue;
+        @apply maxSm:mb-2.5;
+    }
+    &.pdf {
+        @apply text-themeOrange;
+        @apply maxSm:mb-2.5;;
+    }
+}

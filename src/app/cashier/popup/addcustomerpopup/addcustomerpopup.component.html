@@ -1,0 +1,153 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="cashier-popup-inner">
+            <div class="cashier-popup-header relative mb-11">
+                <div class="cashier-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Add Customer</h4>
+                </div>
+                <div class="cashier-popup-header-close absolute -top-4 right-0">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close>
+                                <mat-icon>clear</mat-icon>
+                            </a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+
+            <form [formGroup]="createCustomerForm" (ngSubmit)="onSubmit()">
+                <div class="grid grid-cols-12 gap-x-7 maxSm:gap-x-0">
+                    <div class="col-span-12">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Client Type</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Select Type</mat-label>
+                                    <mat-select formControlName="clientType">
+                                        <mat-option *ngFor="let type of clientTypes" [value]="type.value">
+                                            {{type.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="createCustomerForm.get('clientType')?.hasError('required')">
+                                        Client type is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-6 sm:col-span-12" *ngIf="!showCompanyFields">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">First Name</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>First Name</mat-label>
+                                    <input formControlName="firstName" matInput>
+                                    <mat-error *ngIf="createCustomerForm.get('firstName')?.hasError('required')">
+                                        First name is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-6 sm:col-span-12" *ngIf="!showCompanyFields">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Last Name</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Last Name</mat-label>
+                                    <input formControlName="lastName" matInput>
+                                    <mat-error *ngIf="createCustomerForm.get('lastName')?.hasError('required')">
+                                        Last name is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-6 sm:col-span-12" *ngIf="showCompanyFields">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Company Name</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Company Name</mat-label>
+                                    <input formControlName="companyName" matInput>
+                                    <mat-error *ngIf="createCustomerForm.get('companyName')?.hasError('required')">
+                                        Company name is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-6 sm:col-span-12" *ngIf="showCompanyFields">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Industry</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Industry</mat-label>
+                                    <input formControlName="industry" matInput>
+                                    <mat-error *ngIf="createCustomerForm.get('industry')?.hasError('required')">
+                                        Industry is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-6 sm:col-span-12">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Email</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Email</mat-label>
+                                    <input formControlName="emailAddress" type="email" matInput>
+                                    <mat-error *ngIf="createCustomerForm.get('emailAddress')?.hasError('required')">
+                                        Email is required
+                                    </mat-error>
+                                    <mat-error *ngIf="createCustomerForm.get('emailAddress')?.hasError('email')">
+                                        Please enter a valid email
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-6 sm:col-span-12">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Phone Number</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Phone</mat-label>
+                                    <input formControlName="phoneNumber" matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-span-12">
+                        <div class="cashier-select-field mb-6">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Address</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Address</mat-label>
+                                    <input formControlName="postalAddress" matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-span-12">
+                        <div class="cashier-popup-btn default-light-theme pt-1.5">
+                            <button type="submit" mat-raised-button color="primary" [disabled]="!createCustomerForm.valid">
+                                Create Customer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</mat-dialog-content>

@@ -1,0 +1,221 @@
+<div class="cashier-dashboard-area">
+    <div class="cashier-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+      <div class="cashier-menu-wrapper bg-white border-r border-b border-solid border-grayBorder py-10 px-7 maxLg:px-5 maxLg:py-8">
+        <app-menu></app-menu>
+      </div>
+      <div class="cashier-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="cashier-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+      <div class="cashier-header-area">
+        <div class="cashier-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b border-solid border-grayBorder">
+          <div class="grid grid-cols-12 items-center h-full">
+            <div class="col-span-12">
+              <!-- header area start here -->
+            <div class="cashier-header-content flex items-center justify-between custom-height-70">
+                <div class="cashier-header-breadcrumb">
+                  <h5 class="text-[20px] text-heading font-bold mb-1 leading-none">Profile</h5>
+                  <ul>
+                    <li class="text-[14px] text-bodyText font-normal inline-block mr-2">User</li>
+                    <li class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></li>
+                    <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Profile</li>
+                  </ul>
+                </div>
+                <div class="flex items-center maxXs:w-full">
+                  <div class="cashier-header-shortmenu pr-5 maxSm:pr-4 items-center flex flex-col justify-center custom-height-70">
+                    <a href="javascript:void(0)" (click)="shortmenu()" class="h-10 w-10 leading-[38px] border border-grayBorder border-solid text-center inline-block rounded-[3px] text-bodyText short">
+                      <i class="fal fa-plus"></i>
+                    </a>
+                    <div class="cashier-quick-dropdown" [class.shortmenu-enable]="menuShortcutActive">
+                      <app-quickdropdown></app-quickdropdown>
+                    </div>
+                  </div>
+                  <div class="cashier-header-bar-responsive cursor-pointer mr-5" (click)="myfunction()">
+                    <app-baricon></app-baricon>
+                  </div>
+                  <div
+                    class="cashier-header-notify-wrapper px-5 flex items-center border-l border-solid border-grayBorder custom-height-70 pr-0">
+                    <div class="cashier-header-notification pr-5 relative">
+                      <a href="javascript:void(0)" class="noti" (click)="notifydropdown()"><app-notifyicon></app-notifyicon></a>
+                      <div class="cashier-notify-dropdown" [class.notifydropdown-enable]="notifyShortcutActive">
+                        <app-notifydropdown></app-notifydropdown>
+                      </div>
+                    </div>
+                    <div class="cashier-header-email pr-5 relative">
+                      <a href="javascript:void(0)" class="emai" (click)="emaildropdown()"><app-emailicon></app-emailicon></a>
+                      <div class="cashier-notify-dropdown cashier-email-dropdown" [class.emaildropdown-enable]="emailShortcutActive">
+                        <app-emaildropdown></app-emaildropdown>
+                      </div>
+                    </div>
+                    <div class="cashier-header-language flex items-center relative" (click)="langdropdown()">
+                      <div class="cashier-header-language-content">
+                        <ul>
+                          <li class="flex "><a href="javascript:void(0)" class="text-[14px] text-bodyText translate-y-[2px] font-bold"><app-settingicon></app-settingicon></a></li>
+                        </ul>
+                      </div>
+                      <div class="cashier-quick-dropdown cashier-quick-lang-dropdown" [class.langmenu-enable]="langShortcutActive">
+                        <app-languagedropdown></app-languagedropdown>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cashier-header-overlay" (click)="shortmenu()" [class.shortmenu-enable]="menuShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="notifydropdown()" [class.notifydropdown-enable]="notifyShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="emaildropdown()" [class.emaildropdown-enable]="emailShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="langdropdown()" [class.langmenu-enable]="langShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="prodropdown()" [class.promenu-enable]="proShortcutActive"></div>
+              <!-- header area end here -->
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="cashier-breadcrumb-area px-7 py-9 bg-white mb-5">
+          <div class="cashier-breadcrumb-area-inner px-0.5">
+            <h5 class="text-[20px] text-black font-bold mb-3">Profile</h5>
+            <div class="cashier-breadcrumb-area-inner-wrap">
+              <ul>
+                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">User</li>
+                <li class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></li>
+                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Profile</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="cashier-content-area px-7">
+          <div class="cashier-addsupplier-area bg-white p-7 custom-shadow rounded-lg mb-1">
+              <div class="cashier-profile-area">
+                  <div class="cashier-profile-wrapper flex items-center maxSm:block pb-1 mb-14">
+                    <div class="cashier-profile-info flex items-center mr-20 maxSm:mr-0 maxSm:mb-5">
+                      <div class="cashier-profile-info-img mr-5">
+                        <img src="../../../../assets/img/user/user-profile.png" alt="img not found">
+                      </div>
+                      <div class="cashier-profile-info-text">
+                        <h4 class="text-black font-bold text-[24px] mb-1">Shane Watson</h4>
+                        <span class="text-[16px] text-bodyText">Admin User</span>
+                      </div>
+                    </div>
+                    <div class="cashier-profile-info-btn">
+                      <button type="button" (click)="editProfileEnable()">Edit Profile </button>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-12 gap-x-7 maxSm:gap-x-0">
+                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                     <div class="cashier-select-field mb-5">
+                       <h5 class="text-[15px] text-black font-semibold mb-3">Name</h5>
+                       <div class="cashier-input-field-style">
+                         <mat-form-field class="w-full" [floatLabel]="'always'">
+                           <mat-label class="hidden">Joseph Tylor</mat-label>
+                           <input matInput [placeholder]="'Shane Watson'" value="Shane Watson" [disabled]="isProfileEnabled ? false : true" >
+                         </mat-form-field>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                     <div class="cashier-select-field mb-5">
+                       <h5 class="text-[15px] text-black font-semibold mb-3">Phone</h5>
+                       <div class="cashier-input-field-style">
+                         <mat-form-field class="w-full" [floatLabel]="'always'">
+                           <mat-label class="hidden">00 000 000 000</mat-label>
+                           <input matInput [placeholder]="'+02 259 857 654'" value="+02 259 857 654" [disabled]="isProfileEnabled ? false : true">
+                         </mat-form-field>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                     <div class="cashier-select-field mb-5">
+                       <h5 class="text-[15px] text-black font-semibold mb-3">Email</h5>
+                       <div class="cashier-input-field-style">
+                         <mat-form-field class="w-full" [floatLabel]="'always'">
+                           <mat-label class="hidden">joseph&#64;example.com</mat-label>
+                           <input type="email" matInput [placeholder]="'nasir@example.com'" value="nasir@example.com" [disabled]="isProfileEnabled ? false : true">
+                         </mat-form-field>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Gender</h5>
+                            <div class="cashier-select-field-style">
+                                <mat-form-field>
+                                    <mat-label class="hidden">Select an option</mat-label>
+                                    <mat-select disableRipple class="block" [placeholder]="'Male'" [disabled]="isProfileEnabled ? false : true">
+                                        <mat-option value="language-1">Male</mat-option>
+                                        <mat-option value="language-2">Female</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                    <div class="cashier-select-field mb-5">
+                      <h5 class="text-[15px] text-black font-semibold mb-3">Username</h5>
+                      <div class="cashier-input-field-style">
+                        <mat-form-field class="w-full" [floatLabel]="'always'">
+                          <mat-label class="hidden">Joseph Tylor</mat-label>
+                          <input matInput [placeholder]="'nasir_mondal'" value="nasir_mondal" [disabled]="isProfileEnabled ? false : true">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                    <div class="cashier-select-field mb-5">
+                      <h5 class="text-[15px] text-black font-semibold mb-3">Password</h5>
+                      <div class="cashier-input-field-style cashier-input-field-style-eye">
+                        <mat-form-field appearance="fill">
+                            <mat-label class="hidden">Enter your password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" value="123456" [disabled]="isProfileEnabled ? false : true">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                          </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                   <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Role</h5>
+                            <div class="cashier-select-field-style">
+                                <mat-form-field>
+                                    <mat-label class="hidden">Select an option</mat-label>
+                                    <mat-select disableRipple class="block" [placeholder]="'Male'" [disabled]="isProfileEnabled ? false : true">
+                                        <mat-option value="language-1">Admin</mat-option>
+                                        <mat-option value="language-2">Staff</mat-option>
+                                        <mat-option value="language-3">Manager</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                    <div class="cashier-select-field mb-5">
+                      <h5 class="text-[15px] text-black font-semibold mb-3">Company Name</h5>
+                      <div class="cashier-input-field-style">
+                        <mat-form-field class="w-full" [floatLabel]="'always'">
+                          <mat-label class="hidden">Joseph Tylor</mat-label>
+                          <input matInput [placeholder]="'Cashier'" value="Cashier" [disabled]="isProfileEnabled ? false : true">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                    <div class="cashier-select-field mb-5">
+                      <h5 class="text-[15px] text-black font-semibold mb-3">Address</h5>
+                      <div class="cashier-input-field-style">
+                        <mat-form-field class="w-full" [floatLabel]="'always'">
+                          <mat-label class="hidden">Joseph Tylor</mat-label>
+                          <input matInput [placeholder]="'5874 Street Park, New York, USA'" value="5874 Street Park, New York, USA" [disabled]="isProfileEnabled ? false : true">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-span-12">
+                    <div class="cashier-managesale-top-btn default-light-theme pt-2.5">
+                        <button mat-raised-button color="primary" [disabled]="isProfileEnabled ? false : true">Update Profile</button>
+                   </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+</div>
+    

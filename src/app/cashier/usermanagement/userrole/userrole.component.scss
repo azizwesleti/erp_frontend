@@ -1,0 +1,125 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include cashierSidebarMuneStyle;
+@include cashierInputFieldStyle;
+@include cashierHeaderStyle;
+@include commonPrimaryBtn;
+@include cashierCheckboxStyle;
+
+.cashier-managesale-table-checkbox,
+.cashier-managesale-table-name,
+.cashier-managesale-table-description,
+.cashier-managesale-table-action {
+	@apply flex flex-col justify-center;
+	& h5 {
+		@apply text-[15px] font-semibold text-heading;
+	}
+	& span {
+		@apply text-[14px] font-normal text-bodyText;
+	}
+}
+
+.cashier-managesale-table-checkbox {
+	min-width: 100px;
+	width: 14%;
+    @media (max-width: 1900px) {
+		min-width: 70px;
+		width: 12%;
+	}
+    @media (max-width: 1600px) {
+		min-width: 50px;
+		width: 12%;
+	}
+    @media (min-width: 768px) and (max-width: 991px) {
+        min-width: 50px;
+		width: 10%;
+    }
+}
+.cashier-managesale-table-name {
+	min-width: 150px;
+	width: 21%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+        min-width: 130px;
+		width: 23%;
+		@apply pr-2.5;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+        min-width: 120px;
+		width: 26%;
+		@apply pr-2.5;
+	}
+    @media (min-width: 1201px) and (max-width: 1400px) {
+        min-width: 120px;
+		width: 23%;
+		@apply pr-2.5;
+	}
+    @media (min-width: 992px) and (max-width: 1200px) {
+        min-width: 110px;
+		width: 26%;
+		@apply pr-2.5;
+	}
+    @media (max-width: 991px) {
+		min-width: 130px;
+		width: 22%;
+		@apply pr-2.5;
+	}
+}
+.cashier-managesale-table-description {
+	min-width: 370px;
+	width: 51%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+        min-width: 275px;
+		width: 48%;
+		@apply pr-2.5;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+        min-width: 185px;
+		width: 42%;
+		@apply pr-2.5;
+	}
+	@media (min-width: 1201px) and (max-width: 1400px) {
+        min-width: 185px;
+		width: 47%;
+		@apply pr-2.5;
+	}
+	@media (min-width: 992px) and (max-width: 1200px) {
+        min-width: 155px;
+		width: 40%;
+		@apply pr-2.5;
+	}
+	@media (max-width: 991px) {
+		min-width: 275px;
+		width: 52%;
+		@apply pr-2.5;
+	}
+}
+
+
+@include commonActionMenuStyle;
+
+.cashier-managesale-table-checkbox {
+	.mat-checkbox-layout {
+		@apply ml-4;
+	}
+	.mat-checkbox-frame {
+		border-color: #CBCED4 !important;
+	}
+	.mat-checkbox {
+		@apply flex;
+	}
+}
+
+.cashier-managesale-table-inner {
+	@media (max-width: 991px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.cashier-managesale-table-inner-wrapper {
+	@media (max-width: 991px) {
+		min-width: 100%;
+        width: 655px;
+		scrollbar-height: thin;
+	}
+}

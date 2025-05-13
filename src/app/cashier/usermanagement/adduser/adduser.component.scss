@@ -1,0 +1,46 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include cashierSidebarMuneStyle;
+
+// // Input field style
+@include cashierInputFieldStyle;
+@include cashierSelectFieldStyle;
+@include cashierInputFileFieldStyle;
+@include cashierHeaderStyle;
+@include commonPrimaryBtn;
+
+.cashier-input-field-file-label label {
+	@apply hidden;
+}
+
+.custom-height-70 {
+	@apply h-[70px] min-h-[70px];
+}
+
+.cashier-input-field-style-eye {
+	.mat-mdc-form-field {
+		@apply w-full;
+	}
+    .mat-mdc-form-field-flex {
+        @apply p-0 rounded-[3px] bg-transparent w-full;
+    }
+    .mat-mdc-form-field-wrapper {
+        @apply w-full p-0;
+    }
+    .mat-mdc-form-field-underline {
+        @apply hidden;
+    }
+    .mat-mdc-form-field-infix {
+        @apply p-0;
+    }
+    .mat-mdc-form-field-suffix {
+        @apply absolute top-1.5 right-2;
+    }
+    .mat-mdc-icon {
+        @apply text-bodyText;
+    }
+	.mat-mdc-form-field-icon-suffix, [dir="rtl"] .mat-mdc-form-field-icon-prefix {
+		@apply bg-grayBorder;
+	}
+}

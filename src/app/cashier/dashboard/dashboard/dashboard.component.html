@@ -1,0 +1,142 @@
+<div class="cashier-dashboard-area">
+    <div class="cashier-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+      <div class="cashier-menu-wrapper bg-white border-r border-b border-solid border-grayBorder py-6 px-7 maxLg:px-5 maxLg:py-6">
+        <app-menu></app-menu>
+      </div>
+      <div class="cashier-menu-overlay cashier-menu-overlay-dashboard" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="cashier-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+      <div class="cashier-header-area">
+        <div class="cashier-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b border-solid border-grayBorder">
+          <div class="grid grid-cols-12 items-center h-full">
+            <div class="col-span-12">
+              <!-- header area start here -->
+              <div class="cashier-header-content flex items-center justify-between custom-height-70">
+                <div class="cashier-header-breadcrumb">
+                  <h5 class="text-[20px] text-heading font-bold mb-1 leading-none">Dashboard</h5>
+                  <ul>
+                    <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Home</li>
+                    <li class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></li>
+                    <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Dashboard</li>
+                  </ul>
+                </div>
+                <div class="flex items-center maxXs:w-full">
+                  <div class="cashier-header-shortmenu pr-5 maxSm:pr-4 items-center flex flex-col justify-center custom-height-70">
+                    <a href="javascript:void(0)" (click)="shortmenu()" class="h-10 w-10 leading-[38px] border border-grayBorder border-solid text-center inline-block rounded-[3px] text-bodyText short">
+                      <i class="fal fa-plus"></i>
+                    </a>
+                    <div class="cashier-quick-dropdown" [class.shortmenu-enable]="menuShortcutActive">
+                      <app-quickdropdown></app-quickdropdown>
+                    </div>
+                  </div>
+                  <div class="cashier-header-bar-responsive cursor-pointer mr-5" (click)="myfunction()">
+                    <app-baricon></app-baricon>
+                  </div>
+                  <div
+                    class="cashier-header-notify-wrapper px-5 flex items-center border-l border-solid border-grayBorder custom-height-70 pr-0">
+                    <div class="cashier-header-notification pr-5 relative">
+                      <a href="javascript:void(0)" class="noti" (click)="notifydropdown()"><app-notifyicon></app-notifyicon></a>
+                      <div class="cashier-notify-dropdown" [class.notifydropdown-enable]="notifyShortcutActive">
+                        <app-notifydropdown></app-notifydropdown>
+                      </div>
+                    </div>
+                    <div class="cashier-header-email pr-5 relative">
+                      <a href="javascript:void(0)" class="emai" (click)="emaildropdown()"><app-emailicon></app-emailicon></a>
+                      <div class="cashier-notify-dropdown cashier-email-dropdown" [class.emaildropdown-enable]="emailShortcutActive">
+                        <app-emaildropdown></app-emaildropdown>
+                      </div>
+                    </div>
+                    <div class="cashier-header-language flex items-center relative" (click)="langdropdown()">
+                      <div class="cashier-header-language-content">
+                        <ul>
+                          <li class="flex "><a href="javascript:void(0)" class="text-[14px] text-bodyText translate-y-[2px] font-bold"><app-settingicon></app-settingicon></a></li>
+                        </ul>
+                      </div>
+                      <div class="cashier-quick-dropdown cashier-quick-lang-dropdown" [class.langmenu-enable]="langShortcutActive">
+                        <app-languagedropdown></app-languagedropdown>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cashier-header-overlay" (click)="shortmenu()" [class.shortmenu-enable]="menuShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="notifydropdown()" [class.notifydropdown-enable]="notifyShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="emaildropdown()" [class.emaildropdown-enable]="emailShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="langdropdown()" [class.langmenu-enable]="langShortcutActive"></div>
+              <div class="cashier-header-overlay" (click)="prodropdown()" [class.promenu-enable]="proShortcutActive"></div>
+              <!-- header area end here -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cashier-breadcrumb-area px-7 py-9 bg-white mb-5 hidden">
+        <div class="cashier-breadcrumb-area-inner px-0.5">
+          <h5 class="text-[20px] text-heading font-bold mb-3 leading-none">Dashboard </h5>
+          <span class="text-[14px] text-bodyText font-normal leading-none">Dashboard</span>
+        </div>
+      </div>
+      <div class="cashier-content-area mt-[30px] px-7">
+        <div class="grid grid-cols-12 gap-x-5 maxXs:gap-x-0">
+          <div class="col-span-12 xxl:col-span-9 xl:col-span-8">
+            <div class="invention-quickreport-area pl-0.5">
+              <app-quickview></app-quickview>
+            </div>
+            <div class="cashier-line-chart bg-white pt-6 pl-1.5 rounded-lg mb-5">
+                <app-splinechart></app-splinechart>
+            </div>
+            <div class="grid grid-cols-12 gap-x-5 maxXs:gap-x-0">
+              <div class="col-span-12 xl:col-span-7">
+                <div class="cashier-bar-chart relative bg-white pt-6 pl-1.5 pb-2 rounded-lg mb-5">     
+                  <app-barchart></app-barchart>
+                </div>
+              </div>
+              <div class="col-span-12 xl:col-span-5 lg:col-span-6">
+                <div class="cashier-dashboard-supplier-area">
+                  <app-balancealert></app-balancealert>
+                </div>
+              </div>
+              <div class="col-span-12 lg:col-span-6 xl:hidden">
+                <div class="cashier-dashboard-user-area">
+                  <app-user></app-user>
+                </div>
+              </div>
+              <div class="col-span-12">
+                <div class="cashier-dashboard-transaction-area">
+                  <app-recentvoucher></app-recentvoucher>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 xxl:col-span-3 xl:col-span-4">
+            <div class="grid grid-cols-12 gap-x-5 maxSm:gap-x-0">
+              <div class="col-span-12 xl:col-span-12 lg:col-span-6">
+                <div class="cashier-dashboard-topseller-area">
+                  <app-recentclients></app-recentclients>
+                </div>
+              </div>
+              <div class="col-span-12 xl:col-span-12 lg:col-span-6 lg:mb-5">
+                <div class="cashier-dashboard-piechart bg-white rounded-lg mb-5 lg:mb-0 pt-6 pb-[30px] px-3 lg:h-full">
+                  <app-piechart></app-piechart>
+                </div>
+              </div>
+              <div class="col-span-12 xl:col-span-12 lg:col-span-6 maxLg:hidden">
+                <div class="cashier-dashboard-user-area">
+                  <app-user></app-user>
+                  <app-calender></app-calender>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 xl:hidden">
+            <div>
+              <app-calender></app-calender>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cashier-copyright-area">
+        <app-copyright></app-copyright>
+      </div>
+    </div>
+  </div>
+  

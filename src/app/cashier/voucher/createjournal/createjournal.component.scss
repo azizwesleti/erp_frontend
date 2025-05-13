@@ -1,0 +1,31 @@
+@import '../../../../custom-palettes.scss';
+
+
+//sidebar menu style
+@include cashierSidebarMuneStyle;
+
+// // Input field style
+@include cashierInputFieldStyle;
+@include cashierRadioBtnStyle;
+@include cashierCalenderFieldStyle;
+@include cashierSelectFieldStyle;
+@include cashierHeaderStyle;
+@include commonPrimaryBtn;
+
+.custom-height-70 {
+	@apply h-[70px] min-h-[70px];
+}
+
+.cashier-voucher-account-box {
+	& input.mat-input-element {
+		@apply bg-white;
+	}
+	.mat-form-field-flex {
+		@apply bg-white;
+	}
+}
+.cashier-voucher-account-box-btn {
+	button {
+		@apply h-[25px] leading-[25px] text-[12px] font-semibold text-white rounded-[3px] px-2.5 border-0 outline-0 font-primary;
+	}
+}

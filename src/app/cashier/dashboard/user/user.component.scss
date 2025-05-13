@@ -1,0 +1,12 @@
+@import '../../../../custom-palettes.scss';
+
+.cashier-dashboard-user-list-left-img {
+    & img {
+        @apply rounded-[5px] min-h-[73px] w-[60px] object-contain;
+    }
+}
+.cashier-dashboard-user-list-right {
+    & span {
+        @apply rounded-full;
+    }
+}

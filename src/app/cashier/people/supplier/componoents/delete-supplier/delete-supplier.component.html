@@ -1,0 +1,33 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="cashier-popup-inner">
+            <div class="cashier-popup-header relative mb-11">
+                <div class="cashier-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Delete Supplier</h4>
+                </div>
+                <div class="cashier-popup-header-close absolute -top-4 right-0">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close>
+                                <mat-icon>clear</mat-icon>
+                            </a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+      
+        </div>
+        
+        <div class="cashier-popup-inner">
+        <p>Are you sure you want to delete <strong>{{ supplier.nom }}</strong>?</p>
+        <p>This action cannot be undone.</p>
+        </div>
+        <div class="col-span-12">
+                    <div class="cashier-popup-btn default-light-theme pt-1.5">
+                        <button type="submit" mat-raised-button color="primary" (click)="onDeleteSupplier()" >delete Supplier</button>
+                        <button type="submit" mat-raised-button color="danger" >Cancel</button>
+                    </div>
+                </div>
+
+    </div>
+</mat-dialog-content>

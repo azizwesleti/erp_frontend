@@ -1,0 +1,205 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include cashierSidebarMuneStyle;
+.cashier-managesale-top-btn {
+	.mat-raised-button {
+		font-size: 15px !important;
+		font-weight: 600 !important;
+		color: #fff !important;
+		border-radius: 5px !important;
+		height: 48px !important;
+		line-height: 48px !important;
+		padding: 0px 28px !important;
+		margin-right: 16px !important;
+        margin-bottom: 6px !important;
+		&:last-child {
+			margin-right: 0px !important;
+		}
+	}
+	.mat-button-wrapper {
+		display: flex !important;
+		align-items: center !important;
+	}
+	.mat-icon {
+		width: 20px !important;
+		transform: translateX(-3px) !important;
+		@apply mr-2.5;
+	}
+	.mat-raised-button.mat-primary {
+		@apply bg-themeBlue;
+	}
+	.mat-raised-button.mat-accent {
+		@apply bg-[#FFC403];
+		color: #0D0F19 !important;
+	}
+}
+
+//cashier header searchbar
+@include cashierHeaderSearch;
+
+//cashier header searchbar action
+@include cashierHeaderSearchAction;
+@include commonActionMenuStyle;
+
+// Select field style
+@include cashierSelectFieldStyle;
+@include cashierHeaderStyle;
+
+
+.cashier-netincome-box,
+.cashier-salereturns-table-incomeN,
+.cashier-salereturns-table-januaryN,
+.cashier-salereturns-table-februaryN,
+.cashier-salereturns-table-marchN,
+.cashier-salereturns-table-aprilN,
+.cashier-salereturns-table-mayN {
+	@apply flex;
+	@apply flex-col;
+	@apply justify-center;
+	& h5 {
+		@apply text-[15px] font-semibold text-heading;
+	}
+	& span {
+		@apply text-[14px];
+		@apply font-normal;
+		@apply text-bodyText;
+	}
+}
+.cashier-netincome-box {
+	@apply flex flex-col justify-center min-w-[280px] border-r border-solid border-grayBorder pl-5;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 150px;
+		width: 28%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 260px;
+		width: 25%;
+	}
+	@media (max-width: 1400px) {
+		min-width: 260px;
+		width: 25%;
+	}
+}
+.cashier-salereturns-table-list {
+	@apply px-5;
+}
+.cashier-salereturns-table-incomeN {
+	min-width: 220px;
+	width: 20%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 150px;
+		width: 19%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 125px;
+		width: 13%;
+	}
+	@media (max-width: 1400px) {
+		min-width: 135px;
+		width: 19%;
+	}
+}
+.cashier-salereturns-table-januaryN {
+	min-width: 220px;
+	width: 20%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 150px;
+		width: 19%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 125px;
+		width: 13%;
+	}
+	@media (max-width: 1400px) {
+		min-width: 135px;
+		width: 19%;
+	}
+}
+.cashier-salereturns-table-februaryN {
+	min-width: 220px;
+	width: 20%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 150px;
+		width: 19%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 125px;
+		width: 13%;
+	}
+	@media (max-width: 1400px) {
+		min-width: 135px;
+		width: 19%;
+	}
+}
+.cashier-salereturns-table-marchN {
+	min-width: 220px;
+	width: 20%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 150px;
+		width: 19%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 125px;
+		width: 13%;
+	}
+	@media (max-width: 1400px) {
+		min-width: 135px;
+		width: 19%;
+	}
+}
+.cashier-salereturns-table-aprilN {
+	min-width: 220px;
+	width: 20%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 150px;
+		width: 19%;
+	}
+	@media (min-width: 1401px) and (max-width: 1600px) {
+		min-width: 125px;
+		width: 13%;
+	}
+	@media (max-width: 1400px) {
+		min-width: 135px;
+		width: 19%;
+	}
+}
+
+@include commonActionMenuStyle;
+
+.cashier-salereturns-table-inner {
+	@media (max-width: 1200px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.cashier-salereturns-table-inner-wrapper {
+	@media (max-width: 1200px) {
+		width: 1090px;
+		scrollbar-height: thin;
+	}
+}
+
+.cashier-transection-info {
+	@apply flex items-center justify-between py-[30px] px-[30px] rounded-lg minMaxDesktop:px-4 minMaxDesktop:py-6 minMaxLaptop:px-4 minMaxLaptop:py-6;
+	&-text {
+		h5 {
+			@apply text-[15px] font-semibold text-bodyText minMaxLaptop:text-[12px];
+		}
+		h4 {
+			@apply text-[22px] font-bold text-heading minMaxLaptop:text-[18px];
+		}
+	}
+	&-percent {
+		span {
+			@apply text-[14px] font-semibold text-white h-[30px] leading-[31px] rounded-2xl px-3 minMaxLaptop:px-2 minMaxLaptop:text-[12px];
+		}
+	}
+}
+.cashier-transection-selector {
+	&-single {
+		.mat-form-field-flex {
+			@apply h-10 leading-[38px] px-5; 
+		}
+	}
+}
