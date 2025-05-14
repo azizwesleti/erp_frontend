@@ -14,7 +14,7 @@ import { BillService } from 'src/app/services/bill/bill.service';
 export class BilldetailspopupComponent implements OnInit {
 
   bill_id: string= '';
-  bill : Bill = { _id: '', clientName: '', type: '', dateFacture: '', status: '', dateFacturation: '' , lignes : [], total : 0, tvaRate: 0};
+  bill : Bill = { _id: '', client: '', type: 'invoice', dateFacturation: new Date(), status: 'en attente', lignes : [], totalHT : 0, tvaRate: 0, totalTTC: 0, numero: ''};
 
   constructor(private billService: BillService, public dialog: MatDialog, 
     @Inject(MAT_DIALOG_DATA) public data: { bill_id: string })
@@ -30,9 +30,14 @@ export class BilldetailspopupComponent implements OnInit {
 
   loadBill() { 
   this.billService.getBillById(this.bill_id).subscribe({
-      next: (response : Bill) => {
-        this.bill = response;
-        console.log("la list des factures est : ", this.bill);
+      next: (response : { success: boolean; data?: Bill; error?: string }) => {
+        if (response.success && response.data) {
+          this.bill = response.data;
+          console.log("la list des factures est : ", this.bill);
+        }
+        else {
+          console.error("Failed to load bill:", response.error);
+        }
         },
         error: (error: any) => {
           console.error(error);

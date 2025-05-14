@@ -100,7 +100,7 @@
           <label for="facture">Facture</label>
           <select id="facture" class="form-control" [(ngModel)]="paiement.facture" name="bill" required>
             <option *ngFor="let bill of bills" [ngValue]="bill._id">
-              {{ bill._id }}
+              {{ bill._id}}
             </option>
           </select>
         </div>

@@ -1,196 +1,233 @@
 <div class="cashier-dashboard-area">
-    <div class="cashier-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
-        <div
-            class="cashier-menu-wrapper bg-white border-r border-b border-solid border-grayBorder py-10 px-7 maxLg:px-5 maxLg:py-8">
-            <app-menu></app-menu>
-        </div>
-        <div class="cashier-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+  <div class="cashier-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+    <div class="cashier-menu-wrapper bg-white border-r border-b border-solid border-grayBorder py-10 px-7 maxLg:px-5 maxLg:py-8">
+      <app-menu></app-menu>
     </div>
-    <div class="cashier-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
-        <div class="cashier-header-area">
-            <div
-                class="cashier-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-grayBorder">
-                <div class="grid grid-cols-12 items-center h-full">
-                    <div class="col-span-12">
-                        <!-- header area start here -->
-                        <div class="cashier-header-content flex items-center justify-between custom-height-70">
-                            <div class="cashier-header-breadcrumb">
-                                <h5 class="text-[20px] text-heading font-bold mb-1 leading-none">Add Bill</h5>
-                                <ul>
-                                    <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Bill</li>
-                                    <li class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i
-                                            class="far fa-chevron-right"></i></li>
-                                    <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Add Bill</li>
-                                </ul>
-                            </div>
-                            <div class="flex items-center maxXs:w-full">
-                                <div
-                                    class="cashier-header-shortmenu pr-5 maxSm:pr-4 items-center flex flex-col justify-center custom-height-70">
-                                    <a href="javascript:void(0)" (click)="shortmenu()"
-                                        class="h-10 w-10 leading-[38px] border border-grayBorder border-solid text-center inline-block rounded-[3px] text-bodyText short">
-                                        <i class="fal fa-plus"></i>
-                                    </a>
-                                    <div class="cashier-quick-dropdown" [class.shortmenu-enable]="menuShortcutActive">
-                                        <app-quickdropdown></app-quickdropdown>
-                                    </div>
-                                </div>
-                                <div class="cashier-header-bar-responsive cursor-pointer mr-5" (click)="myfunction()">
-                                    <app-baricon></app-baricon>
-                                </div>
-                                <div
-                                    class="cashier-header-notify-wrapper px-5 flex items-center border-l border-solid border-grayBorder custom-height-70 pr-0">
-                                    <div class="cashier-header-notification pr-5 relative">
-                                        <a href="javascript:void(0)" class="noti" (click)="notifydropdown()">
-                                            <app-notifyicon></app-notifyicon>
-                                        </a>
-                                        <div class="cashier-notify-dropdown"
-                                            [class.notifydropdown-enable]="notifyShortcutActive">
-                                            <app-notifydropdown></app-notifydropdown>
-                                        </div>
-                                    </div>
-                                    <div class="cashier-header-email pr-5 relative">
-                                        <a href="javascript:void(0)" class="emai" (click)="emaildropdown()">
-                                            <app-emailicon></app-emailicon>
-                                        </a>
-                                        <div class="cashier-notify-dropdown cashier-email-dropdown"
-                                            [class.emaildropdown-enable]="emailShortcutActive">
-                                            <app-emaildropdown></app-emaildropdown>
-                                        </div>
-                                    </div>
-                                    <div class="cashier-header-language flex items-center relative"
-                                        (click)="langdropdown()">
-                                        <div class="cashier-header-language-content">
-                                            <ul>
-                                                <li class="flex "><a href="javascript:void(0)"
-                                                        class="text-[14px] text-bodyText translate-y-[2px] font-bold">
-                                                        <app-settingicon></app-settingicon>
-                                                    </a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="cashier-quick-dropdown cashier-quick-lang-dropdown"
-                                            [class.langmenu-enable]="langShortcutActive">
-                                            <app-languagedropdown></app-languagedropdown>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cashier-header-overlay" (click)="shortmenu()"
-                            [class.shortmenu-enable]="menuShortcutActive"></div>
-                        <div class="cashier-header-overlay" (click)="notifydropdown()"
-                            [class.notifydropdown-enable]="notifyShortcutActive"></div>
-                        <div class="cashier-header-overlay" (click)="emaildropdown()"
-                            [class.emaildropdown-enable]="emailShortcutActive"></div>
-                        <div class="cashier-header-overlay" (click)="langdropdown()"
-                            [class.langmenu-enable]="langShortcutActive"></div>
-                        <div class="cashier-header-overlay" (click)="prodropdown()"
-                            [class.promenu-enable]="proShortcutActive"></div>
-                        <!-- header area end here -->
+    <div class="cashier-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+  </div>
+  <div class="cashier-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+    <div class="cashier-header-area">
+      <div class="cashier-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-grayBorder">
+        <div class="grid grid-cols-12 items-center h-full">
+          <div class="col-span-12">
+            <div class="cashier-header-content flex items-center justify-between custom-height-70">
+              <div class="cashier-header-breadcrumb">
+                <h5 class="text-[20px] text-heading font-bold mb-1 leading-none">Add Bill</h5>
+                <ul>
+                  <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Bill</li>
+                  <li class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></li>
+                  <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Add Bill</li>
+                </ul>
+              </div>
+              <div class="flex items-center maxXs:w-full">
+                <div class="cashier-header-shortmenu pr-5 maxSm:pr-4 items-center flex flex-col justify-center custom-height-70">
+                  <a href="javascript:void(0)" (click)="shortmenu()" class="h-10 w-10 leading-[38px] border border-grayBorder border-solid text-center inline-block rounded-[3px] text-bodyText short">
+                    <i class="fal fa-plus"></i>
+                  </a>
+                  <div class="cashier-quick-dropdown" [class.shortmenu-enable]="menuShortcutActive">
+                    <app-quickdropdown></app-quickdropdown>
+                  </div>
+                </div>
+                <div class="cashier-header-bar-responsive cursor-pointer mr-5" (click)="myfunction()">
+                  <app-baricon></app-baricon>
+                </div>
+                <div class="cashier-header-notify-wrapper px-5 flex items-center border-l border-solid border-grayBorder custom-height-70 pr-0">
+                  <div class="cashier-header-notification pr-5 relative">
+                    <a href="javascript:void(0)" class="noti" (click)="notifydropdown()">
+                      <app-notifyicon></app-notifyicon>
+                    </a>
+                    <div class="cashier-notify-dropdown" [class.notifydropdown-enable]="notifyShortcutActive">
+                      <app-notifydropdown></app-notifydropdown>
                     </div>
+                  </div>
+                  <div class="cashier-header-email pr-5 relative">
+                    <a href="javascript:void(0)" class="emai" (click)="emaildropdown()">
+                      <app-emailicon></app-emailicon>
+                    </a>
+                    <div class="cashier-notify-dropdown cashier-email-dropdown" [class.emaildropdown-enable]="emailShortcutActive">
+                      <app-emaildropdown></app-emaildropdown>
+                    </div>
+                  </div>
+                  <div class="cashier-header-language flex items-center relative" (click)="langdropdown()">
+                    <div class="cashier-header-language-content">
+                      <ul>
+                        <li class="flex"><a href="javascript:void(0)" class="text-[14px] text-bodyText translate-y-[2px] font-bold">
+                            <app-settingicon></app-settingicon>
+                          </a></li>
+                      </ul>
+                    </div>
+                    <div class="cashier-quick-dropdown cashier-quick-lang-dropdown" [class.langmenu-enable]="langShortcutActive">
+                      <app-languagedropdown></app-languagedropdown>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="cashier-breadcrumb-area px-7 py-9 bg-white mb-5">
-            <div class="cashier-breadcrumb-area-inner px-0.5">
-                <h5 class="text-[20px] text-heading font-bold mb-3">Add Bill</h5>
-                <div class="cashier-breadcrumb-area-inner-wrap">
-                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Bill</span>
-                    <span class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i
-                            class="far fa-chevron-right"></i></span>
-                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Add Bill</span>
-                </div>
-            </div>
-        </div>
-        <div class="cashier-content-area px-7">
-  <div class="cashier-addsale-area bg-white p-7 custom-shadow rounded-lg mb-5">
-    <h4 class="text-[20px] font-bold text-heading mb-11">Add Bill</h4>
-    <form [formGroup]="billForm" (ngSubmit)="onSubmit()">
-      <div class="grid grid-cols-12 gap-x-7 maxSm:gap-x-0">
-        <!-- Client Name -->
-        <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
-          <div class="cashier-select-field mb-5">
-            <h5 class="text-[15px] text-heading font-semibold mb-3">Select Client</h5>
-            <div class="cashier-select-field-style">
-              <mat-form-field>
-                <mat-label class="hidden">Select an option</mat-label>
-                <mat-select formControlName="clientName" [placeholder]="'Select Client'">
-                  <mat-option *ngFor="let client of clients" [value]="client.firstName">
-                    {{ client.firstName }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-        </div>
-        <!-- Bill Date -->
-        <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
-          <div class="cashier-calender-field mb-5">
-            <h5 class="text-[15px] text-black font-semibold mb-3">Bill Date</h5>
-            <div class="cashier-calender-field-style">
-              <mat-form-field appearance="fill" floatLabel="always">
-                <mat-label class="hidden">Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="dateFacture" [placeholder]="'DD-MM-YYYY'">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </div>
-          </div>
-        </div>
-        <!-- Due Date -->
-        <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
-          <div class="cashier-calender-field mb-5">
-            <h5 class="text-[15px] text-black font-semibold mb-3">Due Date</h5>
-            <div class="cashier-calender-field-style">
-              <mat-form-field appearance="fill" floatLabel="always">
-                <mat-label class="hidden">Choose a date</mat-label>
-                <input matInput [matDatepicker]="pickerA" formControlName="dateFacturation" [placeholder]="'DD-MM-YYYY'">
-                <mat-datepicker-toggle matSuffix [for]="pickerA"></mat-datepicker-toggle>
-                <mat-datepicker #pickerA></mat-datepicker>
-              </mat-form-field>
-            </div>
-          </div>
-        </div>
-        <!-- Order Number -->
-        <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
-          <div class="cashier-select-field mb-5">
-            <h5 class="text-[15px] text-heading font-semibold mb-3">Order Number</h5>
-            <div class="cashier-input-field-style">
-              <mat-form-field>
-                <mat-label class="hidden">Order Number</mat-label>
-                <input matInput formControlName="orderNumber" [placeholder]="'Enter Order Number'">
-              </mat-form-field>
-            </div>
-          </div>
-        </div>
-        <!-- Product Search (for adding line items) -->
-        <div class="col-span-12">
-          <div class="cashier-select-field mb-5">
-            <h5 class="text-[15px] text-heading font-semibold mb-3">Select Product</h5>
-            <div class="cashier-input-field-style">
-              <mat-form-field class="w-full" [floatLabel]="'always'">
-                <mat-label class="hidden">Scan / search products by code / name</mat-label>
-                <input matInput [placeholder]="'Scan / search products by code / name'" #productInput>
-              </mat-form-field>
-              <!-- Button to add product (simplified, you can expand with a form for product details) -->
-              <button type="button" mat-raised-button color="accent" (click)="addLineItem(productInput.value, '30566205', 'Quantity', 4587, 1, 0, 0)">
-                Add Product
-              </button>
-            </div>
+            <div class="cashier-header-overlay" (click)="shortmenu()" [class.shortmenu-enable]="menuShortcutActive"></div>
+            <div class="cashier-header-overlay" (click)="notifydropdown()" [class.notifydropdown-enable]="notifyShortcutActive"></div>
+            <div class="cashier-header-overlay" (click)="emaildropdown()" [class.emaildropdown-enable]="emailShortcutActive"></div>
+            <div class="cashier-header-overlay" (click)="langdropdown()" [class.langmenu-enable]="langShortcutActive"></div>
+            <div class="cashier-header-overlay" (click)="prodropdown()" [class.promenu-enable]="proShortcutActive"></div>
           </div>
         </div>
       </div>
-
-      
-
-     
-
-      
-    </form>
+    </div>
+    <div class="cashier-breadcrumb-area px-7 py-9 bg-white mb-5">
+      <div class="cashier-breadcrumb-area-inner px-0.5">
+        <h5 class="text-[20px] text-heading font-bold mb-3">Add Bill</h5>
+        <div class="cashier-breadcrumb-area-inner-wrap">
+          <span class="text-[14px] text-gray font-normal inline-block mr-2">Bill</span>
+          <span class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></span>
+          <span class="text-[14px] text-gray font-normal inline-block mr-2">Add Bill</span>
+        </div>
+      </div>
+    </div>
+    <div class="cashier-content-area px-7">
+      <div class="cashier-addsale-area bg-white p-7 custom-shadow rounded-lg mb-5">
+        <h4 class="text-[20px] font-bold text-heading mb-11">Add Bill</h4>
+        <form [formGroup]="billForm" (ngSubmit)="onSubmit()">
+          <div class="grid grid-cols-12 gap-x-7 maxSm:gap-x-0">
+            <!-- Client Selection -->
+            <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
+              <div class="cashier-select-field mb-5">
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Select Client</h5>
+                <div class="cashier-select-field-style">
+                  <mat-form-field>
+                    <mat-label>Select Client</mat-label>
+                    <mat-select formControlName="client">
+                      <mat-option *ngFor="let client of clients" [value]="client._id">
+                        {{ client.firstName }} {{ client.lastName }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="billForm.get('client')?.hasError('required')">Client is required</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <!-- Bill Type -->
+            <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
+              <div class="cashier-select-field mb-5">
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Bill Type</h5>
+                <div class="cashier-select-field-style">
+                  <mat-form-field>
+                    <mat-label>Bill Type</mat-label>
+                    <mat-select formControlName="type">
+                      <mat-option value="invoice">Invoice</mat-option>
+                      <mat-option value="quote">Quote</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="billForm.get('type')?.hasError('required')">Type is required</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <!-- Bill Date -->
+            <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
+              <div class="cashier-calender-field mb-5">
+                <h5 class="text-[15px] text-black font-semibold mb-3">Bill Date</h5>
+                <div class="cashier-calender-field-style">
+                  <mat-form-field appearance="fill" floatLabel="always">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dateFacturation" placeholder="DD-MM-YYYY">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="billForm.get('dateFacturation')?.hasError('required')">Date is required</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <!-- TVA Rate -->
+            <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
+              <div class="cashier-input-field mb-5">
+                <h5 class="text-[15px] text-heading font-semibold mb-3">TVA Rate (%)</h5>
+                <div class="cashier-input-field-style">
+                  <mat-form-field>
+                    <mat-label>TVA Rate</mat-label>
+                    <input matInput type="number" formControlName="tvaRate" placeholder="Enter TVA Rate">
+                    <mat-error *ngIf="billForm.get('tvaRate')?.hasError('required')">TVA Rate is required</mat-error>
+                    <mat-error *ngIf="billForm.get('tvaRate')?.hasError('min')">TVA Rate must be positive</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <!-- Purchase Order ID
+             
+            <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
+              <div class="cashier-input-field mb-5">
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Purchase Order ID</h5>
+                <div class="cashier-input-field-style">
+                  <mat-form-field>
+                    <mat-label>Purchase Order ID</mat-label>
+                    <input matInput formControlName="purchaseOrderId" placeholder="Enter Purchase Order ID">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>    -->
+            <!-- Product Selection -->
+           <!-- Update the product selection dropdown -->
+<div class="cashier-select-field mb-5">
+  <h5 class="text-[15px] text-heading font-semibold mb-3">Select Product</h5>
+  <div class="cashier-input-field-style">
+    <mat-form-field class="w-full" floatLabel="always">
+      <mat-label>Select Product</mat-label>
+      <mat-select #productSelect (selectionChange)="addLineItem($event.value)">
+        <mat-option *ngFor="let article of articleList" [value]="article">
+          {{ article.designation }} - {{ article.prixVente | currency }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>
-
-        <div class="cashier-copyright-area">
-            <app-copyright></app-copyright>
-        </div>
+            <!-- Line Items Table -->
+            <div class="col-span-12">
+              <div class="cashier-table-area mb-5">
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Selected Products</h5>
+                <table class="w-full">
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Quantity</th>
+                      <th>Unit Price</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of lineItems; let i = index">
+                      <td>{{ item.articleName }}</td>
+                      <td>
+                        <button type="button" (click)="updateQuantity(i, 'minus')">-</button>
+                        {{ item.quantite }}
+                        <button type="button" (click)="updateQuantity(i, 'add')">+</button>
+                      </td>
+                      <td>{{ item.prixUnitaire }}</td>
+                      <td>
+                        <button type="button" (click)="removeLineItem(i)">Remove</button>
+                      </td>
+                    </tr>
+                    <tr *ngIf="lineItems.length === 0">
+                      <td colspan="4">No products added</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Total -->
+            <div class="col-span-12">
+              <div class="cashier-total-area mb-5">
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Total: {{ calculateTotal() | number:'1.2-2' }}</h5>
+              </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="col-span-12">
+              <button type="submit" mat-raised-button color="primary" [disabled]="billForm.invalid || lineItems.length === 0">
+                Add Bill
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+    <div class="cashier-copyright-area">
+      <app-copyright></app-copyright>
+    </div>
+  </div>
 </div>

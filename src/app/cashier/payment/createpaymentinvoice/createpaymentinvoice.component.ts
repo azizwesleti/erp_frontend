@@ -136,9 +136,9 @@ resetForm(): void {
       }
     });
 
-    this.billService.getBills().subscribe({
+this.billService.getBills().subscribe({
       next: (data) => {
-        this.bills = data;
+        this.bills = data.data;
         console.log('bills loaded:', this.bills);
       },
       error: (err) => {
