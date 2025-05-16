@@ -23,8 +23,7 @@ export interface Task {
   encapsulation: ViewEncapsulation.None
 })
 export class ManagebillComponent implements OnInit {
-
-  billList : Bill[] = [];
+  billList: Bill[] = [];
   private subscription: Subscription = new Subscription();
 
   //checkbox start
@@ -32,9 +31,8 @@ export class ManagebillComponent implements OnInit {
     name: '',
     completed: false,
     color: 'primary',
-    
   };
-  isComplete : boolean = false;
+  isComplete: boolean = false;
   allComplete: boolean = false;
   oneComplete: boolean = false;
   twoComplete: boolean = false;
@@ -56,34 +54,80 @@ export class ManagebillComponent implements OnInit {
 
   constructor(private billService: BillService, public dialog: MatDialog) {}
 
-   ngOnInit(): void {
-    // Load initial supplier list
+  ngOnInit(): void {
     this.loadBills();
-
-    // Subscribe to supplier update notifications
     this.subscription.add(
       this.billService.onBillUpdated().subscribe(() => {
-        console.log('Supplier update notification received, reloading suppliers');
+        console.log('Bill update notification received, reloading bills');
         this.loadBills();
       })
     );
   }
 
-  loadBills() { 
-  this.billService.getBills().subscribe({
-      next: (response : any) => {
-        this.billList = response;
-        console.log("la list des fournisseurs est : ", this.billList);
+  loadBills() {
+    this.billService.getBills().subscribe({
+      next: (response: { success: boolean; data: Bill[]; error?: string }) => {
+        if (response.success) {
+          this.billList = response.data;
+          console.log("Bill list:", this.billList);
+        } else {
+          console.error("Failed to load bills:", response.error);
+          this.billList = [];
+        }
+      },
+      error: (error: any) => {
+        console.error("Error fetching bills:", error);
+        this.billList = [];
+      }
+    });
+  }
+
+  deleteBill(billId: string) {
+    if (confirm('Are you sure you want to delete this bill?')) {
+      this.billService.deleteBill(billId).subscribe({
+        next: (response: { success: boolean; error?: string }) => {
+          if (response.success) {
+            this.billService.notifyBillUpdated();
+            console.log('Bill deleted successfully');
+          } else {
+            console.error('Failed to delete bill:', response.error);
+          }
         },
         error: (error: any) => {
-          console.error(error);
-          }
-    })
+          console.error('Error deleting bill:', error);
+        }
+      });
+    }
   }
+
+    editBill(bill: Bill) {
+        const dialogRef = this.dialog.open(AddpaymentpopupComponent, {
+            data: { bill: { ...bill } } // Pass a copy of the bill to avoid direct modification
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.billService.updateBill(bill._id!, result).subscribe({
+                    next: (response: { success: boolean; data?: Bill; error?: string }) => {
+                        if (response.success) {
+                            this.billService.notifyBillUpdated();
+                            console.log('Bill updated successfully');
+                        } else {
+                            console.error('Failed to update bill:', response.error);
+                        }
+                    },
+                    error: (error: any) => {
+                        console.error('Error updating bill:', error);
+                    }
+                });
+            }
+        });
+    }
 
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
   }
+
   someComplete(): boolean {
     if (this.task.subtasks == null) {
       return false;
@@ -101,123 +145,96 @@ export class ManagebillComponent implements OnInit {
   }
 
   setSingleCheck1(completed: boolean) {
-    console.log(this.oneComplete);
-    console.log(completed);
     this.oneComplete = completed;
-    if(completed) {
+    if (completed) {
       this.isComplete = completed;
     }
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
+    if (!this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && 
+        !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && 
+        !this.tenComplete && !this.nineComplete && !this.eightComplete && 
+        !this.sevenComplete && !this.sixComplete && !this.fiveComplete && 
+        !this.fourComplete && !this.threeComplete && !this.twoComplete && 
+        !this.oneComplete) {
       this.isComplete = completed;
     }
   }
-  
-  
-  //checkbox end
 
-  
   addPaymentPopup() {
     this.dialog.open(AddpaymentpopupComponent);
   }
+
   sendPaymentPopup() {
     this.dialog.open(SendbillpopupComponent);
   }
-  billDetailsPopup(bill : Bill) {
+
+  billDetailsPopup(bill: Bill) {
     this.dialog.open(BilldetailspopupComponent, {
-          data: {
-            bill_id: bill._id, // Pass the supplier object to the dialog
-            
-          },       
-        });
-        console.log("facture choisit : ", bill._id);  
-
+      data: {
+        bill_id: bill._id,
+      },
+    });
+    console.log("Selected bill:", bill._id);
   }
 
-  //sidebar menu activation start
-  menuSidebarActive:boolean=false;
-  myfunction(){
-    if(this.menuSidebarActive==false){
-      this.menuSidebarActive=true;
+  //sidebar menu activation
+  menuSidebarActive: boolean = false;
+  myfunction() {
+    this.menuSidebarActive = !this.menuSidebarActive;
+  }
+
+  //header activation
+  menuShortcutActive: boolean = false;
+  shortmenu() {
+    this.menuShortcutActive = !this.menuShortcutActive;
+    if (this.menuShortcutActive) {
+      this.emailShortcutActive = false;
+      this.notifyShortcutActive = false;
+      this.langShortcutActive = false;
+      this.proShortcutActive = false;
     }
-    else {
-      this.menuSidebarActive=false;
+  }
+
+  notifyShortcutActive: boolean = false;
+  notifydropdown() {
+    this.notifyShortcutActive = !this.notifyShortcutActive;
+    if (this.notifyShortcutActive) {
+      this.menuShortcutActive = false;
+      this.emailShortcutActive = false;
+      this.langShortcutActive = false;
+      this.proShortcutActive = false;
     }
   }
-  //sidebar menu activation end
 
-  //header activation start here
-menuShortcutActive:boolean=false;
-shortmenu(){
-  if(this.menuShortcutActive==false){
-    this.menuShortcutActive=true;
-    this.emailShortcutActive=false;
-    this.notifyShortcutActive=false;
-    this.langShortcutActive=false;
-    this.proShortcutActive=false;
+  emailShortcutActive: boolean = false;
+  emaildropdown() {
+    this.emailShortcutActive = !this.emailShortcutActive;
+    if (this.emailShortcutActive) {
+      this.menuShortcutActive = false;
+      this.notifyShortcutActive = false;
+      this.langShortcutActive = false;
+      this.proShortcutActive = false;
+    }
   }
-  else {
-    this.menuShortcutActive=false;
-  }
-}
 
-notifyShortcutActive:boolean=false;
-notifydropdown(){
-  if(this.notifyShortcutActive==false){
-    this.menuShortcutActive=false;
-    this.emailShortcutActive=false;
-    this.notifyShortcutActive=true;
-    this.langShortcutActive=false;
-    this.proShortcutActive=false;
+  langShortcutActive: boolean = false;
+  langdropdown() {
+    this.langShortcutActive = !this.langShortcutActive;
+    if (this.langShortcutActive) {
+      this.menuShortcutActive = false;
+      this.emailShortcutActive = false;
+      this.notifyShortcutActive = false;
+      this.proShortcutActive = false;
+    }
   }
-  else {
-    this.notifyShortcutActive=false;
-  }
-}
 
-emailShortcutActive:boolean=false;
-emaildropdown(){
-  if(this.emailShortcutActive==false){
-    this.menuShortcutActive=false;
-    this.emailShortcutActive=true;
-    this.notifyShortcutActive=false;
-    this.langShortcutActive=false;
-    this.proShortcutActive=false;
+  proShortcutActive: boolean = false;
+  prodropdown() {
+    this.proShortcutActive = !this.proShortcutActive;
+    if (this.proShortcutActive) {
+      this.menuShortcutActive = false;
+      this.emailShortcutActive = false;
+      this.notifyShortcutActive = false;
+      this.langShortcutActive = false;
+    }
   }
-  else {
-    this.emailShortcutActive=false;
-
-  }
-}
-
-langShortcutActive:boolean=false;
-langdropdown(){
-  if(this.langShortcutActive==false){
-    this.menuShortcutActive=false;
-    this.emailShortcutActive=false;
-    this.notifyShortcutActive=false;
-    this.langShortcutActive=true;
-    this.proShortcutActive=false;
-  }
-  else {
-    this.langShortcutActive=false;
-
-  }
-}
-
-proShortcutActive:boolean=false;
-prodropdown(){
-  if(this.proShortcutActive==false){
-    this.menuShortcutActive=false;
-    this.emailShortcutActive=false;
-    this.notifyShortcutActive=false;
-    this.langShortcutActive=false;
-    this.proShortcutActive=true;
-  }
-  else {
-    this.proShortcutActive=false;
-
-  }
-}
-//header activation end here
-
 }
