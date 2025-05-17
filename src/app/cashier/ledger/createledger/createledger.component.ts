@@ -1,4 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Article } from 'src/app/interfaces/article';
+import { StockMvtToAdd } from 'src/app/interfaces/stock-mvt';
+import { ArticleService } from 'src/app/services/article.service';
+import { StockMvtService } from 'src/app/services/stockMvt/stock-mvt.service';
+import { ConfirmSubmitPopupComponent } from '../confirm-submit-popup/confirm-submit-popup.component';
 
 @Component({
   selector: 'app-createledger',
@@ -8,6 +15,83 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class CreateledgerComponent implements OnInit {
 
+  articleList: Article[] = [];
+
+  stockMvtForm!: FormGroup<{
+    articleId: FormControl<string>;
+    quantityChange:FormControl<number>;
+    movementType: FormControl<string>;
+    relatedDocumentModel: FormControl<string>;
+    date: FormControl<string>;
+  
+  }>;
+  
+constructor(private articleService: ArticleService, 
+        private stockMvtService: StockMvtService,  
+        private fb : NonNullableFormBuilder,
+      public dialog: MatDialog) {
+
+   this.stockMvtForm = this.fb.group({
+        articleId: ['', Validators.required],
+        quantityChange: [0 , [Validators.required]],
+        movementType: ['', Validators.required],
+        relatedDocumentModel: ['', Validators.required],
+        date: ['', Validators.required]
+        });
+ }
+
+  ngOnInit(): void {
+    this.loadArticles()
+  }
+
+  loadArticles() {
+ 
+    this.articleService.getArticles().subscribe({
+      next: (response) => {
+        console.log('API Response:', response);
+        this.articleList = response.data; // Directly use data array
+      },
+      error: (error) => {
+        console.error("Error loading articles:", error);
+      }
+    })
+  
+}
+
+onSubmit() {
+    if(this.stockMvtForm.valid) {
+      const data = { ...this.stockMvtForm.value } ;
+
+      const stockMvtData: StockMvtToAdd = {
+      articleId: data.articleId || '',
+      quantityChange: data.quantityChange || 0,
+      movementType: data.movementType || '',
+      relatedDocumentModel: data.relatedDocumentModel || '',
+      date: data.date || '',
+      relatedDocumentId : "682787717ba0eb67e5bbc67a",  
+    };
+
+    console.log('Prepared stockMvt data:', stockMvtData);
+
+      console.log("data regestred in form", data);  
+
+      this.stockMvtService.addStockMvt(stockMvtData).subscribe({
+        next: (response) => {
+          console.log("Stock-Mvt created succesfully", response);
+          this.confirmCreationPopup();
+        },
+        error: (error) => { 
+          console.error("error while creating Stock-Mvt",error);
+          }
+      })
+    } else {
+    console.error("form is invalid");
+  }
+}
+
+  confirmCreationPopup() {
+    this.dialog.open(ConfirmSubmitPopupComponent);
+  }
   //sidebar menu activation start
   menuSidebarActive:boolean=false;
   myfunction(){
@@ -97,8 +181,6 @@ export class CreateledgerComponent implements OnInit {
   }
   //header activation end here
 
-  constructor() { }
-
-  ngOnInit(): void {}
+  
 
 }

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
@@ -12,19 +12,9 @@ import { Article } from 'src/app/interfaces/article';
 
 @Component({
   selector: 'app-edit-article',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatSnackBarModule
-  ],
   templateUrl: './edit-article.component.html',
-  styleUrls: ['./edit-article.component.scss']
+  styleUrls: ['./edit-article.component.scss'],
+  encapsulation: ViewEncapsulation.None  
 })
 export class EditArticleComponent {
   editForm: FormGroup;
@@ -40,6 +30,7 @@ export class EditArticleComponent {
   ) {
     this.editForm = this.fb.group({
       code: [data.article.code, [Validators.required, Validators.pattern(/^[A-Za-z0-9]+$/)]],
+      name: [data.article.name, Validators.required],
       designation: [data.article.designation, Validators.required],
       famille: [data.article.famille || ''],
       prixAchat: [data.article.prixAchat || 0, [Validators.required, Validators.min(0)]],

@@ -72,8 +72,8 @@ export class ManagebillComponent implements OnInit {
   loadBills() { 
   this.billService.getBills().subscribe({
       next: (response : any) => {
-        this.billList = response;
-        console.log("la list des fournisseurs est : ", this.billList);
+        this.billList = response.data;
+        console.log("la list des factures est : ", this.billList);
         },
         error: (error: any) => {
           console.error(error);

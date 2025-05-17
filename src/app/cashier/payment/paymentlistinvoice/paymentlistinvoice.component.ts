@@ -74,7 +74,7 @@ export class PaymentlistinvoiceComponent implements OnInit {
 
      this.paymentService.getPayments().subscribe({
       next: (response : any) => {
-        this.paymentInvoiceList = response;
+        this.paymentInvoiceList = response ;
         console.log("la list des payments est : ", this.paymentInvoiceList);
         },
         error: (error: any) => {

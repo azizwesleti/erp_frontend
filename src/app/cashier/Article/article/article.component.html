@@ -200,6 +200,9 @@
                     <h5>Code</h5>
                 </div>
                 <div class="cashier-salereturns-table-referenceH">
+                    <h5>Name</h5>
+                </div>
+                <div class="cashier-salereturns-table-referenceH">
                     <h5>Designation</h5>
                 </div>
                 <div class="cashier-salereturns-table-customerH">
@@ -231,18 +234,21 @@
                     <span>{{article.code}}</span>
                 </div>
                 <div class="cashier-salereturns-table-referenceH">
+                    <span>{{article.name}}</span>
+                </div>
+                <div class="cashier-salereturns-table-referenceH">
                     <span>{{article.designation}}</span>
                 </div>
                 <div class="cashier-salereturns-table-customerH">
                     <span>{{article.famille || '-'}}</span>
                 </div>
-                <div class="cashier-salereturns-table-companyH">
+                <div class="cashier-salereturns-table-warehouseH">
                     <span>{{article.prixVente | currency:'USD':'symbol':'1.2-2'}}</span>
                 </div>
-                <div class="cashier-salereturns-table-companyH">
+                <div class="cashier-salereturns-table-warehouseH">
                     <span>{{article.prixAchat| currency:'USD':'symbol':'1.2-2'}}</span>
                 </div>
-                <div class="cashier-salereturns-table-stockH">
+                <div class="cashier-salereturns-table-warehouseH">
                     <span>{{article.stock}}</span>
                 </div>
                 <div class="cashier-salereturns-table-actionH">
