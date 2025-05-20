@@ -7,6 +7,7 @@ import { SendbillpopupComponent } from '../../popup/sendbillpopup/sendbillpopup.
 import { Bill } from 'src/app/interfaces/bill';
 import { Subscription } from 'rxjs';
 import { BillService } from 'src/app/services/bill/bill.service';
+import { DatePipe } from '@angular/common';
 
 //for checkbox
 export interface Task {
@@ -20,6 +21,7 @@ export interface Task {
   selector: 'app-managebill',
   templateUrl: './managebill.component.html',
   styleUrls: ['./managebill.component.scss'],
+  providers: [DatePipe],
   encapsulation: ViewEncapsulation.None
 })
 export class ManagebillComponent implements OnInit {
@@ -52,7 +54,7 @@ export class ManagebillComponent implements OnInit {
   sixteenComplete: boolean = false;
   disabled_condition = true;
 
-  constructor(private billService: BillService, public dialog: MatDialog) {}
+  constructor(private billService: BillService, private datePipe: DatePipe, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadBills();
@@ -64,16 +66,13 @@ export class ManagebillComponent implements OnInit {
     );
   }
 
-  loadBills() {
-    this.billService.getBills().subscribe({
-      next: (response: { success: boolean; data: Bill[]; error?: string }) => {
-        if (response.success) {
-          this.billList = response.data;
-          console.log("Bill list:", this.billList);
-        } else {
-          console.error("Failed to load bills:", response.error);
-          this.billList = [];
-        }
+
+  loadBills() { 
+  this.billService.getBills().subscribe({
+      next: (response : any) => {
+        this.billList = response.data;
+        console.log("la list des factures est : ", this.billList);
+
       },
       error: (error: any) => {
         console.error("Error fetching bills:", error);
@@ -82,23 +81,25 @@ export class ManagebillComponent implements OnInit {
     });
   }
 
-  deleteBill(billId: string) {
-    if (confirm('Are you sure you want to delete this bill?')) {
-      this.billService.deleteBill(billId).subscribe({
-        next: (response: { success: boolean; error?: string }) => {
-          if (response.success) {
-            this.billService.notifyBillUpdated();
-            console.log('Bill deleted successfully');
-          } else {
-            console.error('Failed to delete bill:', response.error);
-          }
-        },
-        error: (error: any) => {
-          console.error('Error deleting bill:', error);
-        }
-      });
-    }
+ 
+
+
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd MMM yyyy') || '';
   }
+
+  onDelete(id : string) {
+    this.billService.deleteBill(id).subscribe({
+          next: (response : any) => {
+            
+            console.log("La factures à était supprimer avec ID : ", id);
+            },
+            error: (error: any) => {
+              console.error(error);
+              }
+        })
+  }
+
 
     editBill(bill: Bill) {
         const dialogRef = this.dialog.open(AddpaymentpopupComponent, {
@@ -123,6 +124,7 @@ export class ManagebillComponent implements OnInit {
             }
         });
     }
+
 
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);

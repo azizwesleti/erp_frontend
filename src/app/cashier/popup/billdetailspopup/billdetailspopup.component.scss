@@ -109,30 +109,40 @@
   min-width: 40px;
 }
 .cashier-bill-view-list-product {
-  min-width: 185px;
+  min-width: 10px;
+  width: 20%;
 }
 .cashier-bill-view-list-products {
   min-width: 225px;
 }
 .cashier-bill-view-list-batch {
   min-width: 90px;
+    width: 20%;
+
 }
 .cashier-bill-view-list-unit {
   min-width: 55px;
+    width: 20%;
+
 }
 .cashier-bill-view-list-price {
   min-width: 90px;
+    width: 10%;
+
 }
 .cashier-bill-view-list-qty {
   min-width: 55px;
+    width: 10%;
+
 }
 .cashier-bill-view-list-tax {
-  min-width: 95px;
+  min-width: 0px;
 }
 .cashier-bill-view-list-discount {
   min-width: 90px;
 }
 .cashier-bill-view-list-total {
   min-width: 80px;
+  width: 20%;
   @apply border-r-0;
 }

@@ -14,7 +14,7 @@ import { BillService } from 'src/app/services/bill/bill.service';
 export class BilldetailspopupComponent implements OnInit {
 
   bill_id: string= '';
-  bill : Bill = { _id: '', client: '', type: 'invoice', dateFacturation: new Date(), status: 'en attente', lignes : [], totalHT : 0, tvaRate: 0, totalTTC: 0, numero: ''};
+  bill : Bill = { _id: '', fournisseur: '', type: 'invoice', dateFacturation: '05/20/2025', status: 'en attente', lignes : [], totalHT : 0, tvaRate: 0, totalTTC: 0, numero: ''};
 
   constructor(private billService: BillService, public dialog: MatDialog, 
     @Inject(MAT_DIALOG_DATA) public data: { bill_id: string })

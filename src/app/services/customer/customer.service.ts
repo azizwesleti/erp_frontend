@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { ApiConstant } from 'src/app/constant/api-constants';
 import { Customer, CustomerToAdd } from 'src/app/interfaces/customer';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerService {
-  private apiUrl = 'http://localhost:3000/api/clients';
+  private apiUrl = environment.apiUrl + ApiConstant.customers;
   private customerUpdatedSubject = new Subject<void>();
 
   constructor(private http: HttpClient) {}

@@ -142,6 +142,9 @@ import { EditCustomerComponent } from './people/customer/components/edit-custome
 
 
 import { ArticleComponent } from './Article/article/article.component';
+import { AddArticleComponent } from './Article/article/C/add-articledd-article/add-articledd-article.component';
+import { EditArticleComponent } from './Article/article/C/edit-article/edit-article.component';
+import { ConfirmSubmitPopupComponent } from './ledger/confirm-submit-popup/confirm-submit-popup.component';
 
 @NgModule({
   imports: [
@@ -288,7 +291,11 @@ import { ArticleComponent } from './Article/article/article.component';
     EditSupplierComponent,
     DeleteSupplierComponent,
     EditCustomerComponent,
-    ArticleComponent
+    ArticleComponent,
+    AddArticleComponent,
+    EditArticleComponent,
+    ConfirmSubmitPopupComponent
+
   ],
 
 })

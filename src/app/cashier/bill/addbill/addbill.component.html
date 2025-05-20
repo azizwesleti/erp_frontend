@@ -90,16 +90,16 @@
             <!-- Client Selection -->
             <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
               <div class="cashier-select-field mb-5">
-                <h5 class="text-[15px] text-heading font-semibold mb-3">Select Client</h5>
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Select Supplier</h5>
                 <div class="cashier-select-field-style">
                   <mat-form-field>
-                    <mat-label>Select Client</mat-label>
+                    <mat-label>Select Supplier</mat-label>
                     <mat-select formControlName="client">
-                      <mat-option *ngFor="let client of clients" [value]="client._id">
-                        {{ client.firstName }} {{ client.lastName }}
+                      <mat-option *ngFor="let supplier of suppliers" [value]="supplier._id">
+                        {{ supplier.nom }} 
                       </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="billForm.get('client')?.hasError('required')">Client is required</mat-error>
+                    <mat-error *ngIf="billForm.get('client')?.hasError('required')">Supplier is required</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -149,6 +149,20 @@
                 </div>
               </div>
             </div>
+
+            <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
+              <div class="cashier-input-field mb-5">
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Bill Number</h5>
+                <div class="cashier-input-field-style">
+                  <mat-form-field>
+                    <mat-label>Bill Number</mat-label>
+                    <input matInput type="number" formControlName="numero" placeholder="Enter Bill Number">
+                    <mat-error *ngIf="billForm.get('numero')?.hasError('required')">Bill number is required</mat-error>
+                    
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
             <!-- Purchase Order ID
              
             <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
@@ -164,19 +178,19 @@
             </div>    -->
             <!-- Product Selection -->
            <!-- Update the product selection dropdown -->
-<div class="cashier-select-field mb-5">
-  <h5 class="text-[15px] text-heading font-semibold mb-3">Select Product</h5>
-  <div class="cashier-input-field-style">
-    <mat-form-field class="w-full" floatLabel="always">
-      <mat-label>Select Product</mat-label>
-      <mat-select #productSelect (selectionChange)="addLineItem($event.value)">
-        <mat-option *ngFor="let article of articleList" [value]="article">
-          {{ article.designation }} - {{ article.prixVente | currency }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-</div>
+            <div class="cashier-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Select Product</h5>
+              <div class="cashier-input-field-style">
+                <mat-form-field class="w-full" floatLabel="always">
+                  <mat-label>Select Product</mat-label>
+                  <mat-select #productSelect (selectionChange)="addLineItem($event.value)">
+                    <mat-option *ngFor="let article of articleList" [value]="article">
+                      {{ article.designation }} - {{ article.prixVente | currency }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
             <!-- Line Items Table -->
             <div class="col-span-12">
               <div class="cashier-table-area mb-5">

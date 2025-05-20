@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
@@ -12,19 +12,10 @@ import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-add-article',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatSnackBarModule
-  ],
   templateUrl: './add-articledd-article.component.html',
-  styleUrl: './add-articledd-article.component.scss'
+  styleUrl: './add-articledd-article.component.scss',
+  encapsulation: ViewEncapsulation.None
+  
 })
 export class AddArticleComponent {
   articleForm: FormGroup;
@@ -39,6 +30,7 @@ export class AddArticleComponent {
   ) {
     this.articleForm = this.fb.group({
       code: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9]+$/)]],
+      name: ['', Validators.required],
       designation: ['', Validators.required],
       famille: [''],
       prixAchat: [0, [Validators.required, Validators.min(0)]],

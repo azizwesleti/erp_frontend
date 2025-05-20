@@ -5,6 +5,7 @@ import { PaymentinvoicepopupComponent } from '../../popup/paymentinvoicepopup/pa
 import { Payment } from 'src/app/interfaces/payment';
 import { Subscription } from 'rxjs';
 import { PaymentService } from 'src/app/services/payment/payment.service';
+import { DatePipe } from '@angular/common';
 
 //for checkbox
 export interface Task {
@@ -18,6 +19,7 @@ export interface Task {
   selector: 'app-paymentlistinvoice',
   templateUrl: './paymentlistinvoice.component.html',
   styleUrls: ['./paymentlistinvoice.component.scss'],
+  providers: [DatePipe],
   encapsulation: ViewEncapsulation.None
 })
 export class PaymentlistinvoiceComponent implements OnInit {
@@ -54,7 +56,7 @@ export class PaymentlistinvoiceComponent implements OnInit {
 
 
 
-    constructor(private paymentService: PaymentService,  public dialog: MatDialog) {}
+    constructor(private paymentService: PaymentService,  private datePipe: DatePipe,  public dialog: MatDialog) {}
 
 
   ngOnInit(): void {
@@ -74,7 +76,7 @@ export class PaymentlistinvoiceComponent implements OnInit {
 
      this.paymentService.getPayments().subscribe({
       next: (response : any) => {
-        this.paymentInvoiceList = response;
+        this.paymentInvoiceList = response ;
         console.log("la list des payments est : ", this.paymentInvoiceList);
         },
         error: (error: any) => {
@@ -99,6 +101,11 @@ export class PaymentlistinvoiceComponent implements OnInit {
     });
   }
 }
+
+
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd MMM yyyy') || '';
+  }
 
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);

@@ -22,20 +22,21 @@
                             <div class="cashier-bill-address-info">
                                 <h5 class="pb-1">Billed to</h5>
                                 <ul>
-                                    <li>Name<span class="inline-block px-0.5">:</span> <span>{{bill.client?.name}}</span></li>
-                                    <li>Email<span class="inline-block px-0.5">:</span> <span>{{bill.client?.email}}</span></li>
-                                    <li>Phone<span class="inline-block px-0.5">:</span> <span>+02 782 930 782</span></li>
-                                    <li>Address<span class="inline-block px-0.5">:</span> <span>Milton Street, New York, USA</span></li>
+                                    <li>Name<span class="inline-block px-0.5">:</span> <span>{{bill.fournisseur?.nom}} </span></li>
+                                    <li>Email<span class="inline-block px-0.5">:</span> <span>{{bill.fournisseur?.emailAddress}}</span></li>
+                                    <li>Phone<span class="inline-block px-0.5">:</span> <span>{{bill.fournisseur?.phoneNumber}}</span></li>
+                                    <li>Address<span class="inline-block px-0.5">:</span> <span>{{bill.fournisseur?.postalAddress}}</span></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-span-4">
                             <div class="cashier-bill-address-info">
-                                <h5 class="pb-1">Shipped to</h5>
-                                <ul>
-                                    <li>Type<span class="inline-block px-0.5">:</span> <span>{{bill.type}}</span></li>
-                                    <li>Status<span class="inline-block px-0.5">:</span> <span>{{bill.status}}</span></li>
-                                </ul>
+                                <h5 class="">Bill Number</h5>
+                                <span>{{bill.numero}}</span>
+                                <h5 class="">Bill Type</h5>
+                                <span>{{bill.type}}</span>
+                                <h5 class="">Bill Status</h5>
+                                <span>{{bill.status}}</span>
                             </div>
                         </div>
                         <div class="col-span-4">
@@ -61,10 +62,10 @@
                             <h5>Products</h5>
                         </div>
                         <div class="cashier-bill-view-list-batch border-r">
-                            <h5>Batch</h5>
+                            <h5>Code</h5>
                         </div>
                         <div class="cashier-bill-view-list-unit border-r">
-                            <h5>Unit</h5>
+                            <h5>Category</h5>
                         </div>
                         <div class="cashier-bill-view-list-price border-r">
                             <h5>Price</h5>
@@ -72,7 +73,7 @@
                         <div class="cashier-bill-view-list-qty border-r">
                             <h5>Qty</h5>
                         </div>
-                        <div class="cashier-bill-view-list-tax border-r">
+                       <!--  <div class="cashier-bill-view-list-tax border-r">
                             <h5>Tax</h5>
                         </div>
                         <div class="cashier-bill-view-list-discount border-r">
@@ -80,7 +81,7 @@
                         </div>
                         <div class="cashier-bill-view-list-total">
                             <h5>Total</h5>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="cashier-bill-view-list flex h-[70px] border-b border-solid border-grayBorder"
                     *ngFor="let item of bill.lignes; let i = index">
@@ -88,13 +89,13 @@
                             <span> {{ i }} </span>
                         </div>
                         <div class="cashier-bill-view-list-product border-r">
-                            <span> {{ item.article }}</span>
+                            <span> {{ item.article.name }}</span>
                         </div>
                         <div class="cashier-bill-view-list-batch border-r">
-                            <span>   </span>
+                            <span>  {{ item.article.code }}  </span>
                         </div>
                         <div class="cashier-bill-view-list-unit border-r">
-                            <span>    </span>
+                            <span>  {{ item.article.famille }}   </span>
                         </div>
                         <div class="cashier-bill-view-list-price border-r">
                             <span>{{ item.prixUnitaire }}</span>
@@ -102,15 +103,7 @@
                         <div class="cashier-bill-view-list-qty border-r">
                             <span>{{ item.quantite }}</span>
                         </div>
-                        <div class="cashier-bill-view-list-tax border-r">
-                            <span>to  complete</span>
-                        </div>
-                        <div class="cashier-bill-view-list-discount border-r">
-                            <span>10 (5%)</span>
-                        </div>
-                        <div class="cashier-bill-view-list-total">
-                            <span>23.00</span>
-                        </div>
+                        
                     </div>
                     <div class="cashier-bill-view-list flex h-[50px] border-b border-solid border-grayBorder">
                         <div class="cashier-bill-view-list-products">
@@ -119,30 +112,17 @@
                         <div class="cashier-bill-view-list-batch"></div>
                         <div class="cashier-bill-view-list-unit"></div>
                         <div class="cashier-bill-view-list-price"></div>
-                        <div class="cashier-bill-view-list-qty border-r"></div>
-                        <div class="cashier-bill-view-list-tax border-r">
-                            <h5> {{ bill.tvaRate }}</h5>
+                        <div class="cashier-bill-view-list-qty "></div>
+                        <div class="cashier-bill-view-list-tax "></div>
+                        
+                        <div class="cashier-bill-view-list-discount border-r">
+                            <h5> </h5>
                         </div>
                         <div class="cashier-bill-view-list-total">
                             <h5> {{ bill.totalHT }}</h5>
                         </div>
                     </div>
-                    <div class="cashier-bill-view-list flex h-[50px] border-b border-solid border-grayBorder">
-                        <div class="cashier-bill-view-list-products">
-                            <span>Order Discount :</span>
-                        </div>
-                        <div class="cashier-bill-view-list-batch"></div>
-                        <div class="cashier-bill-view-list-unit"></div>
-                        <div class="cashier-bill-view-list-price"></div>
-                        <div class="cashier-bill-view-list-qty"></div>
-                        <div class="cashier-bill-view-list-tax border-r"></div>
-                        <div class="cashier-bill-view-list-discount border-r">
-                            <span>(0%)</span>
-                        </div>
-                        <div class="cashier-bill-view-list-total">
-                            <span>-0.00</span>
-                        </div>
-                    </div>
+                   
                     <div class="cashier-bill-view-list flex h-[50px] border-b border-solid border-grayBorder">
                         <div class="cashier-bill-view-list-products">
                             <span>Order Tax :</span>
@@ -151,12 +131,12 @@
                         <div class="cashier-bill-view-list-unit"></div>
                         <div class="cashier-bill-view-list-price"></div>
                         <div class="cashier-bill-view-list-qty"></div>
-                        <div class="cashier-bill-view-list-tax border-r"></div>
+                        
                         <div class="cashier-bill-view-list-discount border-r">
-                            <span>(2%)</span>
+                            <h5> </h5>
                         </div>
                         <div class="cashier-bill-view-list-total">
-                            <span>+3.00</span>
+                            <span>{{ bill.tvaRate }} %</span>
                         </div>
                     </div>
                     <div class="cashier-bill-view-list flex h-[50px] border-b border-solid border-grayBorder bg-grayBgLight">
@@ -170,10 +150,10 @@
                         <div class="cashier-bill-view-list-tax"></div>
                         <div class="cashier-bill-view-list-discount border-r"></div>
                         <div class="cashier-bill-view-list-total">
-                            <h5>96.00</h5>
+                            <h5>{{ bill.totalTTC }}</h5>
                         </div>
                     </div>
-                    <div class="cashier-bill-view-list flex h-[50px] border-b border-solid border-grayBorder">
+                    <!-- <div class="cashier-bill-view-list flex h-[50px] border-b border-solid border-grayBorder">
                         <div class="cashier-bill-view-list-products">
                             <span>Paid Amount :</span>
                         </div>
@@ -200,10 +180,10 @@
                         <div class="cashier-bill-view-list-total">
                             <h5>96.00</h5>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="cashier-bill-note pt-5 mb-10">
-                    <div class="flex items-center maxXs:w-full">
+                    <!-- <div class="flex items-center maxXs:w-full">
                         <h5 class="text-[15px] font-semibold text-heading mr-2">Note:</h5>
                         <span class="text-[14px] font-normal text-bodyText">N/A</span>
                     </div>
@@ -214,7 +194,7 @@
                     <div class="flex items-center maxXs:w-full">
                         <h5 class="text-[15px] font-semibold text-heading mr-2">Status :</h5>
                         <span class="text-[10px] inline-block font-bold border border-solid border-themeWarn rounded-[3px] px-1.5 pt-0.5 text-themeWarn">Draft</span>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="cashier-bill-note-btn">
                     <div class="cashier-managesale-top-btnC default-light-theme">

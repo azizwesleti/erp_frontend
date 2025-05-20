@@ -21,9 +21,13 @@
 .cashier-salereturns-table-stockH,
 .cashier-salereturns-table-warehouseH,
 .cashier-salereturns-table-actionH {
-	@apply flex;
+	@apply flex flex-col justify-center items-center;
+
+	min-width: 100px;
+	width: 10%;
+	/* @apply flex;
 	@apply flex-col;
-	@apply justify-center;
+	@apply justify-center; */
 	& h5 {
 		@apply text-[15px] font-semibold text-heading;
 	}
@@ -58,6 +62,8 @@
 	}
 }
 .cashier-salereturns-table-referenceH {
+	@apply flex flex-col justify-center items-center;
+
 	min-width: 220px;
 	width: 15%;
 	@media (min-width: 1601px) and (max-width: 1900px) {
@@ -74,7 +80,9 @@
 	}
 }
 .cashier-salereturns-table-customerH {
-	min-width: 280px;
+	@apply flex flex-col justify-center items-center;
+
+	min-width: 190px;
 	width: 19%;
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		width: 18%;
@@ -106,8 +114,10 @@
 	}
 }
 .cashier-salereturns-table-warehouseH {
-	min-width: 345px;
-	width: 23%;
+	@apply flex flex-col justify-center items-center;
+
+	min-width: 210px;
+	width: 15%;
 	@media (min-width: 1601px) and (max-width: 1900px) {
 		width: 20%;
 		min-width: 160px;
@@ -142,8 +152,8 @@
 	}
 }
 .cashier-salereturns-table-inner-wrapper {
-	@media (max-width: 1200px) {
-		width: 1090px;
+	@media (max-width: 1500px) {
+		width: 1500px;
 		scrollbar-height: thin;
 	}
 }

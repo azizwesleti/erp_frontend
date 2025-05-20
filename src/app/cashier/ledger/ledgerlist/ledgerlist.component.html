@@ -15,11 +15,11 @@
                         <!-- header area start here -->
                         <div class="cashier-header-content flex items-center justify-between custom-height-70">
                             <div class="cashier-header-breadcrumb">
-                            <h5 class="text-[20px] text-heading font-bold mb-1 leading-none">Ledger List</h5>
+                            <h5 class="text-[20px] text-heading font-bold mb-1 leading-none">Stock Movement List</h5>
                             <ul>
-                                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Ledger</li>
+                                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Stock Movement</li>
                                 <li class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></li>
-                                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Ledger List</li>
+                                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Stock Movement List</li>
                             </ul>
                             </div>
                             <div class="flex items-center maxXs:w-full">
@@ -73,20 +73,20 @@
         </div>
         <div class="cashier-breadcrumb-area px-7 py-9 bg-white mb-5">
             <div class="cashier-breadcrumb-area-inner px-0.5">
-                <h5 class="text-[20px] text-heading font-bold mb-3">Ledger List</h5>
+                <h5 class="text-[20px] text-heading font-bold mb-3">Stock Movement List</h5>
                 <div class="cashier-breadcrumb-area-inner-wrap">
-                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Ledger</span>
+                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Stock Movement</span>
                     <span class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></span>
-                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Ledger List</span>
+                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Stock Movement List</span>
                 </div>
             </div>
         </div>
         <div class="cashier-content-area px-7">
             <div class="cashier-salereturns-area bg-white p-7 custom-shadow rounded-lg pt-5 mb-5">
-                <h4 class="text-[20px] font-bold text-heading mb-9">Ledger List</h4>
+                <h4 class="text-[20px] font-bold text-heading mb-9">Stock Movement List</h4>
                 <div class="cashier-managesale-top-btn default-light-theme mb-7">
-                    <button mat-raised-button color="accent" class="mb-1" [routerLink]="['/ledger/createledger']">
-                        <i class="far fa-plus"></i> Create Ledger
+                    <button mat-raised-button color="accent" class="mb-1"  [routerLink]="['/ledger/createledger']">
+                        <i class="far fa-plus"></i> Stock Movement Ledger
                     </button>
                 </div>
                 <div class="cashier-table-header-search-area">
@@ -197,28 +197,29 @@
                                     <h5>Date</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-reference">
-                                    <h5>Name</h5>
+                                    <h5>Article Name</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-customer">
-                                    <h5>Reference</h5>
+                                    <h5>Quantity</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-warehouse">
-                                    <h5>Ledger Type</h5>
+                                    <h5>Movement Type</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-biller">
-                                    <h5>Ledger Group</h5>
+                                    <h5>Model</h5>
                                 </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <h5>Mode</h5>
+                               <!--  <div class="cashier-salereturns-table-total">
+                                    <h5>Model</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-remark">
                                     <h5>Amount</h5>
-                                </div>
+                                </div> -->
                                 <div class="cashier-salereturns-table-action">
                                     <h5>Action</h5>
                                 </div>
                             </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
+                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12"
+                            *ngFor="let item of stockMvtList; let i = index">
                                 <div class="cashier-salereturns-table-checkbox default-light-theme">
                                     <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
                                         (change)="setSingleCheck1($event.checked)">
@@ -226,25 +227,22 @@
                                     </mat-checkbox>
                                 </div>
                                 <div class="cashier-salereturns-table-date">
-                                    <span>01/01/2022</span>
+                                     <span > {{ formatDate(item.date) }}</span>  
+                                    
+                               
+                                  <!--   <span>{{item.date}}</span> -->
                                 </div>
                                 <div class="cashier-salereturns-table-reference">
-                                    <span>Joseph Tylor</span>
+                                    <span>{{item.articleId?.name}}</span>
                                 </div>
                                 <div class="cashier-salereturns-table-customer">
-                                    <span>ty-52865</span>
+                                    <span>{{item.quantityChange}}</span>
                                 </div>
                                 <div class="cashier-salereturns-table-warehouse">
-                                    <span>Account Payable</span>
+                                    <span>{{item.movementType}}</span>
                                 </div>
                                 <div class="cashier-salereturns-table-biller">
-                                    <span>Expense</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Dr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$56,921</span>
+                                    <span> {{item.relatedDocumentModel}}</span>
                                 </div>
                                 <div class="cashier-salereturns-table-action">
                                     <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
@@ -263,592 +261,8 @@
                                     </mat-menu>
                                 </div>
                             </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete"
-                                        (change)="setSingleCheck3($event.checked)">
-                                        <label for="mat-checkbox-4-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>02/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Paul Freeman</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>ui-58566</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>No Material</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Purchase</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Dr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$47,202</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck4($event.checked)">
-                                        <label for="mat-checkbox-5-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>03/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Matthew Smallwood</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>ce-59656</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>Quality</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Purchase</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Cr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$47,356</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck5($event.checked)">
-                                        <label for="mat-checkbox-6-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>04/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Danyelle Lundy</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>we-54065</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>Delivery Cost</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Cr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$25,320</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck6($event.checked)">
-                                        <label for="mat-checkbox-7-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>05/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Glenn Weiner</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>po-01623</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>Low Quality</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Purchase Return</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Cr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$87,252</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck7($event.checked)">
-                                        <label for="mat-checkbox-8-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>06/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Rosemary Clark</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>ve-01266</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>Decoration</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Expense</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Cr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$14,250</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck8($event.checked)">
-                                        <label for="mat-checkbox-9-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>08/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Rosemary Clark</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>xs-30125</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>Delivery Cost</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Purchase</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Cr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$5,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck9($event.checked)">
-                                        <label for="mat-checkbox-10-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>09/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Donald Boser</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>qe-70123</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>No Condition </span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Sale Return</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Dr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$5,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck10($event.checked)">
-                                        <label for="mat-checkbox-11-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>10/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Office Accessories</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>aq-01478</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>Bad Service</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Purchase Return</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Dr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$98,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck11($event.checked)">
-                                        <label for="mat-checkbox-12-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>11/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Maria Cavallo</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>uo-01236</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>Extra Dishonor</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Purchase Return</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Dr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$6,240</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck12($event.checked)">
-                                        <label for="mat-checkbox-13-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>12/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Jennifer Carver</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>lp-24139</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>Administrative Tools</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Expense</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Cr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$5,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck13($event.checked)">
-                                        <label for="mat-checkbox-14-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>13/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Jennifer Carver</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>ar-38742</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>Internal Cost</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Expense</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Cr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$5,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck14($event.checked)">
-                                        <label for="mat-checkbox-15-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>14/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Jennifer Carver</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>pa-31056</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>Employee Salary </span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Expense</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Dr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$58,341</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck15($event.checked)">
-                                        <label for="mat-checkbox-16-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date">
-                                    <span>15/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference">
-                                    <span>Jennifer Carver</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer">
-                                    <span>kh-03645</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse">
-                                    <span>Delivery Cost</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total">
-                                    <span>Dr</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark">
-                                    <span>$5,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
+                           
+                            
                         </div>
                     </div>
                     <div class="cashier-pagination-area">

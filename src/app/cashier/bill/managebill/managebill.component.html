@@ -157,7 +157,7 @@
                                     <h5>Bill Date</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-customerD">
-                                    <h5>Due Date</h5>
+                                    <h5>Amount </h5>
                                 </div>
                                 <div class="cashier-salereturns-table-companyD">
                                     <h5>Order Number</h5>
@@ -176,16 +176,19 @@
                                     </mat-checkbox>
                                 </div>
                                 <div class="cashier-salereturns-table-dateD">
-                                    <span>{{item.client.firstName}} {{item.client.lastName}}</span>
+
+                                    <span> {{item.fournisseur.nom }} </span>
                                 </div>
                                 <div class="cashier-salereturns-table-referenceD">
-                                    <span>{{item.dateFacturation}}</span>
+                                    <span>  {{ formatDate(item.dateFacturation) }} </span>
                                 </div>
                                 <div class="cashier-salereturns-table-customerD">
-                                    <span>{{item.dateFacturation}}</span>
+                                    <span> {{item.totalTTC }} DT</span>
                                 </div>
-                                <div class="cashier-salereturns-table-companyD">
-                                    <span>{{item.type}}4569</span>
+                                <div class="cashier-salereturns-table-referenceD">
+                                    <span> {{item.numero }}</span>
+
+                                   
                                 </div>
                                 <div class="cashier-salereturns-table-warehouseD">
                                     <span>
@@ -215,7 +218,11 @@
                                             <img src="../../../../assets/img/icon/action-4.png" alt="icon not found">
                                             <span>Add Payment</span>
                                         </button>
-                                        <button mat-menu-item (click)="item._id && deleteBill(item._id)">
+
+                                        <button mat-menu-item (click)="onDelete(item._id)">
+
+
+
                                             <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
                                             <span>Delete</span>
                                         </button>

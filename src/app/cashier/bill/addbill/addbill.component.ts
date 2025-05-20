@@ -9,6 +9,8 @@ import { ArticleService } from 'src/app/services/article.service';
 import { Article } from 'src/app/interfaces/article';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { SupplierService } from 'src/app/services/supplier/supplier.service';
+import { Supplier } from 'src/app/interfaces/supplier';
 
 // Simplified LineItem interface for frontend
 interface LineItem {
@@ -28,7 +30,7 @@ interface LineItem {
 export class AddbillComponent implements OnInit {
   billForm: FormGroup;
   lineItems: LineItem[] = [];
-  clients: Customer[] = [];
+  suppliers: Supplier[] = [];
   // Placeholder for articles (you'll need an ArticleService)
   articles: Article[] = []; // Replace the any[] with Article[]
  // Replace with actual Article interface
@@ -46,7 +48,7 @@ export class AddbillComponent implements OnInit {
   searchTerm = '';
   constructor(
     private router: Router,
-    private clientService: CustomerService,
+    private supplierService: SupplierService,
     private billService: BillService,
     private articleService:ArticleService,
     private fb: FormBuilder,
@@ -57,6 +59,7 @@ export class AddbillComponent implements OnInit {
       type: ['invoice', Validators.required],
       dateFacturation: [new Date(), Validators.required],
       tvaRate: [20, [Validators.required, Validators.min(0)]],
+      numero: [0, Validators.required],
       purchaseOrderId: [''],
     });
   }
@@ -65,13 +68,13 @@ ngOnInit(): void {
   this.loadArticles()
    
     // Load clients
-    this.clientService.getCustomers().subscribe({
-      next: (data) => {
-        this.clients = data;
-        console.log('Clients loaded:', this.clients);
+    this.supplierService.getSuppliers().subscribe({
+      next: (response) => {
+        this.suppliers = response.data;
+        console.log('Suppliers loaded:', this.suppliers);
       },
       error: (err) => {
-        console.error('Error fetching customers', err);
+        console.error('Error fetching suppliers', err);
         this.snackBar.open('Error loading clients', 'Close', { duration: 3000 });
       }
     });
@@ -191,7 +194,7 @@ loadArticles() {
     }
 
     const billToAdd: BillToAdd = {
-      client: this.billForm.get('client')?.value,
+      fournisseur: this.billForm.get('client')?.value,
       type: this.billForm.get('type')?.value,
       lignes: this.lineItems.map(item => ({
         article: item.article,
@@ -199,6 +202,7 @@ loadArticles() {
         prixUnitaire: item.prixUnitaire
       })),
       tvaRate: this.billForm.get('tvaRate')?.value,
+      numero: this.billForm.get('numero')?.value,
       purchaseOrderId: this.billForm.get('663b269e3e5a0c001bb2e6dd')?.value
     };
 
@@ -211,9 +215,9 @@ loadArticles() {
           this.billService.notifyBillUpdated();
                   this.router.navigate(['/bill/managebill']);
 
-        } else {
+        } /* else {
           this.snackBar.open(response.error || 'Error adding bill', 'Close', { duration: 3000 });
-        }
+        } */
       },
       error: (err) => {
         this.snackBar.open('Error adding bill: ' + (err.error?.error || 'Server error'), 'Close', { duration: 3000 });

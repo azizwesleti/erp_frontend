@@ -2,20 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { ApiConstant } from 'src/app/constant/api-constants';
-import { Bill, BillToAdd } from 'src/app/interfaces/bill';
+import { Bill, BillCustomer, BillCustomerToAdd, BillToAdd } from 'src/app/interfaces/bill';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BillService {
-  private apiUrl = environment.apiUrl + ApiConstant.billCustomer;
+export class BillCustomerService {
+ private apiUrl = environment.apiUrl + ApiConstant.bills;
   private billUpdatedSubject = new Subject<void>();
 
   constructor(private http: HttpClient) {}
 
-  addBill(bill: BillToAdd): Observable<{ success: boolean; data?: Bill; error?: string }> {
-    return this.http.post<{ success: boolean; data?: Bill; error?: string }>(this.apiUrl, bill);
+  addBill(bill: BillCustomerToAdd): Observable<{ success: boolean; data?: BillCustomer; error?: string }> {
+    return this.http.post<{ success: boolean; data?: BillCustomer; error?: string }>(this.apiUrl, bill);
   }
 
   getBills(type?: 'invoice' | 'quote'): Observable<{ success: boolean; data: Bill[]; error?: string }> {

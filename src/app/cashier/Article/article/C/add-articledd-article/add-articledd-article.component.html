@@ -1,4 +1,133 @@
-<h2 mat-dialog-title>Add New Article</h2>
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="cashier-popup-inner">
+            <div class="cashier-popup-header relative mb-11">
+                <div class="cashier-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Add Supplier</h4>
+                </div>
+                <div class="cashier-popup-header-close absolute -top-4 right-0">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close>
+                                <mat-icon>clear</mat-icon>
+                            </a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+        <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+            <div class="grid grid-cols-12 gap-x-7 maxSm:gap-x-0">
+                <div class="md:col-span-6 sm:col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Name</h5>
+                        <div class="cashier-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input required formControlName="name" matInput [placeholder]="'Ahsan Enterprise'">
+                                <mat-error *ngIf="articleForm.get('designation')?.hasError('required')">
+                                  Designation is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-6 sm:col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">code</h5>
+                        <div class="cashier-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input required formControlName="code" matInput [placeholder]="'+02 587 698 771'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-6 sm:col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Designation</h5>
+                        <div class="cashier-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input formControlName="designation" type="email" matInput [placeholder]="'info@example.com'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-6 sm:col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Famille</h5>
+                        <div class="cashier-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <mat-select formControlName="famille">
+                                  <mat-option value="">-- Select Category --</mat-option>
+                                  <mat-option *ngFor="let category of categories" [value]="category">
+                                    {{ category }}
+                                  </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-6 sm:col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Purchase Price</h5>
+                        <div class="cashier-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input formControlName="prixAchat" matInput [placeholder]="'New York'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-6 sm:col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Selling Price</h5>
+                        <div class="cashier-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input formControlName="prixVente" matInput [placeholder]="'United States'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div> 
+                <div class="md:col-span-6 sm:col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Stock</h5>
+                        <div class="cashier-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input formControlName="stock" matInput [placeholder]="'2751 Polk Street, Tucson'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="md:col-span-6 sm:col-span-12">
+                    <div class="cashier-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Zip</h5>
+                        <div class="cashier-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input matInput [placeholder]="'85701'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="col-span-12">
+                    <div class="cashier-popup-btn default-light-theme pt-1.5">
+                        <button type="submit" mat-raised-button color="primary" [disabled]="!articleForm.valid">Create</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+
+    </div>
+</mat-dialog-content>
+
+
+
+<!-- <h2 mat-dialog-title>Add New Article</h2>
 
 <mat-dialog-content>
   <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
@@ -78,4 +207,4 @@
     <span *ngIf="!isSubmitting">Create</span>
     <span *ngIf="isSubmitting">Creating...</span>
   </button>
-</mat-dialog-actions>
+</mat-dialog-actions> -->

@@ -1,6 +1,7 @@
 export interface Article {
   _id?: string;
   code: string;
+  name: string,
   designation: string;
   famille?: string;
   prixAchat?: number;
