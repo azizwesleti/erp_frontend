@@ -2,42 +2,43 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { ApiConstant } from 'src/app/constant/api-constants';
-import { StockMvt, StockMvtToAdd } from 'src/app/interfaces/stock-mvt';
+import { PurchaseOrderToAdd } from 'src/app/interfaces/purchase-order';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StockMvtService {
+export class PurchaseOrderService {
 
-  private apiUrl = environment.apiUrl + ApiConstant.stockMvts; // Update with your backend URL
+private apiUrl = environment.apiUrl + ApiConstant.purchaseOrders; // Update with your backend URL
   private stockMvtUpdatedSubject = new Subject<void>();
 
   constructor(private http: HttpClient) { }
 
-  addStockMvt(supplier: StockMvtToAdd  ): Observable<any> {
-      return this.http.post(this.apiUrl, supplier);
+  addPurchaseOrder(puchaseOrder: PurchaseOrderToAdd  ): Observable<any> {
+      return this.http.post(this.apiUrl, puchaseOrder);
     }
 
-    getStockMvt() : Observable<any> {
+    getPurchaseOrders() : Observable<any> {
       return this.http.get(this.apiUrl);
     }
 
-    updateStockMvt(id: any, stockMvt: any) {
-      return this.http.put(`${this.apiUrl}/${id}`, stockMvt);
+    updatePurchaseOrder(id: any, puchaseOrder: any) {
+      return this.http.put(`${this.apiUrl}/${id}`, puchaseOrder);
     }
 
-    deleteStockMvt(id: string): Observable<void> {
+    deletePurchaseOrder(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
     // Notify that a supplier was updated
-  notifyStockMvtUpdated(): void {
+  notifyPurchaseOrderUpdated(): void {
     this.stockMvtUpdatedSubject.next();
   }
 
   // Observable for components to subscribe to update notifications
-  onStockMvtUpdated(): Observable<void> {
+  onPurchaseOrderUpdated(): Observable<void> {
     return this.stockMvtUpdatedSubject.asObservable();
   }
+
 }

@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { ApiConstant } from 'src/app/constant/api-constants';
 import { Payment, PaymentToAdd } from 'src/app/interfaces/payment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentService {
 
-private apiUrl = 'http://localhost:3000/api/paiements'; // Update with your backend URL
+private apiUrl = environment.apiUrl + ApiConstant.payments; // Update with your backend URL
   private billUpdatedSubject = new Subject<void>();
 
   constructor(private http: HttpClient) { }

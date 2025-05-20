@@ -2,6 +2,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DebitvoucherpopupComponent } from '../../popup/debitvoucherpopup/debitvoucherpopup.component';
+import { PurchaseOrder } from 'src/app/interfaces/purchase-order';
+import { PurchaseOrderService } from 'src/app/services/purchase-order/purchase-order.service';
+import { DatePipe } from '@angular/common';
 
 //for checkbox
 export interface Task {
@@ -16,10 +19,12 @@ export interface Task {
   selector: 'app-debitlist',
   templateUrl: './debitlist.component.html',
   styleUrls: ['./debitlist.component.scss'],
+  providers: [DatePipe],
   encapsulation: ViewEncapsulation.None
 })
 export class DebitlistComponent implements OnInit {
 
+  purchaseOrderList : PurchaseOrder []= []
   //checkbox start
   task: Task = {
     name: '',
@@ -46,6 +51,30 @@ export class DebitlistComponent implements OnInit {
   fifteenComplete: boolean = false;
   sixteenComplete: boolean = false;
   disabled_condition = true;
+
+  constructor(private purchaseOrderService: PurchaseOrderService, private datePipe: DatePipe, public dialog: MatDialog) {}
+  
+  
+  ngOnInit(): void {
+     this.loadPurchaseOrder();
+  }
+
+  loadPurchaseOrder(){
+    this.purchaseOrderService.getPurchaseOrders().subscribe({
+      next: (response : any) => {
+        this.purchaseOrderList = response;
+        console.log("la list des Purchase Order est : ", this.purchaseOrderList);
+        },
+        error: (error: any) => {
+          console.error(error);
+          }
+    })
+  }
+
+
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd MMM yyyy') || '';
+  }
 
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
@@ -77,163 +106,15 @@ export class DebitlistComponent implements OnInit {
       this.isComplete = completed;
     }
   }
-  setSingleCheck2(completed: boolean) {
-    this.twoComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck3(completed: boolean) {
-    this.threeComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck4(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck5(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck6(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-
-  setSingleCheck7(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck8(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck9(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck10(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck11(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck12(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck13(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck14(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck15(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
-  setSingleCheck16(completed: boolean) {
-    this.fourComplete = completed;
-    if(completed) {
-      this.isComplete = completed;
-    }
-
-    if( !this.sixteenComplete && !this.fifteenComplete && !this.fourteenComplete && !this.thirteenComplete && !this.twelveComplete && !this.elevenComplete && !this.tenComplete && !this.nineComplete && !this.eightComplete && !this.sevenComplete && !this.sixComplete && !this.fiveComplete && !this.fourComplete && !this.threeComplete && !this.twoComplete && !this.oneComplete ) {
-      this.isComplete = completed;
-    }
-  }
+  
   //checkbox end
 
-  constructor(public dialog: MatDialog) {}
+  
+
   debitVoucherPopup() {
     this.dialog.open(DebitvoucherpopupComponent);
   }
 
-  ngOnInit(): void {}
 
   //sidebar menu activation start
   menuSidebarActive:boolean=false;

@@ -117,20 +117,20 @@ export const navbarData: INavbarData[] = [
     {
         routeLink: 'ledger',
         icon: 'fal fa-tags',
-        label: 'Ledger',
+        label: 'Stock Movement',
         items: [
             {
                 routeLink: '/ledger/createledger',
-                label: 'Create Ledger'
+                label: 'Create Stock Movement'
             },
             {
                 routeLink: '/ledger/ledgerlist',
-                label: 'Ledger List'
+                label: 'Stock Movement List'
             },
-            {
+            /* {
                 routeLink: '/ledger/ledgergroup',
                 label: 'Ledger Group'
-            }
+            } */
         ]
     },
     {

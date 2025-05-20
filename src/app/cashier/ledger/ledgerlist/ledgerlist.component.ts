@@ -76,7 +76,7 @@ export class LedgerlistComponent implements OnInit {
     })
   }
 
-      formatDate(date: string): string {
+  formatDate(date: string): string {
     return this.datePipe.transform(date, 'dd MMM yyyy') || '';
   }
 

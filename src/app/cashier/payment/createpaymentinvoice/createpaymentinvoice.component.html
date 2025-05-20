@@ -19,7 +19,7 @@
                             <ul>
                                 <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Payment</li>
                                 <li class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></li>
-                                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Invoice</li>
+                                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Create Payment</li>
                             </ul>
                             </div>
                             <div class="flex items-center maxXs:w-full">
@@ -76,75 +76,179 @@
                 <h5 class="text-[20px] text-heading font-bold mb-3">Create Payment </h5>
                 <div class="cashier-breadcrumb-area-inner-wrap">
                     <span class="text-[14px] text-bodyText font-normal inline-block mr-2">Payment</span>
-                    <span class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></span>
-                    <span class="text-[14px] text-bodyText font-normal inline-block mr-2">Invoice</span>
+                    <span class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i
+                            class="far fa-chevron-right"></i></span>
+                    <span class="text-[14px] text-bodyText font-normal inline-block mr-2">Voucher</span>
                 </div>
             </div>
         </div>
-        <div class="container mt-4">
-  <div class="card">
-   
-    <div class="card-body">
-      <form (ngSubmit)="onSubmit()" #paiementForm="ngForm">
-        
-        <!-- Customer Selection -->
-        <div class="form-group">
-          <label for="client">Client</label>
-          <select id="client" class="form-control" [(ngModel)]="paiement.client" name="customer" required>
-            <option *ngFor="let client of clients" [ngValue]="client._id">{{ client.firstName }}</option>
-          </select>
-        </div>
+        <div class="cashier-content-area px-7">
+          <form (ngSubmit)="onSubmit()" #paiementForm="ngForm">
+            <div class="cashier-addsupplier-area bg-white p-7 custom-shadow rounded-lg pt-5 mb-5">
+                <h4 class="text-[20px] font-bold text-heading mb-9">Voucher</h4>
+                <div class="grid grid-cols-12 gap-x-5">
+                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Customer</h5>
+                            <div class="cashier-select-field-style">
+                                <mat-form-field>
+                                    <mat-label class="hidden">Select an option</mat-label>
+                                    <mat-select id="client" class="form-control" [(ngModel)]="paiement.client" name="customer" required disableRipple class="block" [placeholder]="'Customer Name'">
+                                        <mat-option *ngFor="let client of clients" [value]="client._id" >{{ client.lastName }}  {{ client.firstName }} </mat-option>
+                          
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Bill</h5>
+                            <div class="cashier-select-field-style">
+                                <mat-form-field>
+                                    <mat-label class="hidden">Select an option</mat-label>
+                                    <mat-select id="facture" class="form-control" [(ngModel)]="paiement.facture" name="bill" required disableRipple class="block" [placeholder]="'Unpaid'">
+                                        <mat-option *ngFor="let bill of bills" [value]="bill._id">{{ bill.numero }}</mat-option>
+                                        
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                <!--     <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Amount</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden"></mat-label>
+                                    <input matInput [placeholder]="'875'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div> -->
 
-        <!-- Bill Selection -->
-        <div class="form-group mt-3">
-          <label for="facture">Facture</label>
-          <select id="facture" class="form-control" [(ngModel)]="paiement.facture" name="bill" required>
-            <option *ngFor="let bill of bills" [ngValue]="bill._id">
-              {{ bill._id}}
-            </option>
-          </select>
-        </div>
+              <!--       <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Payment Date</h5>
+                            <div class="cashier-select-field-style">
+                                <mat-form-field>
+                                    <mat-label class="hidden">Select an option</mat-label>
+                                    <mat-select disableRipple class="block" [placeholder]="'Southeast Bank'">
+                                        <mat-option value="language-1">Southeast Bank</mat-option>
+                                        <mat-option value="language-2">East Bank</mat-option>
+                                        <mat-option value="language-3">new york Bank</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Payment Type</h5>
+                            <div class="cashier-select-field-style">
+                                <mat-form-field>
+                                    <mat-label class="hidden">Select an option</mat-label>
+                                    <mat-select id="paymentMethod" class="form-control" [(ngModel)]="paiement.moyen" name="paymentMethod" required disableRipple class="block" [placeholder]="'Cash'">
+                                        <mat-option value="espèce">Cash</mat-option>
+                                        <mat-option value="chèque">Cheque</mat-option>
+                                        <mat-option value="carte bancaire">Carte</mat-option>
+                                        <mat-option value="virement">Virement</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Status</h5>
+                            <div class="cashier-select-field-style">
+                                <mat-form-field>
+                                    <mat-label class="hidden">Select an option</mat-label>
+                                    <mat-select disableRipple class="block" [placeholder]="'Cash'">
+                                        <mat-option  value="réussi">Réussi</mat-option >
+                                        <mat-option  value="échoué">Échoué</mat-option >
+                                        <mat-option  value="en attente">En attente</mat-option >
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Amount -->
-        <div class="form-group mt-3">
-          <label for="amount">Montant</label>
-          <input type="number" id="amount" class="form-control" [(ngModel)]="paiement.montant" name="amount" required>
-        </div>
+                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Amount</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden"></mat-label>
+                                    <input type="number" id="amount" class="form-control" [(ngModel)]="paiement.montant" name="amount" required matInput [placeholder]="'4,470'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Payment Date -->
-        <div class="form-group mt-3">
-          <label for="paymentDate">Date de paiement</label>
-          <input type="date" id="paymentDate" class="form-control" [(ngModel)]="paiement.datePaiement" name="paymentDate" required>
+                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-calender-field mb-5">
+                            <h5 class="text-[15px] text-black font-semibold mb-3">Date</h5>
+                            <div class="cashier-calender-field-style">
+                                <mat-form-field appearance="fill" floatLabel="always">
+                                    <mat-label class="hidden">Choose a date</mat-label>
+                                    <input id="paymentDate"  [(ngModel)]="paiement.datePaiement" name="paymentDate" required  matInput [matDatepicker]="picker" [placeholder]="'DD-MD-YYYY'">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>                                  
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Reference</h5>
+                            <div class="cashier-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden"></mat-label>
+                                    <input matInput [placeholder]="'52958956956'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div> -->
+                   <!--  <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Payment Receipt</h5>
+                            <div class="cashier-input-field-file-label">
+                                <label for="fileUpload" class="hidden">Choose File</label>
+                                <input type="file" id="fileUpload">
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="col-span-12">
+                        <div class="cashier-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Payment Note</h5>
+                            <div class="cashier-input-field-style">
+                                <textarea placeholder="Write a note.."></textarea>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-span-12">
+                        <div class="cashier-managesale-top-btn default-light-theme pt-2.5">
+                            <button mat-raised-button color="primary" [disabled]="!paiementForm.form.valid">Create Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </form>
         </div>
-
-        <!-- Payment Method -->
-        <div class="form-group mt-3">
-          <label for="paymentMethod">Méthode de paiement</label>
-          <select id="paymentMethod" class="form-control" [(ngModel)]="paiement.moyen" name="paymentMethod" required>
-            <option value="carte bancaire">Carte</option>
-            <option value="espèce">espèces</option>
-            <option value="virement">Virement</option>
-            <option value="chèque">Chèque</option>
-          </select>
-        </div>
-        <!-- Statut -->
-        <div class="form-group mt-3">
-          <label for="statut">Statut</label>
-          <select id="statut" class="form-control" [(ngModel)]="paiement.statut" name="statut" required>
-            <option value="réussi">Réussi</option>
-            <option value="échoué">Échoué</option>
-            <option value="en attente">En attente</option>
-          </select>
-        </div>
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary mt-4" [disabled]="!paiementForm.form.valid">Ajouter</button>
-      </form>
-    </div>
-  </div>
-</div>
 
         <div class="cashier-copyright-area pt-4">
-            <app-copyright></app-copyright>
+           <!--  <app-copyright></app-copyright> -->
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+

@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { ApiConstant } from 'src/app/constant/api-constants';
 import { Supplier, SupplierToAdd } from 'src/app/interfaces/supplier';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SupplierService {
- private apiUrl = 'http://localhost:3000/api/fournisseurs'; // Update with your backend URL
+ private apiUrl = environment.apiUrl + ApiConstant.suppliers; 
   private supplierUpdatedSubject = new Subject<void>();
 
   constructor(private http: HttpClient) { }

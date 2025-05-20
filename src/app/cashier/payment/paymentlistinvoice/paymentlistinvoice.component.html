@@ -208,16 +208,16 @@
                                     <h5>Customer Name</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-customer">
-                                    <h5> Num </h5>
+                                    <h5>Bill Num </h5>
                                 </div>
                                 <div class="cashier-salereturns-table-warehouse">
-                                    <h5>Invoice</h5>
+                                    <h5>Bill Type </h5>
                                 </div>
                                 <div class="cashier-salereturns-table-biller">
-                                    <h5>Account</h5>
+                                    <h5>Payment Type</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-total">
-                                    <h5>Payment Type</h5>
+                                    <h5>Status</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-remark">
                                     <h5>Amount</h5>
@@ -235,13 +235,13 @@
                                     </mat-checkbox>
                                 </div>
                                 <div class="cashier-salereturns-table-date cursor-pointer" (click)="paymentInvoice()">
-                                    <span> {{item.datePaiement}} </span>
+                                    <span> {{ formatDate(item.datePaiement) }}  </span>
                                 </div>
                                 <div class="cashier-salereturns-table-reference cursor-pointer" (click)="paymentInvoice()">
                                     <span> {{item.client.firstName + " " + item.client.lastName}} </span>
                                 </div>
                                 <div class="cashier-salereturns-table-customer cursor-pointer" (click)="paymentInvoice()">
-                                    <span>to complete </span>
+                                    <span>{{item.facture.numero}} </span>
                                 </div>
                                 <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="paymentInvoice()">
                                     <span>{{item.facture.type}}</span>
@@ -261,10 +261,10 @@
                                         Action <mat-icon>arrow_drop_down</mat-icon>
                                     </button>
                                     <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
+                                        <!-- <button mat-menu-item>
                                             <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
                                             <span>Update</span>
-                                        </button>
+                                        </button> -->
                                        <button mat-menu-item (click)="deletePayment(item._id)">
                                           <img src="../../../../assets/img/icon/action-6.png" alt="Delete icon">
                                                 <span>Delete</span>

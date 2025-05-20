@@ -7,6 +7,7 @@ import { SendbillpopupComponent } from '../../popup/sendbillpopup/sendbillpopup.
 import { Bill } from 'src/app/interfaces/bill';
 import { Subscription } from 'rxjs';
 import { BillService } from 'src/app/services/bill/bill.service';
+import { DatePipe } from '@angular/common';
 
 //for checkbox
 export interface Task {
@@ -20,6 +21,7 @@ export interface Task {
   selector: 'app-managebill',
   templateUrl: './managebill.component.html',
   styleUrls: ['./managebill.component.scss'],
+  providers: [DatePipe],
   encapsulation: ViewEncapsulation.None
 })
 export class ManagebillComponent implements OnInit {
@@ -54,7 +56,7 @@ export class ManagebillComponent implements OnInit {
   sixteenComplete: boolean = false;
   disabled_condition = true;
 
-  constructor(private billService: BillService, public dialog: MatDialog) {}
+  constructor(private billService: BillService, private datePipe: DatePipe, public dialog: MatDialog) {}
 
    ngOnInit(): void {
     // Load initial supplier list
@@ -80,6 +82,23 @@ export class ManagebillComponent implements OnInit {
           }
     })
   }
+
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd MMM yyyy') || '';
+  }
+
+  onDelete(id : string) {
+    this.billService.deleteBill(id).subscribe({
+          next: (response : any) => {
+            
+            console.log("La factures à était supprimer avec ID : ", id);
+            },
+            error: (error: any) => {
+              console.error(error);
+              }
+        })
+  }
+
 
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);

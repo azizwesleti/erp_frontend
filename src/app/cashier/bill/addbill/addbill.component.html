@@ -90,16 +90,16 @@
             <!-- Client Selection -->
             <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
               <div class="cashier-select-field mb-5">
-                <h5 class="text-[15px] text-heading font-semibold mb-3">Select Client</h5>
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Select Supplier</h5>
                 <div class="cashier-select-field-style">
                   <mat-form-field>
-                    <mat-label>Select Client</mat-label>
+                    <mat-label>Select Supplier</mat-label>
                     <mat-select formControlName="client">
-                      <mat-option *ngFor="let client of clients" [value]="client._id">
-                        {{ client.firstName }} {{ client.lastName }}
+                      <mat-option *ngFor="let supplier of suppliers" [value]="supplier._id">
+                        {{ supplier.nom }} 
                       </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="billForm.get('client')?.hasError('required')">Client is required</mat-error>
+                    <mat-error *ngIf="billForm.get('client')?.hasError('required')">Supplier is required</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -145,6 +145,20 @@
                     <input matInput type="number" formControlName="tvaRate" placeholder="Enter TVA Rate">
                     <mat-error *ngIf="billForm.get('tvaRate')?.hasError('required')">TVA Rate is required</mat-error>
                     <mat-error *ngIf="billForm.get('tvaRate')?.hasError('min')">TVA Rate must be positive</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
+              <div class="cashier-input-field mb-5">
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Bill Number</h5>
+                <div class="cashier-input-field-style">
+                  <mat-form-field>
+                    <mat-label>Bill Number</mat-label>
+                    <input matInput type="number" formControlName="numero" placeholder="Enter Bill Number">
+                    <mat-error *ngIf="billForm.get('numero')?.hasError('required')">Bill number is required</mat-error>
+                    
                   </mat-form-field>
                 </div>
               </div>

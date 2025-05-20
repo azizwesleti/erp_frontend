@@ -3,12 +3,14 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators'; // Make sure to import 'map'
 import { ApiResponse, Article, Pagination } from '../interfaces/article';
+import { environment } from 'src/environments/environment';
+import { ApiConstant } from '../constant/api-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
-  private apiUrl = 'http://localhost:3000/api/articles';
+  private apiUrl = environment.apiUrl + ApiConstant.articles;
 
   constructor(private http: HttpClient) { }
 
