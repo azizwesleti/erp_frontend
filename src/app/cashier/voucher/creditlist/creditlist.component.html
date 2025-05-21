@@ -15,11 +15,11 @@
                         <!-- header area start here -->
                         <div class="cashier-header-content flex items-center justify-between custom-height-70">
                             <div class="cashier-header-breadcrumb">
-                            <h5 class="text-[20px] text-heading font-bold mb-1 leading-none">Credit Voucher List</h5>
+                            <h5 class="text-[20px] text-heading font-bold mb-1 leading-none">Purchase Order List</h5>
                             <ul>
-                                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Voucher</li>
+                                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Purchase Order</li>
                                 <li class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></li>
-                                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Credit Voucher List</li>
+                                <li class="text-[14px] text-bodyText font-normal inline-block mr-2">Purchase Order List</li>
                             </ul>
                             </div>
                             <div class="flex items-center maxXs:w-full">
@@ -73,25 +73,25 @@
         </div>
         <div class="cashier-breadcrumb-area px-7 py-9 bg-white mb-5">
             <div class="cashier-breadcrumb-area-inner px-0.5">
-                <h5 class="text-[20px] text-heading font-bold mb-3">Credit Voucher List</h5>
+                <h5 class="text-[20px] text-heading font-bold mb-3">Purchase Order List</h5>
                 <div class="cashier-breadcrumb-area-inner-wrap">
-                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Voucher</span>
+                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Purchase Order</span>
                     <span class="text-[12px] text-bodyText font-normal inline-block mr-2 translate-y-0"><i class="far fa-chevron-right"></i></span>
-                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Credit Voucher List</span>
+                    <span class="text-[14px] text-gray font-normal inline-block mr-2">Purchase Order List</span>
                 </div>
             </div>
         </div>
         <div class="cashier-content-area px-7">
             <div class="cashier-salereturns-area bg-white p-7 custom-shadow rounded-lg pt-5 mb-5">
-                <h4 class="text-[20px] font-bold text-heading mb-9">Credit Voucher List</h4>
+                <h4 class="text-[20px] font-bold text-heading mb-9">Purchase Order List</h4>
                 <div class="cashier-managesale-top-btn default-light-theme mb-7">
-                    <button mat-raised-button color="accent" class="mb-1" [routerLink]="['/voucher/createcreditvoucher']">
-                        <i class="far fa-plus"></i> Create Voucher
+                    <button mat-raised-button color="accent" class="mb-1" [routerLink]="['/voucher/createdebitvoucher']">
+                        <i class="far fa-plus"></i> Create Purchase Order
                     </button>
                     <button mat-raised-button color="primary" class="mb-1">
                         <div class="cashier-input-field-style relative inline-block">
                             <div class="cashier-input-field-file">
-                                <label for="fileUpload"><i class="far fa-folder"></i> Import Voucher</label>
+                                <label for="fileUpload"><i class="far fa-folder"></i> Import Purchase Order</label>
                                 <input type="file" id="fileUpload">
                             </div>
                         </div>
@@ -205,15 +205,15 @@
                                     <h5>Date</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-reference">
-                                    <h5>Account Name</h5>
+                                    <h5>Supplier Name</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-customer">
-                                    <h5>Particular</h5>
+                                    <h5>Products</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-warehouse">
-                                    <h5>Payment Gateway</h5>
+                                    <h5>Status</h5>
                                 </div>
-                                <div class="cashier-salereturns-table-biller">
+                                <!-- <div class="cashier-salereturns-table-biller">
                                     <h5>Warehouse</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-mode">
@@ -221,7 +221,7 @@
                                 </div>
                                 <div class="cashier-salereturns-table-total">
                                     <h5>Cheque No</h5>
-                                </div>
+                                </div> -->
                                 <div class="cashier-salereturns-table-remark">
                                     <h5>Amount</h5>
                                 </div>
@@ -229,37 +229,39 @@
                                     <h5>Action</h5>
                                 </div>
                             </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
+                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12"
+                                *ngFor="let item of purchaseClientList; let i = index">
                                 <div class="cashier-salereturns-table-checkbox default-light-theme">
                                     <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
                                         (change)="setSingleCheck1($event.checked)">
                                         <label for="mat-checkbox-2-input"></label>
                                     </mat-checkbox>
                                 </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>01/01/2022</span>
+                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="debitVoucherPopup()">
+                                    <span > {{ formatDate(item.date) }}</span> 
                                 </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Joseph Tylor</span>
+                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="debitVoucherPopup()">
+                                    <span>{{ item?.clientId?.firstName }}   {{ item?.clientId?.lastName }}</span>
                                 </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Accountant</span>
+                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="debitVoucherPopup()"
+                                     *ngFor="let product of item.products">
+                                    <span> + {{ product.productId.name }} : Qte  {{ product.quantity }} --- Price  {{ product.price }}  </span>
                                 </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
+                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="debitVoucherPopup()">
+                                    <span>{{ item.status }}</span>
+                                </div>
+                                <!-- <div class="cashier-salereturns-table-biller cursor-pointer" (click)="debitVoucherPopup()">
+                                    <span>{{ item.totalAmount }}</span>
+                                </div> -->
+                                <!-- <div class="cashier-salereturns-table-mode cursor-pointer" (click)="debitVoucherPopup()">
                                     <span>Cash</span>
                                 </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Head Office</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cash</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
+                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="debitVoucherPopup()">
                                     <span>N/A</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$56,921</span>
-                                </div>
+                                </div>-->
+                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="debitVoucherPopup()">
+                                    <span>{{ item.totalAmount }}</span>
+                                </div> 
                                 <div class="cashier-salereturns-table-action">
                                     <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
                                         class="common-action-menu-style" aria-label="Example icon-button with a menu">
@@ -277,631 +279,7 @@
                                     </mat-menu>
                                 </div>
                             </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete"
-                                        (change)="setSingleCheck3($event.checked)">
-                                        <label for="mat-checkbox-4-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>02/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Paul Freeman</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Bearer</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Bank of Scotland</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Head Office</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cheque</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>20856</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$47,202</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck4($event.checked)">
-                                        <label for="mat-checkbox-5-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>03/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Matthew Smallwood</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Accountant</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cryptocopy Bank</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 1</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cheque</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>57890</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$47,356</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck5($event.checked)">
-                                        <label for="mat-checkbox-6-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>04/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Danyelle Lundy</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Accountant</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cash</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 2</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cash</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>N/A</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$25,320</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck6($event.checked)">
-                                        <label for="mat-checkbox-7-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>05/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Glenn Weiner</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Accountant</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cash</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 1</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cash</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>N/A</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$87,252</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck7($event.checked)">
-                                        <label for="mat-checkbox-8-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>06/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Rosemary Clark</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Accountant</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cash</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 1</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cash</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>N/A</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$14,250</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck8($event.checked)">
-                                        <label for="mat-checkbox-9-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>08/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Rosemary Clark</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Accountant</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Rosemary City Bank</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 2</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cheque</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>56501</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$5,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck9($event.checked)">
-                                        <label for="mat-checkbox-10-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>09/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Donald Boser</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Bearer</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Bank of Scotland</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 1</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cheque</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>93570</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$5,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck10($event.checked)">
-                                        <label for="mat-checkbox-11-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>10/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Office Accessories</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Bearer </span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Eastern Bank Ltd.</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 3</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cheque</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>21410</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$24,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck11($event.checked)">
-                                        <label for="mat-checkbox-12-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>11/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Maria Cavallo</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Accountant</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cryptocopy Bank</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 4</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cheque</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>00782</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$6,240</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck12($event.checked)">
-                                        <label for="mat-checkbox-13-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>12/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Jennifer Carver</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Bearer</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cash</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 3</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cash</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>N/A</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$5,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck13($event.checked)">
-                                        <label for="mat-checkbox-14-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>13/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Jennifer Carver</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Accountant</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Eastern Bank Ltd.</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 1</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cheque</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>00478</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$5,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck14($event.checked)">
-                                        <label for="mat-checkbox-15-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>14/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Jennifer Carver</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Accountant</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>National Bank</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 2</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cheque</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>69500</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$5,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkbox default-light-theme">
-                                    <mat-checkbox [checked]="allComplete" [color]="'primary'"
-                                        (change)="setSingleCheck15($event.checked)">
-                                        <label for="mat-checkbox-16-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-date cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>15/01/2022</span>
-                                </div>
-                                <div class="cashier-salereturns-table-reference cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Jennifer Carver</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customer cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Accountant</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Rosemary City Bank</span>
-                                </div>
-                                <div class="cashier-salereturns-table-biller cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Warehouse 1</span>
-                                </div>
-                                <div class="cashier-salereturns-table-mode cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>Cheque</span>
-                                </div>
-                                <div class="cashier-salereturns-table-total cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>30111</span>
-                                </div>
-                                <div class="cashier-salereturns-table-remark cursor-pointer" (click)="creditVoucherPopup()">
-                                    <span>$5,471</span>
-                                </div>
-                                <div class="cashier-salereturns-table-action">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Update</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="cashier-pagination-area">
