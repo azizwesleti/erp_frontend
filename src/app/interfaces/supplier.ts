@@ -6,7 +6,7 @@ export interface Supplier {
   adresse: string;
   contact: string;
   historique: string;
-  createdAt?:string;
+  createdAt:string;
   updatedAt?:string;
 }
 

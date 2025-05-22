@@ -16,6 +16,7 @@ import {
 import { Router } from '@angular/router';
 import { fadeInOut, INavbarData } from './helper';
 import { navbarData } from './nav-data';
+import { AuthService } from 'src/app/services/auth.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -45,6 +46,9 @@ interface SideNavToggle {
 export class MenuComponent implements OnInit {
   //short menu activation start
   proShortcutActive: boolean = false;
+  userRole: string= 'Admin';
+  userName: string= 'Aziz Oueslati';
+
   prodropdown() {
     if (this.proShortcutActive == false) {
       this.proShortcutActive = true;
@@ -72,11 +76,38 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
+
+      const role = this.authService.getCurrentUserRole();
+        if (role) {
+          this.userRole = role;
+          console.log("Le role de l'utilisateur connecté : ", this.userRole);
+          this.filterNavDataByRole();
+        }
+        
+        const userName = this.authService.getCurrentUserName();
+        if (userName) {
+          this.userName = userName;
+          console.log("Le nom de l'utilisateur connecté : ", this.userName);
+        }
+     
   }
+
+    filterNavDataByRole() { 
+
+    this.navData = navbarData
+      .filter(item => item.roles?.includes(this.userRole))
+      /* .map(item => {
+        if (item.items) {
+          item.items = item.items.filter(sub => sub.roles?.includes(this.userRole));
+        }
+        return item;
+      }) */;
+  }
+
 
   handleClick(item: INavbarData): void {
     this.shrinkItems(item);

@@ -164,7 +164,7 @@ export class DebitvoucherComponent implements OnInit {
         } else {
           this.lineItems.push({
             article: article._id,
-            articleName: article.code, // For display in the UI
+            articleName: article.name, // For display in the UI
             quantite: 1,
             prixUnitaire: article.prixAchat || 0
           });

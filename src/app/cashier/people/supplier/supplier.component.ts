@@ -7,6 +7,7 @@ import { EditSupplierComponent } from './componoents/edit-supplier/edit-supplier
 import { Subscription } from 'rxjs';
 import { Supplier } from 'src/app/interfaces/supplier';
 import { DeleteSupplierComponent } from './componoents/delete-supplier/delete-supplier.component';
+import { DatePipe } from '@angular/common';
 
 //for checkbox
 export interface Task {
@@ -20,6 +21,7 @@ export interface Task {
   selector: 'app-supplier',
   templateUrl: './supplier.component.html',
   styleUrls: ['./supplier.component.scss'],
+  providers: [DatePipe],
   encapsulation: ViewEncapsulation.None
 })
 export class SupplierComponent implements OnInit {
@@ -39,7 +41,7 @@ private subscription: Subscription = new Subscription();
   twoComplete: boolean = false;
  
     
-  constructor(private supplierService: SupplierService, public dialog: MatDialog) {}
+  constructor(private supplierService: SupplierService, private datePipe: DatePipe, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     // Load initial supplier list
@@ -60,6 +62,10 @@ private subscription: Subscription = new Subscription();
   }
   addSupplier() {
     this.dialog.open(AddsupplierpopupComponent);
+  }
+
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd MMM yyyy') || '';
   }
 
   editSupplier(supplier: any) {

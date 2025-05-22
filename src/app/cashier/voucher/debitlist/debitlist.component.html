@@ -245,7 +245,7 @@
                                 </div>
                                 <div class="cashier-salereturns-table-customer cursor-pointer" (click)="debitVoucherPopup()"
                                      *ngFor="let product of item.products">
-                                    <span> + {{ product.productId.name }} : Qte  {{ product.quantity }} --- Price  {{ product.price }}  </span>
+                                    <span> + {{ product.productId.name }} : Qte  {{ product.quantity }} - Price  {{ product.price }}  DT</span>
                                 </div>
                                 <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="debitVoucherPopup()">
                                     <span>{{ item.status }}</span>

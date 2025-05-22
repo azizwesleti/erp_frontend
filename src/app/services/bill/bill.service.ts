@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { ApiConstant } from 'src/app/constant/api-constants';
@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class BillService {
-  private apiUrl = environment.apiUrl + ApiConstant.billCustomer;
+  private apiUrl = environment.apiUrl + ApiConstant.bills;
   private billUpdatedSubject = new Subject<void>();
 
   constructor(private http: HttpClient) {}
@@ -18,10 +18,31 @@ export class BillService {
     return this.http.post<{ success: boolean; data?: Bill; error?: string }>(this.apiUrl, bill);
   }
 
-  getBills(type?: 'invoice' | 'quote'): Observable<{ success: boolean; data: Bill[]; error?: string }> {
-    const url = type ? `${this.apiUrl}?type=${type}` : this.apiUrl;
-    return this.http.get<{ success: boolean; data: Bill[]; error?: string }>(url);
+  getBills(
+  page: number = 1,
+  limit: number = 10,
+  search?: string
+): Observable<{
+  success: boolean;
+  data: Bill[];
+  pagination: { total: number; page: number; pages: number };
+  error?: string;
+}> {
+  let params = new HttpParams()
+    .set('page', page.toString())
+    .set('limit', limit.toString());
+
+  if (search) {
+    params = params.set('search', search);
   }
+
+  return this.http.get<{
+    success: boolean;
+    data: Bill[];
+    pagination: { total: number; page: number; pages: number };
+    error?: string;
+  }>(this.apiUrl, { params });
+}
 
   getBillById(id: string): Observable<{ success: boolean; data?: Bill; error?: string }> {
     return this.http.get<{ success: boolean; data?: Bill; error?: string }>(`${this.apiUrl}/${id}`);

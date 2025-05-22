@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class PurchaseClientService {
 
-private apiUrl = environment.apiUrl + ApiConstant.purchaseClient; // Update with your backend URL
+private apiUrl = environment.apiUrl + ApiConstant.purchaseClient; 
   private stockMvtUpdatedSubject = new Subject<void>();
 
   constructor(private http: HttpClient) { }

@@ -145,6 +145,8 @@ import { ArticleComponent } from './Article/article/article.component';
 import { AddArticleComponent } from './Article/article/C/add-articledd-article/add-articledd-article.component';
 import { EditArticleComponent } from './Article/article/C/edit-article/edit-article.component';
 import { ConfirmSubmitPopupComponent } from './ledger/confirm-submit-popup/confirm-submit-popup.component';
+import { UserCreatedComponent } from './usermanagement/user-created/user-created.component';
+import { BillCustomerDetailsPopupComponent } from './popup/bill-customer-details-popup/bill-customer-details-popup.component';
 
 @NgModule({
   imports: [
@@ -294,7 +296,9 @@ import { ConfirmSubmitPopupComponent } from './ledger/confirm-submit-popup/confi
     ArticleComponent,
     AddArticleComponent,
     EditArticleComponent,
-    ConfirmSubmitPopupComponent
+    ConfirmSubmitPopupComponent,
+    UserCreatedComponent,
+    BillCustomerDetailsPopupComponent
 
   ],
 

@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class BillCustomerService {
- private apiUrl = environment.apiUrl + ApiConstant.bills;
+ private apiUrl = environment.apiUrl + ApiConstant.billCustomer;
   private billUpdatedSubject = new Subject<void>();
 
   constructor(private http: HttpClient) {}

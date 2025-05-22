@@ -212,7 +212,8 @@
                                     <h5>Action</h5>
                                 </div>
                             </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
+                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12"
+                            *ngFor="let item of userList; let i = index">
                                 <div class="cashier-salereturns-table-checkboxJ default-light-theme">
                                     <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
                                         (change)="setSingleCheck1($event.checked)">
@@ -220,16 +221,16 @@
                                     </mat-checkbox>
                                 </div>
                                 <div class="cashier-salereturns-table-dateJ">
-                                    <span>John David</span>
+                                    <span> {{item.name }}</span>
                                 </div>
                                 <div class="cashier-salereturns-table-referenceJ">
-                                    <span>Owener</span>
+                                    <span>{{item.role }}</span>
                                 </div>
                                 <div class="cashier-salereturns-table-customerJ">
-                                    <span>+6 698 250 875</span>
+                                    <span>{{item.phone }}</span>
                                 </div>
                                 <div class="cashier-salereturns-table-companyJ">
-                                    <span>david&#64;example.com</span>
+                                    <span>{{item.email }} </span>
                                 </div>
                                 <div class="cashier-salereturns-table-warehouseJ">
                                     <span><figure class="text-[12px] font-semibold leading-[18px] text-themeGreenDark px-2.5 h-5 rounded-[100px] inline-block border border-solid border-themeGreenDark">Online</figure></span>
@@ -242,7 +243,7 @@
                                     <mat-menu #beforeMenu="matMenu" xPosition="before">
                                         <button mat-menu-item>
                                             <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
+                                            <span>Edit </span>
                                         </button>
                                         <button mat-menu-item>
                                             <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
@@ -251,357 +252,7 @@
                                     </mat-menu>
                                 </div>
                             </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkboxJ default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
-                                        (change)="setSingleCheck2($event.checked)">
-                                        <label for="mat-checkbox-3-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-dateJ">
-                                    <span>Killiyan Ampa</span>
-                                </div>
-                                <div class="cashier-salereturns-table-referenceJ">
-                                    <span>Super Admin</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customerJ">
-                                    <span>+2 985 668 622</span>
-                                </div>
-                                <div class="cashier-salereturns-table-companyJ">
-                                    <span>ampa&#64;example.com</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouseJ">
-                                    <span><figure class="text-[12px] font-semibold leading-[18px] text-themeGreenDark px-2.5 h-5 rounded-[100px] inline-block border border-solid border-themeGreenDark">Online</figure></span>
-                                </div>
-                                <div class="cashier-salereturns-table-actionJ">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkboxJ default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
-                                        (change)="setSingleCheck3($event.checked)">
-                                        <label for="mat-checkbox-4-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-dateJ">
-                                    <span>Brandon Tylors</span>
-                                </div>
-                                <div class="cashier-salereturns-table-referenceJ">
-                                    <span>Admin</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customerJ">
-                                    <span>+5 658 636 970</span>
-                                </div>
-                                <div class="cashier-salereturns-table-companyJ">
-                                    <span>tylor&#64;example.com</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouseJ">
-                                    <span><figure class="text-[12px] font-semibold leading-[18px] text-themeGreenDark px-2.5 h-5 rounded-[100px] inline-block border border-solid border-themeGreenDark">Online</figure></span>
-                                </div>
-                                <div class="cashier-salereturns-table-actionJ">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkboxJ default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
-                                        (change)="setSingleCheck4($event.checked)">
-                                        <label for="mat-checkbox-5-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-dateJ">
-                                    <span>William John</span>
-                                </div>
-                                <div class="cashier-salereturns-table-referenceJ">
-                                    <span>Manager</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customerJ">
-                                    <span>+2 365 052 010</span>
-                                </div>
-                                <div class="cashier-salereturns-table-companyJ">
-                                    <span>john&#64;example.com</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouseJ">
-                                    <span><figure class="text-[12px] font-semibold leading-[18px] text-themeGreenDark px-2.5 h-5 rounded-[100px] inline-block border border-solid border-themeGreenDark">Online</figure></span>
-                                </div>
-                                <div class="cashier-salereturns-table-actionJ">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkboxJ default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
-                                        (change)="setSingleCheck5($event.checked)">
-                                        <label for="mat-checkbox-6-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-dateJ">
-                                    <span>Mendela Peter</span>
-                                </div>
-                                <div class="cashier-salereturns-table-referenceJ">
-                                    <span>Supervisor</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customerJ">
-                                    <span>+9 057 335 058</span>
-                                </div>
-                                <div class="cashier-salereturns-table-companyJ">
-                                    <span>peter&#64;example.com</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouseJ">
-                                    <span><figure class="text-[12px] font-semibold leading-[18px] text-themeOrangeDark px-2.5 h-5 rounded-[100px] inline-block border border-solid border-themeOrangeDark">Offline</figure></span>
-                                </div>
-                                <div class="cashier-salereturns-table-actionJ">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkboxJ default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
-                                        (change)="setSingleCheck6($event.checked)">
-                                        <label for="mat-checkbox-7-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-dateJ">
-                                    <span>Jonathan Deo</span>
-                                </div>
-                                <div class="cashier-salereturns-table-referenceJ">
-                                    <span>Biller</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customerJ">
-                                    <span>+1 021 788 986</span>
-                                </div>
-                                <div class="cashier-salereturns-table-companyJ">
-                                    <span>deo&#64;example.com</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouseJ">
-                                    <span><figure class="text-[12px] font-semibold leading-[18px] text-themeGreenDark px-2.5 h-5 rounded-[100px] inline-block border border-solid border-themeGreenDark">Online</figure></span>
-                                </div>
-                                <div class="cashier-salereturns-table-actionJ">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkboxJ default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
-                                        (change)="setSingleCheck7($event.checked)">
-                                        <label for="mat-checkbox-8-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-dateJ">
-                                    <span>Richard Joseph</span>
-                                </div>
-                                <div class="cashier-salereturns-table-referenceJ">
-                                    <span>Biller</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customerJ">
-                                    <span>+1 982 023 875</span>
-                                </div>
-                                <div class="cashier-salereturns-table-companyJ">
-                                    <span>joseph&#64;example.com</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouseJ">
-                                    <span><figure class="text-[12px] font-semibold leading-[18px] text-themeGreenDark px-2.5 h-5 rounded-[100px] inline-block border border-solid border-themeGreenDark">Online</figure></span>
-                                </div>
-                                <div class="cashier-salereturns-table-actionJ">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkboxJ default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
-                                        (change)="setSingleCheck8($event.checked)">
-                                        <label for="mat-checkbox-9-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-dateJ">
-                                    <span>Mark Hangry</span>
-                                </div>
-                                <div class="cashier-salereturns-table-referenceJ">
-                                    <span>Staff</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customerJ">
-                                    <span>+8 585 986 985</span>
-                                </div>
-                                <div class="cashier-salereturns-table-companyJ">
-                                    <span>mark&#64;example.com</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouseJ">
-                                    <span><figure class="text-[12px] font-semibold leading-[18px] text-themeGreenDark px-2.5 h-5 rounded-[100px] inline-block border border-solid border-themeGreenDark">Online</figure></span>
-                                </div>
-                                <div class="cashier-salereturns-table-actionJ">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkboxJ default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
-                                        (change)="setSingleCheck9($event.checked)">
-                                        <label for="mat-checkbox-10-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-dateJ">
-                                    <span>John D Sinha</span>
-                                </div>
-                                <div class="cashier-salereturns-table-referenceJ">
-                                    <span>Biller</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customerJ">
-                                    <span>+5 698 020 420</span>
-                                </div>
-                                <div class="cashier-salereturns-table-companyJ">
-                                    <span>sina&#64;example.com</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouseJ">
-                                    <span><figure class="text-[12px] font-semibold leading-[18px] text-themeOrangeDark px-2.5 h-5 rounded-[100px] inline-block border border-solid border-themeOrangeDark">Offline</figure></span>
-                                </div>
-                                <div class="cashier-salereturns-table-actionJ">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
-                            <div class="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                                <div class="cashier-salereturns-table-checkboxJ default-light-theme">
-                                    <mat-checkbox [color]="'primary'" [checked]="allComplete" class="updateItem"
-                                        (change)="setSingleCheck10($event.checked)">
-                                        <label for="mat-checkbox-11-input"></label>
-                                    </mat-checkbox>
-                                </div>
-                                <div class="cashier-salereturns-table-dateJ">
-                                    <span>Nicole Charlee</span>
-                                </div>
-                                <div class="cashier-salereturns-table-referenceJ">
-                                    <span>Biller</span>
-                                </div>
-                                <div class="cashier-salereturns-table-customerJ">
-                                    <span>+7 253 301 224</span>
-                                </div>
-                                <div class="cashier-salereturns-table-companyJ">
-                                    <span>charlee&#64;example.com</span>
-                                </div>
-                                <div class="cashier-salereturns-table-warehouseJ">
-                                    <span><figure class="text-[12px] font-semibold leading-[18px] text-themeGreenDark px-2.5 h-5 rounded-[100px] inline-block border border-solid border-themeGreenDark">Online</figure></span>
-                                </div>
-                                <div class="cashier-salereturns-table-actionJ">
-                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
-                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
-                                        Action <mat-icon>arrow_drop_down</mat-icon>
-                                    </button>
-                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Edit Product</span>
-                                        </button>
-                                        <button mat-menu-item>
-                                            <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Delete</span>
-                                        </button>
-                                    </mat-menu>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="cashier-pagination-area">

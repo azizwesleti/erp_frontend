@@ -8,6 +8,7 @@ import { Bill, BillCustomer } from 'src/app/interfaces/bill';
 import { Subscription } from 'rxjs';
 import { BillCustomerService } from 'src/app/services/bill-customer/bill-customer.service';
 import { DatePipe } from '@angular/common';
+import { BillCustomerDetailsPopupComponent } from '../../popup/bill-customer-details-popup/bill-customer-details-popup.component';
 
 //for checkbox
 export interface Task {
@@ -92,6 +93,7 @@ export class CustomermanagebillComponent implements OnInit {
            next: (response : any) => {
              
              console.log("La factures à était supprimer avec ID : ", id);
+             this.loadBills();
              },
              error: (error: any) => {
                console.error(error);
@@ -141,13 +143,12 @@ export class CustomermanagebillComponent implements OnInit {
    sendPaymentPopup() {
      this.dialog.open(SendbillpopupComponent);
    }
-   billDetailsPopup(bill : BillCustomer) {
-     this.dialog.open(BilldetailspopupComponent, {
-           data: {
-             bill_id: bill._id, // Pass the supplier object to the dialog
-             
-           },       
-         });
+   billCustomerDetailsPopup(bill : BillCustomer) {
+    this.dialog.open(BillCustomerDetailsPopupComponent, {
+      data: {
+        bill_id: bill._id,
+      },
+    });
          console.log("facture choisit : ", bill._id);  
  
    }

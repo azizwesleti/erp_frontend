@@ -219,18 +219,20 @@
                   </div>
                 </div>
               </div> -->
-               <div class="cashier-select-field mb-5">
+              <div class="col-span-12">
+            <div class="cashier-select-field mb-5">
               <h5 class="text-[15px] text-heading font-semibold mb-3">Select Product</h5>
               <div class="cashier-input-field-style">
                 <mat-form-field class="w-full" floatLabel="always">
-                  <mat-label>Select Product</mat-label>
-                  <mat-select  #productSelect (selectionChange)="addLineItem($event.value)">
+                  <mat-label class="hidden" >Select Product</mat-label>
+                  <mat-select disableRipple class="block" #productSelect (selectionChange)="addLineItem($event.value)">
                     <mat-option *ngFor="let article of articleList" [value]="article">
-                      {{ article.designation }} - {{ article.prixVente | currency }}
+                      {{ article.name }} - {{ article.prixVente | currency }}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
+            </div>
             </div>
             <!-- Line Items Table -->
             <div class="col-span-12">
@@ -246,14 +248,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let item of lineItems; let i = index">
+                    <tr  *ngFor="let item of lineItems; let i = index">
                       <td>{{ item.articleName }}</td>
                       <td>
                         <button type="button" (click)="updateQuantity(i, 'minus')">-</button>
                         {{ item.quantite }}
                         <button type="button" (click)="updateQuantity(i, 'add')">+</button>
                       </td>
-                      <td>{{ item.prixUnitaire }}</td>
+                      <td>{{ item.prixUnitaire }} DT</td>
                       <td>
                         <button type="button" (click)="removeLineItem(i)">Remove</button>
                       </td>

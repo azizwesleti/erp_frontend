@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="cashier-salereturns-table-dateD">
 
-                                    <span> {{item.fournisseur.nom }} </span>
+                                    <span> {{item.fournisseur?.nom }} </span>
                                 </div>
                                 <div class="cashier-salereturns-table-referenceD">
                                     <span>  {{ formatDate(item.dateFacturation) }} </span>
@@ -192,9 +192,10 @@
                                 </div>
                                 <div class="cashier-salereturns-table-warehouseD">
                                     <span>
-                                        <figure class="text-[12px] font-semibold leading-5 text-white px-2.5 h-5 rounded-[3px] inline-block bg-themeWarn">
+                                        <!-- <figure class="text-[12px] font-semibold leading-5 text-white px-2.5 h-5 rounded-[3px] inline-block bg-themeWarn">
                                             {{item.status}}
-                                        </figure>
+                                        </figure> -->
+                                        {{item.status}}
                                     </span>
                                 </div>
                                 <div class="cashier-salereturns-table-actionD">
@@ -210,19 +211,16 @@
                                             <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
                                             <span>Edit Bill</span>
                                         </button>
-                                        <button mat-menu-item (click)="sendPaymentPopup()">
+                                        <!-- <button mat-menu-item (click)="sendPaymentPopup()">
                                             <img src="../../../../assets/img/icon/action-7.png" alt="icon not found">
                                             <span>Send Bill</span>
                                         </button>
                                         <button mat-menu-item (click)="addPaymentPopup()">
                                             <img src="../../../../assets/img/icon/action-4.png" alt="icon not found">
                                             <span>Add Payment</span>
-                                        </button>
+                                        </button> -->
 
                                         <button mat-menu-item (click)="onDelete(item._id)">
-
-
-
                                             <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
                                             <span>Delete</span>
                                         </button>

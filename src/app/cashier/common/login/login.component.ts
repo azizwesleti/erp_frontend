@@ -13,7 +13,7 @@ export class LoginComponent {
   loginForm: FormGroup;
     hide = true; // For password visibility toggle
     errorMessage: string | null = null;
-  
+  userRole= 'admin' ;
     constructor(
       private fb: FormBuilder,
       private authService: AuthService,
@@ -31,6 +31,9 @@ export class LoginComponent {
         this.authService.login({ email, password }).subscribe({
           next: (response) => {
             console.log('login successful', response);
+            this.userRole = response.role;
+            this.authService.setUserRole(response.role);
+            this.authService.setUserName(response.userName)
             this.router.navigate(['/dashboard']); // Redirect to login after success
           },
           error: (err) => {

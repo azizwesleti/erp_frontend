@@ -24,9 +24,10 @@
 .cashier-salereturns-table-mode,
 .cashier-salereturns-table-remark,
 .cashier-salereturns-table-action {
-	@apply flex;
-	@apply flex-col;
-	@apply justify-center;
+	
+	@apply flex flex-col justify-center items-center;
+	min-width: 160px;
+	width: 10%;
 	& h5 {
 		@apply text-[15px] font-semibold text-heading;
 	}
@@ -41,6 +42,8 @@
 	width: 3.5%;
 }
 .cashier-salereturns-table-date {
+	@apply flex flex-col justify-center items-center;
+
 	min-width: 160px;
 	width: 10%;
 	@media (min-width: 1601px) and (max-width: 1900px) {
@@ -53,6 +56,8 @@
 	}
 }
 .cashier-salereturns-table-reference {
+	@apply flex flex-col justify-center items-center;
+
 	min-width: 190px;
 	width: 14%;
 	@media (min-width: 1601px) and (max-width: 1900px) {
@@ -65,18 +70,22 @@
 	}
 }
 .cashier-salereturns-table-customer {
-	min-width: 180px;
-	width: 12%;
-	@media (min-width: 1601px) and (max-width: 1900px) {
-		width: 10%;
-		min-width: 120px;
+	@apply flex flex-col justify-center items-center;
+
+	min-width: 400px;
+	width: 40%;
+	@media (min-width: 1601px) and (max-width: 19000px) {
+		width: 40%;
+		min-width: 420px;
 	}
-	@media (max-width: 1600px) {
-		width: 10%;
+	@media (max-width: 30000px) {
+		width: 40%;
 		min-width: 120px;
 	}
 }
 .cashier-salereturns-table-warehouse {
+	@apply flex flex-col justify-center items-center;
+
 	min-width: 180px;
 	width: 13%;
 	@media (min-width: 1601px) and (max-width: 1900px) {
@@ -89,6 +98,8 @@
 	}
 }
 .cashier-salereturns-table-biller {
+	@apply flex flex-col justify-center items-center;
+
 	min-width: 160px;
 	width: 12%;
 	@media (min-width: 1601px) and (max-width: 1900px) {

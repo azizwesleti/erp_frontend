@@ -205,7 +205,7 @@
                                     <h5>Date</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-reference">
-                                    <h5>Supplier Name</h5>
+                                    <h5>Customer Name</h5>
                                 </div>
                                 <div class="cashier-salereturns-table-customer">
                                     <h5>Products</h5>
@@ -244,8 +244,10 @@
                                     <span>{{ item?.clientId?.firstName }}   {{ item?.clientId?.lastName }}</span>
                                 </div>
                                 <div class="cashier-salereturns-table-customer cursor-pointer" (click)="debitVoucherPopup()"
-                                     *ngFor="let product of item.products">
-                                    <span> + {{ product.productId.name }} : Qte  {{ product.quantity }} --- Price  {{ product.price }}  </span>
+                                     >
+                                    <span *ngFor="let product of item.products">
+                                           + {{ product.productId?.name }} : Qte  {{ product.quantity }} - Price  {{ product.price }} DT<br>
+                                     </span> 
                                 </div>
                                 <div class="cashier-salereturns-table-warehouse cursor-pointer" (click)="debitVoucherPopup()">
                                     <span>{{ item.status }}</span>

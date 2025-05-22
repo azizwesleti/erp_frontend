@@ -6,7 +6,7 @@ export const ApiConstant = {
     purchaseClient : 'purchaseclients',
     payments: 'paiements',
     customers: 'clients',
-    bills: 'factures',
-    billCustomer: 'facture_fournisseurs'
+    bills: 'facture_fournisseurs',
+    billCustomer: 'factures'
 
 }

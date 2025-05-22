@@ -105,7 +105,7 @@
         </div>
         <div class="cashier-content-area px-7">
             <div class="cashier-salereturns-area bg-white p-7 custom-shadow rounded-lg pt-5 mb-5">
-                <h4 class="text-[20px] font-bold text-heading mb-9">Manage Bill</h4>
+                <h4 class="text-[20px] font-bold text-heading mb-9">Manage Customer Bill</h4>
                 <div class="cashier-managesale-top-btnA default-light-theme mb-7">
                     <button mat-raised-button color="accent" class="mb-1" [routerLink]="['/bill/customerbill']">
                         <i class="far fa-plus"></i> Add Bill
@@ -260,9 +260,10 @@
                                 </div>
                                 <div class="cashier-salereturns-table-warehouseD">
                                     <span>
-                                        <figure
+                                        <!-- <figure
                                             class="text-[12px] font-semibold leading-5 text-white px-2.5 h-5 rounded-[3px] inline-block bg-themeWarn">
-                                            {{item.status }}</figure>
+                                            {{item.status }}</figure> -->
+                                            {{item.status }}
                                     </span>
                                 </div>
                                 <div class="cashier-salereturns-table-actionD">
@@ -271,7 +272,7 @@
                                         Action <mat-icon>arrow_drop_down</mat-icon>
                                     </button>
                                     <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                        <button mat-menu-item (click)="billDetailsPopup(item)">
+                                        <button mat-menu-item (click)="billCustomerDetailsPopup(item)">
                                             <img src="../../../../assets/img/icon/action-1.png" alt="icon not found">
                                             <span>View Bill</span>
                                         </button>
@@ -279,14 +280,14 @@
                                             <img src="../../../../assets/img/icon/action-2.png" alt="icon not found">
                                             <span>Edit Bill</span>
                                         </button>
-                                        <button mat-menu-item (click)="sendPaymentPopup()">
+                                        <!-- <button mat-menu-item (click)="sendPaymentPopup()">
                                             <img src="../../../../assets/img/icon/action-7.png" alt="icon not found">
                                             <span>Send Bill</span>
                                         </button>
                                         <button mat-menu-item (click)="addPaymentPopup()">
                                             <img src="../../../../assets/img/icon/action-4.png" alt="icon not found">
                                             <span>Add Payment</span>
-                                        </button>
+                                        </button> -->
                                         <button mat-menu-item (click)="onDelete(item._id)">
                                             <img src="../../../../assets/img/icon/action-6.png" alt="icon not found">
                                             <span>Delete</span>

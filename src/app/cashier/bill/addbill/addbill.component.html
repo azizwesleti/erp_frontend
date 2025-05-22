@@ -178,18 +178,20 @@
             </div>    -->
             <!-- Product Selection -->
            <!-- Update the product selection dropdown -->
+            <div class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12">
             <div class="cashier-select-field mb-5">
               <h5 class="text-[15px] text-heading font-semibold mb-3">Select Product</h5>
               <div class="cashier-input-field-style">
                 <mat-form-field class="w-full" floatLabel="always">
-                  <mat-label>Select Product</mat-label>
-                  <mat-select #productSelect (selectionChange)="addLineItem($event.value)">
+                  <mat-label class="hidden" >Select Product</mat-label>
+                  <mat-select class="block" #productSelect (selectionChange)="addLineItem($event.value)">
                     <mat-option *ngFor="let article of articleList" [value]="article">
                       {{ article.designation }} - {{ article.prixVente | currency }}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
+            </div>
             </div>
             <!-- Line Items Table -->
             <div class="col-span-12">

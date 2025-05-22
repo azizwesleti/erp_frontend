@@ -1,4 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserCreatedComponent } from '../user-created/user-created.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-adduser',
@@ -8,6 +12,60 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class AdduserComponent implements OnInit {
 
+  createUserForm!: FormGroup<{
+    name: FormControl<string>;
+    email:FormControl<string>;
+    phone: FormControl<string>;
+    role: FormControl<string>;
+  
+  
+  }>;
+
+    constructor(private userService: AuthService, private fb : NonNullableFormBuilder, public dialog: MatDialog ) {
+      this.createUserForm = this.fb.group({
+        name: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        phone: ['', Validators.required],
+        role: ['', Validators.required],
+        });
+    
+    }
+  
+
+    onSubmit() {
+        if(this.createUserForm.valid) {
+          const data = { ...this.createUserForm.value } ;
+    
+          const userData: any = {
+          name: data.name || '',
+          email: data.email || '',
+          phone: data.phone || '',
+          role: data.role || 'employe',
+          password: 'admin123'
+          
+        };
+    
+        console.log('Prepared user data:', userData);
+    
+          console.log("data regestred in form", data);  
+    
+          this.userService.register(userData).subscribe({
+            next: (response) => {
+              console.log("User created succesfully", response);
+              this.confirmCreationPopup();
+            },
+            error: (error) => { 
+              console.error("error while creating User",error);
+              }
+          })
+        } else {
+        console.error("form is invalid");
+      }
+    }
+
+      confirmCreationPopup() {
+        this.dialog.open(UserCreatedComponent);
+      }
   //sidebar menu activation start
   menuSidebarActive:boolean=false;
   myfunction(){
@@ -97,7 +155,6 @@ prodropdown(){
 }
 //header activation end here
 
-  constructor() { }
 
   ngOnInit(): void {}
 

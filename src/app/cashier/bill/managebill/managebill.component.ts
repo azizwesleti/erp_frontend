@@ -28,6 +28,11 @@ export class ManagebillComponent implements OnInit {
   billList: Bill[] = [];
   private subscription: Subscription = new Subscription();
 
+  currentPage = 1;
+  itemsPerPage = 100;
+  totalItems = 0;
+  searchTerm = '';
+
   //checkbox start
   task: Task = {
     name: '',
@@ -68,10 +73,11 @@ export class ManagebillComponent implements OnInit {
 
 
   loadBills() { 
-  this.billService.getBills().subscribe({
+  this.billService.getBills(this.currentPage, this.itemsPerPage, this.searchTerm).subscribe({
       next: (response : any) => {
         this.billList = response.data;
         console.log("la list des factures est : ", this.billList);
+        this.totalItems = response.pagination.total;
 
       },
       error: (error: any) => {
@@ -91,7 +97,7 @@ export class ManagebillComponent implements OnInit {
   onDelete(id : string) {
     this.billService.deleteBill(id).subscribe({
           next: (response : any) => {
-            
+            this.loadBills();
             console.log("La factures à était supprimer avec ID : ", id);
             },
             error: (error: any) => {

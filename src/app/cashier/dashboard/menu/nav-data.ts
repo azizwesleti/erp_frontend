@@ -4,20 +4,24 @@ export const navbarData: INavbarData[] = [
     {
         routeLink: '/dashboard',
         icon: 'fal fa-home',
-        label: 'Dashboard'
+        label: 'Dashboard',
+        roles: ['admin', 'rh', 'employe']
     },
 
 
    {
     routeLink: '/article',
     icon: 'fal fa-file-alt',  
-    label: 'Article'
+    label: 'Article',
+    roles: ['admin', 'employe']
 },
 
-    {
+   /*  {
         routeLink: 'bank',
         icon: 'fal fa-box-open',
         label: 'Bank',
+        roles: ['admin', 'rh', 'employe'],
+
         items: [
             {
                 routeLink: '/bank/createbank',
@@ -29,23 +33,24 @@ export const navbarData: INavbarData[] = [
             },
             
         ]
-    },
+    }, */
     {
         routeLink: 'payment',
         icon: 'fal fa-sack-dollar',
         label: 'Payment',
+        roles: ['admin', 'rh', 'employe'],
         items: [
             {
                 routeLink: '/payment/createpayment',
                 label: 'Create Payment',
                 items: [
-                    {
+                    /* {
                         routeLink: '/payment/createpayment',
-                        label: 'Payment Voucher'
-                    },
+                        label: 'Payment Quote'
+                    }, */
                     {
                         routeLink: '/payment/createpaymentinvoice',
-                        label: 'Payment Invoice'
+                        label: 'Create Payment'
                     }
                 ]
             },
@@ -53,13 +58,13 @@ export const navbarData: INavbarData[] = [
                 routeLink: '/payment/paymentlist',
                 label: 'Payment List',
                 items: [
-                    {
+                    /* {
                         routeLink: '/payment/paymentlist',
-                        label: 'Payment List Voucher'
-                    },
+                        label: 'Payment List Quote'
+                    }, */
                     {
                         routeLink: '/payment/paymentlistinvoice',
-                        label: 'Payment List Invoice'
+                        label: 'Payment List '
                     }
                 ]
             }
@@ -68,37 +73,39 @@ export const navbarData: INavbarData[] = [
     {
         routeLink: 'voucher',
         icon: 'fal fa-ballot',
-        label: 'Voucher',
+        label: 'Purchase Order',
+        roles: ['admin', 'employe'],
+
         items: [
             {
                 routeLink: '/voucher/createdebitvoucher',
-                label: 'Debit Voucher',
+                label: 'Debit Purchase Order',
                 items: [
                     {
                         routeLink: '/voucher/createdebitvoucher',
-                        label: 'Create Voucher'
+                        label: 'Create Purchase Order'
                     },
                     {
                         routeLink: '/voucher/debitlist',
-                        label: 'Voucher List'
+                        label: 'Purchase Order List'
                     }
                 ]
             },
             {
                 routeLink: '/voucher/createcreditvoucher',
-                label: 'Credit Voucher',
+                label: 'Credit Purchase Order',
                 items: [
                     {
                         routeLink: '/voucher/createcreditvoucher',
-                        label: 'Create Voucher'
+                        label: 'Create Purchase Order'
                     },
                     {
                         routeLink: '/voucher/creditlist',
-                        label: 'Voucher List'
+                        label: 'Purchase Order List'
                     }
                 ]
             },
-            {
+            /* {
                 routeLink: '/voucher/createjournal',
                 label: 'Journal',
                 items: [
@@ -111,13 +118,15 @@ export const navbarData: INavbarData[] = [
                         label: 'Journal List'
                     }
                 ]
-            }
+            } */
         ]
     },
     {
         routeLink: 'ledger',
         icon: 'fal fa-tags',
         label: 'Stock Movement',
+        roles: ['admin',  'employe'],
+
         items: [
             {
                 routeLink: '/ledger/createledger',
@@ -137,6 +146,8 @@ export const navbarData: INavbarData[] = [
         routeLink: 'bill',
         icon: 'fal fa-chart-bar',
         label: 'Bill',
+        roles: ['admin',  'employe'],
+
         items: [
             {
                 routeLink: '/bill/addbill',
@@ -173,6 +184,8 @@ export const navbarData: INavbarData[] = [
         routeLink: 'people',
         icon: 'fal fa-users',
         label: 'People',
+        roles: ['admin', 'rh'],
+
         items: [
 
             {
@@ -190,6 +203,8 @@ export const navbarData: INavbarData[] = [
         routeLink: 'user',
         icon: 'fal fa-user',
         label: 'User Management',
+        roles: ['admin'],
+
         items: [
             {
                 routeLink: '/user/adduser',
@@ -209,6 +224,8 @@ export const navbarData: INavbarData[] = [
         routeLink: 'report',
         icon: 'fal fa-inventory',
         label: 'Reports',
+        roles: ['admin'],
+
         items: [
             {
                 routeLink: '/report/transection',
